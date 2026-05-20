@@ -45,9 +45,9 @@ const navItem: CSSProperties = {
 // Tiles in the bottom toggle bar. `href` makes the tile clickable
 // (internal routes use next/link, external URLs open in a new tab).
 // Tiles without an href are "disabled" — greyed out and non-interactive.
-const tiles: Array<{ title: string; href?: string }> = [
-  { title: "Microsoft\nFluent", href: "/fluent" },
-  { title: "Microsoft Teams", href: "/teams" },
+const tiles: Array<{ title: string; href?: string; comingSoon?: true }> = [
+  { title: "Microsoft\nFluent", comingSoon: true },
+  { title: "Microsoft Teams", comingSoon: true },
   { title: "Diffui.ai", href: "/diffui" },
   { title: "WVN", href: "/wvn" },
   { title: "Fitably", href: "/fitably" },
@@ -160,6 +160,27 @@ export default function Home() {
           opacity: 0;
         }
         .work-bar-item[data-external="true"]:hover .work-bar-item-ext {
+          opacity: 1;
+        }
+        /* "Coming soon" tiles: disabled (greyed, no link), but on hover the
+           label crossfades from the case-study name to "Coming soon". */
+        .work-bar-item[data-coming-soon="true"] .work-bar-item-text,
+        .work-bar-item[data-coming-soon="true"] .work-bar-item-soon {
+          transition: opacity 160ms ease-out;
+        }
+        .work-bar-item[data-coming-soon="true"] .work-bar-item-soon {
+          position: absolute;
+          inset: 0;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          pointer-events: none;
+        }
+        .work-bar-item[data-coming-soon="true"]:hover .work-bar-item-text {
+          opacity: 0;
+        }
+        .work-bar-item[data-coming-soon="true"]:hover .work-bar-item-soon {
           opacity: 1;
         }
         .work-bar-item[data-active="true"] {
@@ -369,10 +390,20 @@ export default function Home() {
                   key={tile.title}
                   className="work-bar-item"
                   data-active={dataActive}
+                  data-coming-soon={tile.comingSoon ? "true" : undefined}
                   onMouseEnter={onEnter}
                   onMouseLeave={onLeave}
                 >
-                  {display}
+                  {tile.comingSoon ? (
+                    <>
+                      <span className="work-bar-item-text">{display}</span>
+                      <span className="work-bar-item-soon" aria-hidden>
+                        Coming soon
+                      </span>
+                    </>
+                  ) : (
+                    display
+                  )}
                 </span>
               );
             }
