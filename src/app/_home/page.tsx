@@ -196,6 +196,10 @@ export default function Home() {
           .work-bar {
             flex-direction: column;
             gap: 4px;
+            /* 999px egg-shapes the container once it's tall+narrow — cap
+               to a soft rounded-rect that matches the top/bottom pill caps
+               plus the 6px wrapper padding (~25px). */
+            border-radius: 26px;
           }
           .work-bar-item {
             justify-content: center;
