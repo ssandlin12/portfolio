@@ -116,7 +116,7 @@ export default function TeamsContent() {
           style={{ justifySelf: "end", columnGap: "clamp(20px, 4vw, 40px)" }}
         >
           <a
-            href="https://drive.google.com/file/d/1f-wtoB6_PEa-Yj8H4Z_48y2xLTAL0-gE/view?usp=sharing"
+            href="https://drive.google.com/file/d/1Vc50sGAOZPn380b65T648lka6LVHIrct/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-link"

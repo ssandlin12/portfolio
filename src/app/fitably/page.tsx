@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Figtree } from "next/font/google";
 import { useEffect, useState, type CSSProperties } from "react";
+import { ShimmerImage } from "../_components/shimmer";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -31,6 +32,10 @@ type Section = {
   // Optional: when set, the section renders this set of images side-by-side
   // (no shared frame) INSTEAD of the single video/image.
   triptych?: { src: string; alt: string }[];
+  /** "width / height" shared by every triptych image in this section — feeds
+      each shimmer frame's aspect-ratio so the row reserves its final height
+      before any pixels load. */
+  triptychAspectRatio?: string;
 };
 
 const SECTIONS: Section[] = [
@@ -45,6 +50,7 @@ const SECTIONS: Section[] = [
       { src: "/case-studies/fitably/02_before.png", alt: "Spottr screen 2" },
       { src: "/case-studies/fitably/03_before.png", alt: "Spottr screen 3" },
     ],
+    triptychAspectRatio: "750 / 1334",
   },
   {
     heading: "After",
@@ -57,6 +63,7 @@ const SECTIONS: Section[] = [
       { src: "/case-studies/fitably/02.PNG", alt: "Fitably screen 2" },
       { src: "/case-studies/fitably/03.PNG", alt: "Fitably screen 3" },
     ],
+    triptychAspectRatio: "1290 / 2796",
   },
 ];
 
@@ -381,7 +388,7 @@ export default function FitablyCaseStudy() {
           }}
         >
           <a
-            href="https://drive.google.com/file/d/1f-wtoB6_PEa-Yj8H4Z_48y2xLTAL0-gE/view?usp=sharing"
+            href="https://drive.google.com/file/d/1Vc50sGAOZPn380b65T648lka6LVHIrct/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-link"
@@ -443,7 +450,12 @@ export default function FitablyCaseStudy() {
             {s.triptych ? (
               <div className="case-triptych">
                 {s.triptych.map((img) => (
-                  <img key={img.src} src={img.src} alt={img.alt} />
+                  <ShimmerImage
+                    key={img.src}
+                    src={img.src}
+                    alt={img.alt}
+                    aspectRatio={s.triptychAspectRatio ?? "1 / 1"}
+                  />
                 ))}
               </div>
             ) : (

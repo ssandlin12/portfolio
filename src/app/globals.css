@@ -29,3 +29,67 @@ body {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+
+/* ----- Shimmer skeleton states for case-study media ----------------------
+   Targets:
+   - `.case-media-wrap`  — wrap around a singleton image/video in diffui & wvn
+   - `.shimmer-frame`    — wrap around an individual triptych img in fitably
+   Each wrap is sized via inline `aspect-ratio` so the box has its final
+   dimensions before content paints; the gradient animates until the media
+   adds the `.is-loaded` class, then we fade the shimmer out and the media
+   in. Dark-bg variant tints the gradient so the shimmer still reads on
+   the #2A2B30 panel used for wvn Before. */
+@keyframes shimmer-slide {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.case-media-wrap:not(.is-loaded),
+.shimmer-frame:not(.is-loaded) {
+  background-color: #ececec;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: shimmer-slide 1.4s ease-in-out infinite;
+}
+.case-media-wrap[data-bg="dark"]:not(.is-loaded) {
+  background-color: #2a2b30;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.case-media-wrap > .case-media,
+.shimmer-frame > img,
+.shimmer-frame > video {
+  opacity: 0;
+  transition: opacity 240ms ease-out;
+}
+.case-media-wrap.is-loaded > .case-media,
+.shimmer-frame.is-loaded > img,
+.shimmer-frame.is-loaded > video {
+  opacity: 1;
+}
+
+/* Triptych img sits inside `.shimmer-frame` which carries the rounded
+   corners — strip the per-img rounding so they don't double up. */
+.shimmer-frame {
+  border-radius: 14px;
+  overflow: hidden;
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+  position: relative;
+}
+.shimmer-frame > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

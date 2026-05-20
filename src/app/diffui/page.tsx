@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Figtree } from "next/font/google";
 import { useEffect, useState, type CSSProperties } from "react";
+import { ShimmerVideo } from "../_components/shimmer";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -28,6 +29,9 @@ type Section = {
   videoSrc: string;
   imageSrc: string;
   alt: string;
+  /** "width / height" of the video — feeds the shimmer wrap's aspect-ratio
+      so the box reserves its final size before any pixels load. */
+  aspectRatio: string;
 };
 
 const SECTIONS: Section[] = [
@@ -38,6 +42,7 @@ const SECTIONS: Section[] = [
     videoSrc: "/case-studies/diffui/01-video.mp4",
     imageSrc: "/case-studies/diffui/01.png",
     alt: "Diffui current marketing-first flow",
+    aspectRatio: "1920 / 1044",
   },
   {
     heading: "After",
@@ -46,6 +51,7 @@ const SECTIONS: Section[] = [
     videoSrc: "/case-studies/diffui/02-video.mp4",
     imageSrc: "/case-studies/diffui/02.png",
     alt: "Diffui app home with prompt and example cards",
+    aspectRatio: "1920 / 1044",
   },
 ];
 
@@ -355,7 +361,7 @@ export default function DiffuiCaseStudy() {
           }}
         >
           <a
-            href="https://drive.google.com/file/d/1f-wtoB6_PEa-Yj8H4Z_48y2xLTAL0-gE/view?usp=sharing"
+            href="https://drive.google.com/file/d/1Vc50sGAOZPn380b65T648lka6LVHIrct/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="nav-link"
@@ -415,12 +421,12 @@ export default function DiffuiCaseStudy() {
           <section key={s.heading} className="case-section">
             <div className="case-section-heading">{s.heading}</div>
             <p className="case-section-body">{s.body}</p>
-            <div className="case-media-wrap">
-              <FallbackVideo
-                videoSrc={s.videoSrc}
-                imageSrc={s.imageSrc}
-                alt={s.alt}
-              />
+            <ShimmerVideo
+              videoSrc={s.videoSrc}
+              imageSrc={s.imageSrc}
+              alt={s.alt}
+              aspectRatio={s.aspectRatio}
+            >
               <button
                 type="button"
                 className="case-expand-btn"
@@ -443,7 +449,7 @@ export default function DiffuiCaseStudy() {
                   <line x1="3" y1="21" x2="10" y2="14" />
                 </svg>
               </button>
-            </div>
+            </ShimmerVideo>
           </section>
         ))}
 
