@@ -95,7 +95,7 @@ export default function TeamsContent() {
         }}
       >
         <Link
-          href="/home"
+          href="/"
           className="back-pill"
           aria-label="Back to home"
           style={{ justifySelf: "start" }}

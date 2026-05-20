@@ -331,7 +331,7 @@ export default function DiffuiCaseStudy() {
         }}
       >
         <Link
-          href="/home"
+          href="/"
           className="back-pill"
           aria-label="Back to home"
           style={{ justifySelf: "start" }}

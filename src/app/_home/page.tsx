@@ -230,7 +230,7 @@ export default function Home() {
         }}
       >
         <Link
-          href="/home"
+          href="/"
           aria-label="Anna Sandlin — Home"
           style={{
             justifySelf: "start",

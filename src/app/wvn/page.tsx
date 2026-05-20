@@ -338,7 +338,7 @@ export default function WvnCaseStudy() {
         }}
       >
         <Link
-          href="/home"
+          href="/"
           className="back-pill"
           aria-label="Back to home"
           style={{ justifySelf: "start" }}

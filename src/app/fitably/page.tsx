@@ -357,7 +357,7 @@ export default function FitablyCaseStudy() {
         }}
       >
         <Link
-          href="/home"
+          href="/"
           className="back-pill"
           aria-label="Back to home"
           style={{ justifySelf: "start" }}
