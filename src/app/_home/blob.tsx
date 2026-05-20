@@ -139,7 +139,9 @@ export default function Blob({
       bakeSdfFromSvg(FITABLY_SVG, 256)
         .then(({ data, size, sdfRange }) => {
           if (cancelled || !renderer) return;
-          setBlobFitablySdfTexture(renderer, data, size, sdfRange, 0.575);
+          // worldHalf 0.6325 = 0.575 * 1.10, i.e. 10% bigger than the MS/Teams
+          // baseline so the non-Microsoft logos read a touch larger.
+          setBlobFitablySdfTexture(renderer, data, size, sdfRange, 0.6325);
         })
         .catch((err) => {
           // eslint-disable-next-line no-console
@@ -148,7 +150,8 @@ export default function Blob({
       bakeSdfFromSvg(WVN_SVG, 256)
         .then(({ data, size, sdfRange }) => {
           if (cancelled || !renderer) return;
-          setBlobWvnSdfTexture(renderer, data, size, sdfRange, 0.575);
+          // worldHalf 0.6325 = 0.575 * 1.10 — see Fitably above.
+          setBlobWvnSdfTexture(renderer, data, size, sdfRange, 0.6325);
         })
         .catch((err) => {
           // eslint-disable-next-line no-console
@@ -157,10 +160,10 @@ export default function Blob({
       bakeSdfFromSvg(DIFFUI_SVG, 256)
         .then(({ data, size, sdfRange }) => {
           if (cancelled || !renderer) return;
-          // worldHalf 0.431 = 0.575 * 0.75, i.e. 25% smaller than the other
-          // texture-based targets so the dense 3x3 pattern doesn't overwhelm
-          // the blob's footprint.
-          setBlobDiffuiSdfTexture(renderer, data, size, sdfRange, 0.431);
+          // worldHalf 0.4741 = 0.575 * 0.75 * 1.10, i.e. the dense 3x3 pattern
+          // keeps its 25% downscale (so it doesn't overwhelm the blob) and
+          // then picks up the +10% bump applied to all non-Microsoft logos.
+          setBlobDiffuiSdfTexture(renderer, data, size, sdfRange, 0.4741);
         })
         .catch((err) => {
           // eslint-disable-next-line no-console
@@ -169,11 +172,12 @@ export default function Blob({
       bakeSdfFromSvg(MEDIUM_SVG, 256)
         .then(({ data, size, sdfRange }) => {
           if (cancelled || !renderer) return;
-          // worldHalf 0.633 = 0.575 * 1.10, i.e. 10% bigger than the other
-          // texture-based targets — the Medium logo is a wide 2.4:1 silhouette,
-          // so it only occupies ~42% of the square texture's height; a small
-          // upscale compensates so it reads as a comparable visual mass.
-          setBlobBcSdfTexture(renderer, data, size, sdfRange, 0.633);
+          // worldHalf 0.6476 ≈ 0.575 * 1.10 * 1.10 * 0.93 — the Medium logo is
+          // a wide 2.4:1 silhouette that only occupies ~42% of its square
+          // texture, so it carries the same +10% non-Microsoft bump on top of
+          // its one-off +10% aspect-ratio compensation, then a manual −7%
+          // trim because at full size it was reading too heavy.
+          setBlobBcSdfTexture(renderer, data, size, sdfRange, 0.6476);
         })
         .catch((err) => {
           // eslint-disable-next-line no-console
