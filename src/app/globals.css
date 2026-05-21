@@ -86,6 +86,10 @@ body {
   min-width: 0;
   width: 100%;
   position: relative;
+  /* Match the hairline border WVN's .case-media-wrap uses; box-sizing
+     keeps the border from inflating the flex slot. */
+  border: 1px solid #e1e1e1;
+  box-sizing: border-box;
 }
 .shimmer-frame > img {
   display: block;
