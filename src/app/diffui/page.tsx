@@ -114,10 +114,10 @@ export default function DiffuiCaseStudy() {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          background: #ffffff;
+          background: #f5f5f5;
           border-radius: 999px;
           height: 36px;
-          padding: 0 18px 0 24px;
+          padding: 0 22px 0 16px;
           font-size: 15px;
           font-weight: 500;
           color: ${INK_DARK};
@@ -128,7 +128,7 @@ export default function DiffuiCaseStudy() {
           transition: background-color 160ms ease-out, box-shadow 160ms ease-out;
         }
         .back-pill:hover {
-          background: #f5f5f5;
+          background: #f1f1f1;
           box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
         }
 
@@ -231,14 +231,14 @@ export default function DiffuiCaseStudy() {
           margin: 0;
         }
         .case-next-title {
-          font-size: 22px;
+          font-size: 20px;
           font-weight: 400;
           letter-spacing: -0.01em;
           color: ${INK_DARK};
           margin: 2px 0 4px;
         }
         .case-next-body {
-          font-size: 17px;
+          font-size: 16px;
           line-height: 1.5;
           color: rgba(41, 41, 41, 0.7);
           margin: 0;
