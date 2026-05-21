@@ -147,7 +147,7 @@ export default function FitablyCaseStudy() {
           max-width: 768px;
           margin-inline: auto;
           margin-top: clamp(56px, calc(6vh + 32px), 120px);
-          margin-bottom: 24px;
+          margin-bottom: 124px;
         }
         .case-title-row {
           display: flex;
@@ -228,42 +228,6 @@ export default function FitablyCaseStudy() {
         }
         .case-section-body {
           font-size: 17px;
-          line-height: 1.5;
-          color: rgba(41, 41, 41, 0.7);
-          margin: 0;
-        }
-
-        /* "Next" card at the end of the case study — links to the next
-           case study in sequence. Matches article width, sits well below
-           the last section. */
-        .case-next {
-          display: block;
-          margin-top: 64px;
-          background: #f1f1f1;
-          border-radius: 16px;
-          padding: 28px 32px;
-          color: ${INK_DARK};
-          text-decoration: none;
-          transition: background-color 160ms ease-out;
-        }
-        .case-next:hover {
-          background: #e8e8e8;
-        }
-        .case-next-label {
-          font-size: 15px;
-          font-weight: 500;
-          color: rgba(41, 41, 41, 0.5);
-          margin: 0;
-        }
-        .case-next-title {
-          font-size: 20px;
-          font-weight: 400;
-          letter-spacing: -0.01em;
-          color: ${INK_DARK};
-          margin: 2px 0 4px;
-        }
-        .case-next-body {
-          font-size: 16px;
           line-height: 1.5;
           color: rgba(41, 41, 41, 0.7);
           margin: 0;
@@ -499,15 +463,6 @@ export default function FitablyCaseStudy() {
             with over a hundred workouts created.
           </p>
         </section>
-
-        <Link href="/fluent" className="case-next">
-          <p className="case-next-label">Next</p>
-          <h3 className="case-next-title">Microsoft Fluent</h3>
-          <p className="case-next-body">
-            Design systems work shaping Microsoft&rsquo;s Fluent design
-            language.
-          </p>
-        </Link>
       </article>
 
       {expanded !== null && (
