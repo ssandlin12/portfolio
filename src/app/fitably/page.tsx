@@ -121,27 +121,25 @@ export default function FitablyCaseStudy() {
       <style>{`
         .nav-link:hover { color: ${INK_DARK} !important; }
 
-        /* Pill-style back button that replaces the wordmark in the top-left. */
+        /* Pill-style back button — matches .case-link-pill (no shadow, ececec/e3e3e3). */
         .back-pill {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          background: #f5f5f5;
+          background: #f1f1f1;
           border-radius: 999px;
           height: 36px;
           padding: 0 22px 0 16px;
           font-size: 15px;
-          font-weight: 500;
+          font-weight: 400;
           color: ${INK_DARK};
           text-decoration: none;
           border: none;
           cursor: pointer;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-          transition: background-color 160ms ease-out, box-shadow 160ms ease-out;
+          transition: background-color 160ms ease-out;
         }
         .back-pill:hover {
-          background: #f1f1f1;
-          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+          background: #e8e8e8;
         }
 
         .case-article {
@@ -170,7 +168,7 @@ export default function FitablyCaseStudy() {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          background: #ececec;
+          background: #f1f1f1;
           border-radius: 999px;
           padding: 8px 16px;
           font-size: 15px;
@@ -181,7 +179,7 @@ export default function FitablyCaseStudy() {
           transition: background-color 160ms ease-out;
         }
         .case-link-pill:hover {
-          background: #e3e3e3;
+          background: #e8e8e8;
         }
         .case-intro {
           font-size: 18px;
@@ -241,7 +239,7 @@ export default function FitablyCaseStudy() {
         .case-next {
           display: block;
           margin-top: 64px;
-          background: #ececec;
+          background: #f1f1f1;
           border-radius: 16px;
           padding: 28px 32px;
           color: ${INK_DARK};
@@ -249,7 +247,7 @@ export default function FitablyCaseStudy() {
           transition: background-color 160ms ease-out;
         }
         .case-next:hover {
-          background: #e3e3e3;
+          background: #e8e8e8;
         }
         .case-next-label {
           font-size: 15px;
