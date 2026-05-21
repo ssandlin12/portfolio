@@ -92,7 +92,7 @@ export default function Home() {
       style={{
         fontFamily: "var(--font-figtree), system-ui, sans-serif",
         color: INK_DARK,
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "#ffffff",
         paddingInline: "clamp(20px, 6vw, 120px)",
         // Top is 24px tighter than bottom; keep the responsive clamp so it
         // still shrinks on short viewports.
@@ -141,7 +141,8 @@ export default function Home() {
           font-weight: 500;
           letter-spacing: -0.005em;
           line-height: 1.2;
-          transition: background-color 160ms ease-out, color 160ms ease-out;
+          transition: background-color 160ms ease-out, color 160ms ease-out,
+            box-shadow 160ms ease-out;
         }
         .work-bar-item[data-external="true"] .work-bar-item-text,
         .work-bar-item[data-external="true"] .work-bar-item-ext {
@@ -187,11 +188,21 @@ export default function Home() {
           color: rgba(41, 41, 41, 0.75);
         }
         .work-bar-item[data-active="true"]:hover {
-          background-color: rgba(255, 255, 255, 0.75);
+          /* Soft-3D / "Apple-style" raised pill, charcoal variant. The full
+             recipe layered in: top specular line, soft inner falloff below
+             it (simulates the body curving away from an overhead light),
+             dark bottom inner shading, 1px outer ring in a darker shade of
+             the same hue (defines the silhouette against the glass bar),
+             and a short soft outer drop. The parent .work-bar's backdrop
+             blur still reads through the 0.92-alpha fill. */
+          background-color: rgba(41, 41, 41, 0.92);
           box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.6),
-            0 1px 2px rgba(0, 0, 0, 0.04);
-          color: ${INK_DARK};
+            inset 0 1px 0 rgba(255, 255, 255, 0.28),
+            inset 0 2px 4px rgba(255, 255, 255, 0.09),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+            0 0 0 1px rgba(15, 15, 15, 0.45),
+            0 2px 6px rgba(0, 0, 0, 0.22);
+          color: #ffffff;
         }
         .work-bar-item[data-active="false"] {
           color: rgba(41, 41, 41, 0.3);

@@ -48,7 +48,7 @@ export default function PasswordGate({ title }: Props) {
       style={{
         fontFamily: "var(--font-figtree), system-ui, sans-serif",
         color: INK_DARK,
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "#ffffff",
         paddingInline: "clamp(20px, 6vw, 120px)",
         paddingTop: "calc(clamp(24px, 6vh, 72px) - 24px)",
         paddingBottom: "clamp(24px, 6vh, 72px)",
