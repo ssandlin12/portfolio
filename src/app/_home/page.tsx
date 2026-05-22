@@ -222,20 +222,50 @@ export default function Home() {
           text-align: center;
           margin: 0 0 8px;
         }
-        /* Narrow-viewport: stack tiles vertically so they don't overflow
-           horizontally. The bar stays anchored bottom-center. */
-        @media (max-width: 720px) {
+        /* Inner label + divider only appear on phone (rendered inside
+           the bar). Hidden by default. */
+        .work-bar-label--inner {
+          display: none;
+        }
+        .work-bar-divider {
+          display: none;
+        }
+        /* Phone-width: dock the bar flush to the bottom edge as a
+           full-width sheet, with a vertical pill stack inside. Tablet
+           and up keep the centered horizontal pill bar. */
+        @media (max-width: 600px) {
+          .work-bar-wrapper {
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform: none;
+          }
           .work-bar {
             flex-direction: column;
             gap: 4px;
-            /* 999px egg-shapes the container once it's tall+narrow — cap
-               to a soft rounded-rect that matches the top/bottom pill caps
-               plus the 6px wrapper padding (~25px). */
-            border-radius: 26px;
+            border-radius: 26px 26px 0 0;
+            padding: 10px 16px calc(14px + env(safe-area-inset-bottom, 0px));
           }
           .work-bar-item {
             justify-content: center;
-            min-width: 200px;
+            width: 100%;
+          }
+          /* On phone the label moves inside the bar, sitting as the
+             first row above the pill stack. */
+          .work-bar-label--outer {
+            display: none;
+          }
+          .work-bar-label--inner {
+            display: block;
+            font-size: 16px;
+            color: rgba(41, 41, 41, 0.75);
+            margin: 4px 0 6px;
+          }
+          .work-bar-divider {
+            display: block;
+            height: 1px;
+            background-color: rgba(41, 41, 41, 0.05);
+            margin: 0 4px 2px;
           }
         }
         .nav-link:hover {
@@ -385,8 +415,15 @@ export default function Home() {
           viewport. Hovering an item drives the blob morph via the shared
           hoveredTile state. */}
       <div className="work-bar-wrapper">
-        <p className="work-bar-label">Case Studies</p>
+        <p className="work-bar-label work-bar-label--outer">Case Studies</p>
         <div className="work-bar">
+          <p
+            className="work-bar-label work-bar-label--inner"
+            aria-hidden="true"
+          >
+            Case Studies
+          </p>
+          <div className="work-bar-divider" aria-hidden="true" />
           {tiles.map((tile, i) => {
             const isActive = !!tile.href;
             const display = tile.title.replace(/\n/g, " ");
