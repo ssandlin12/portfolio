@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { Figtree } from "next/font/google";
-import { useEffect, useState, type CSSProperties } from "react";
+import { Fragment, useEffect, useState, type CSSProperties } from "react";
 import { ShimmerVideo } from "../_components/shimmer";
+import { CaseProcess, type ProcessStep } from "../_components/case-process";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -52,6 +53,59 @@ const SECTIONS: Section[] = [
     imageSrc: "/case-studies/diffui/02.png",
     alt: "Diffui app home with prompt and example cards",
     aspectRatio: "1920 / 1044",
+  },
+];
+
+const PROCESS: readonly ProcessStep[] = [
+  {
+    number: "01",
+    eyebrow: "Audit",
+    heading: "Finding the distance to value",
+    body:
+      "I mapped the existing experience from arrival to first generated result. The audit revealed that users had to move through a marketing page, project setup, prompt input, and canvas before they could understand what diffusion-based UI design actually did.",
+    methods: ["Experience audit", "Heuristic review", "Flow mapping"],
+    takeaway:
+      "For an unfamiliar AI product, explanation was delaying the moment that could explain the product best: trying it.",
+  },
+  {
+    number: "02",
+    eyebrow: "Reframe",
+    heading: "Making experimentation the first job",
+    body:
+      "I reframed the homepage around a single job to be done: help me turn an idea into a visible interface as quickly as possible. That shifted the product from a marketing-first funnel to a tool-first experience where the prompt became the main entry point.",
+    methods: ["JTBD", "Product framing", "Task prioritization"],
+    takeaway:
+      "The shortest route to comprehension was also the shortest route to creation.",
+  },
+  {
+    number: "03",
+    eyebrow: "Structure",
+    heading: "Collapsing the path into one flow",
+    body:
+      "I redesigned the sitemap and core flow so users could begin with a prompt, learn from examples, and reach the canvas without creating a project first. Projects remained useful for returning work, but stopped acting as a gate for first-time exploration.",
+    methods: ["Sitemapping", "Task flows", "Information architecture"],
+    takeaway:
+      "Project organization should support continued use, not stand between a new user and the first result.",
+  },
+  {
+    number: "04",
+    eyebrow: "Prototype",
+    heading: "Designing for a blank-page moment",
+    body:
+      "I iterated on prompt hierarchy, example cards, suggested starting points, and the handoff into the editor. The interface needed enough guidance to make the new interaction understandable without adding another layer of onboarding.",
+    methods: ["Wireframing", "Interaction design", "Rapid prototyping"],
+    takeaway:
+      "Examples could teach the product while also giving users a concrete place to begin.",
+  },
+  {
+    number: "05",
+    eyebrow: "Unify",
+    heading: "Bringing product and brand together",
+    body:
+      "The final exploration connected the simplified flow to a clearer visual direction. Rebrand concepts, interface hierarchy, and the editor entry state were developed as one system so the product felt credible without becoming heavier or more promotional.",
+    methods: ["Visual exploration", "UI system", "Brand direction"],
+    takeaway:
+      "The finished direction made the product feel more immediate: open the app, describe an idea, and start designing.",
   },
 ];
 
@@ -416,39 +470,49 @@ export default function DiffuiCaseStudy() {
         </p>
 
         {SECTIONS.map((s, i) => (
-          <section key={s.heading} className="case-section">
-            <div className="case-section-heading">{s.heading}</div>
-            <p className="case-section-body">{s.body}</p>
-            <ShimmerVideo
-              videoSrc={s.videoSrc}
-              imageSrc={s.imageSrc}
-              alt={s.alt}
-              aspectRatio={s.aspectRatio}
-            >
-              <button
-                type="button"
-                className="case-expand-btn"
-                aria-label={`Expand ${s.heading}`}
-                onClick={() => setExpanded(i)}
+          <Fragment key={s.heading}>
+            <section className="case-section">
+              <div className="case-section-heading">{s.heading}</div>
+              <p className="case-section-body">{s.body}</p>
+              <ShimmerVideo
+                videoSrc={s.videoSrc}
+                imageSrc={s.imageSrc}
+                alt={s.alt}
+                aspectRatio={s.aspectRatio}
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
+                <button
+                  type="button"
+                  className="case-expand-btn"
+                  aria-label={`Expand ${s.heading}`}
+                  onClick={() => setExpanded(i)}
                 >
-                  <polyline points="15 3 21 3 21 9" />
-                  <polyline points="9 21 3 21 3 15" />
-                  <line x1="21" y1="3" x2="14" y2="10" />
-                  <line x1="3" y1="21" x2="10" y2="14" />
-                </svg>
-              </button>
-            </ShimmerVideo>
-          </section>
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="15 3 21 3 21 9" />
+                    <polyline points="9 21 3 21 3 15" />
+                    <line x1="21" y1="3" x2="14" y2="10" />
+                    <line x1="3" y1="21" x2="10" y2="14" />
+                  </svg>
+                </button>
+              </ShimmerVideo>
+            </section>
+            {i === 0 && (
+              <CaseProcess
+                id="diffui-process-title"
+                title="From explanation to immediate experimentation"
+                intro="The redesign focused on removing the distance between curiosity and a first result. Each iteration simplified the journey while preserving the structure needed for deeper work."
+                steps={PROCESS}
+              />
+            )}
+          </Fragment>
         ))}
 
         <section className="case-section">

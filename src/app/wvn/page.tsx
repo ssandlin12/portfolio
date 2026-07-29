@@ -60,6 +60,59 @@ const SECTIONS: Section[] = [
   },
 ];
 
+const PROCESS = [
+  {
+    number: "01",
+    eyebrow: "Discover",
+    heading: "Reframing the problem",
+    body:
+      "I began by auditing the site as both an editorial archive and a first-time visitor experience. Impression testing with people unfamiliar with WVN exposed the central disconnect: they understood the mission, but did not immediately realize there were films to watch. Conversations and usability sessions with current users confirmed that even motivated viewers had trouble finding the library.",
+    methods: ["Content audit", "Impression testing", "User interviews"],
+    takeaway:
+      "The opportunity was bigger than refreshing a nonprofit website. WVN needed to behave like a destination for watching films.",
+  },
+  {
+    number: "02",
+    eyebrow: "Define",
+    heading: "Understanding why people came",
+    body:
+      "I synthesized the research into lightweight personas, jobs to be done, and journey maps. The work separated three overlapping needs: viewers looking for a film, supporters learning about the mission, and filmmakers looking for a platform. Mapping their paths made it clear that the existing blog-first structure treated every audience the same and asked people to understand the organization before they could engage with its work.",
+    methods: ["Personas", "JTBD", "Journey mapping"],
+    takeaway:
+      "The primary job became: help me quickly discover a film that feels relevant, understand why it matters, and start watching.",
+  },
+  {
+    number: "03",
+    eyebrow: "Structure",
+    heading: "Making the film library the product",
+    body:
+      "I rebuilt the sitemap around discovery instead of organizational language. Films moved out from under “What We Do” and into a top-level viewing experience, while programs, impact, and ways to support WVN remained available without competing with the main task. I then translated that structure into task flows and low-fidelity wireframes for browsing, evaluating, and starting a film.",
+    methods: ["Sitemapping", "Task flows", "Wireframing"],
+    takeaway:
+      "Every route needed to create another useful way into the collection—not another dead end in the organization’s story.",
+  },
+  {
+    number: "04",
+    eyebrow: "Iterate",
+    heading: "Testing the shift to streaming",
+    body:
+      "Across multiple rounds, I tested navigation language, content hierarchy, film-card density, and the prominence of “Watch Now.” Early concepts still read like a redesigned publication, so I pushed the imagery forward, reduced explanatory copy, and introduced familiar streaming patterns. Follow-up usability testing with current users helped refine browsing cues and confirm that the library was now visible from the first screen.",
+    methods: ["Prototype testing", "Usability testing", "Visual iteration"],
+    takeaway:
+      "The strongest direction let the films explain the value of WVN before the interface explained the organization.",
+  },
+  {
+    number: "05",
+    eyebrow: "Unify",
+    heading: "Turning the direction into a system",
+    body:
+      "The final layer brought the experience and brand together. I developed a flexible visual system for film stills, covers, metadata, calls to action, and editorial content, then carried it across responsive page templates. The redesigned logo gave WVN a recognizable mark that could live equally well on the platform, campaign materials, and film programming.",
+    methods: ["UI system", "Responsive design", "Brand identity"],
+    takeaway:
+      "The result was not a streaming-style homepage applied to a blog, but a coherent platform designed around the collection.",
+  },
+] as const;
+
 function FallbackVideo({
   videoSrc,
   imageSrc,
@@ -211,6 +264,118 @@ export default function WvnCaseStudy() {
           line-height: 1.5;
           color: rgba(41, 41, 41, 0.7);
           margin: 0;
+        }
+        .process {
+          margin-top: 72px;
+          padding-top: 28px;
+          border-top: 1px solid #e1e1e1;
+        }
+        .process-kicker {
+          font-size: 14px;
+          line-height: 1.4;
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: rgba(41, 41, 41, 0.45);
+          margin: 0 0 8px;
+        }
+        .process-title {
+          font-size: 28px;
+          line-height: 1.25;
+          letter-spacing: -0.02em;
+          font-weight: 300;
+          margin: 0;
+        }
+        .process-intro {
+          font-size: 17px;
+          line-height: 1.55;
+          color: rgba(41, 41, 41, 0.7);
+          margin: 12px 0 0;
+          max-width: 680px;
+        }
+        .process-list {
+          margin: 72px 0;
+          display: grid;
+          gap: 72px;
+        }
+        .process-step {
+          display: grid;
+          grid-template-columns: 68px minmax(0, 1fr);
+          gap: 24px;
+          padding: 0;
+        }
+        .process-number {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 68px;
+          height: 68px;
+          box-sizing: border-box;
+          border: 1px solid #d7d7d7;
+          border-radius: 50%;
+          background: #ffffff;
+          font-size: 16px;
+          line-height: 1;
+          font-weight: 500;
+          color: rgba(41, 41, 41, 0.5);
+        }
+        .process-eyebrow {
+          font-size: 13px;
+          line-height: 1.4;
+          font-weight: 500;
+          letter-spacing: 0.07em;
+          text-transform: uppercase;
+          color: rgba(41, 41, 41, 0.46);
+          margin: 0 0 5px;
+        }
+        .process-heading {
+          font-size: 21px;
+          line-height: 1.3;
+          letter-spacing: -0.01em;
+          font-weight: 400;
+          margin: 0;
+        }
+        .process-body {
+          font-size: 16px;
+          line-height: 1.58;
+          color: rgba(41, 41, 41, 0.7);
+          margin: 12px 0 0;
+        }
+        .process-methods {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 18px;
+        }
+        .process-method {
+          display: inline-flex;
+          align-items: center;
+          min-height: 28px;
+          padding: 3px 10px;
+          border: 1px solid rgba(41, 41, 41, 0.12);
+          border-radius: 999px;
+          font-size: 13px;
+          color: rgba(41, 41, 41, 0.62);
+          background: rgba(255, 255, 255, 0.55);
+        }
+        .process-takeaway {
+          font-size: 15px;
+          line-height: 1.5;
+          font-weight: 500;
+          color: rgba(41, 41, 41, 0.76);
+          margin: 20px 0 0;
+          padding-top: 18px;
+          border-top: 1px solid rgba(41, 41, 41, 0.1);
+        }
+        @media (max-width: 560px) {
+          .case-title-row {
+            align-items: flex-start;
+            flex-direction: column;
+          }
+          .process-step {
+            grid-template-columns: 1fr;
+            gap: 18px;
+          }
         }
 
         /* "Next" card at the end of the case study — links to the next
@@ -422,42 +587,91 @@ export default function WvnCaseStudy() {
           platform.
         </p>
 
-        {SECTIONS.map((s, i) => (
-          <section key={s.heading} className="case-section">
-            <div className="case-section-heading">{s.heading}</div>
-            <p className="case-section-body">{s.body}</p>
-            <ShimmerVideo
-              videoSrc={s.videoSrc}
-              imageSrc={s.imageSrc}
-              alt={s.alt}
-              aspectRatio={s.aspectRatio}
-              bgVariant={s.bg}
+        <section className="case-section">
+          <div className="case-section-heading">{SECTIONS[0].heading}</div>
+          <p className="case-section-body">{SECTIONS[0].body}</p>
+          <ShimmerVideo
+            videoSrc={SECTIONS[0].videoSrc}
+            imageSrc={SECTIONS[0].imageSrc}
+            alt={SECTIONS[0].alt}
+            aspectRatio={SECTIONS[0].aspectRatio}
+            bgVariant={SECTIONS[0].bg}
+          >
+            <button
+              type="button"
+              className="case-expand-btn"
+              aria-label="Expand Before"
+              onClick={() => setExpanded(0)}
             >
-              <button
-                type="button"
-                className="case-expand-btn"
-                aria-label={`Expand ${s.heading}`}
-                onClick={() => setExpanded(i)}
-              >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="15 3 21 3 21 9" />
-                  <polyline points="9 21 3 21 3 15" />
-                  <line x1="21" y1="3" x2="14" y2="10" />
-                  <line x1="3" y1="21" x2="10" y2="14" />
-                </svg>
-              </button>
-            </ShimmerVideo>
-          </section>
-        ))}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 3 21 3 21 9" />
+                <polyline points="9 21 3 21 3 15" />
+                <line x1="21" y1="3" x2="14" y2="10" />
+                <line x1="3" y1="21" x2="10" y2="14" />
+              </svg>
+            </button>
+          </ShimmerVideo>
+        </section>
+
+        <section className="process" aria-labelledby="process-title">
+          <p className="process-kicker">The process</p>
+          <h2 id="process-title" className="process-title">
+            From content archive to viewing experience
+          </h2>
+          <p className="process-intro">
+            The final direction emerged through layered research, information
+            architecture, prototyping, and testing. Each round moved the
+            experience further away from a blog and closer to a platform built
+            around film discovery.
+          </p>
+          <div className="process-list">
+            {PROCESS.map((step) => (
+              <article className="process-step" key={step.number}>
+                <div className="process-number" aria-hidden="true">
+                  {step.number}
+                </div>
+                <div>
+                  <p className="process-eyebrow">{step.eyebrow}</p>
+                  <h3 className="process-heading">{step.heading}</h3>
+                  <p className="process-body">{step.body}</p>
+                  <div className="process-methods" aria-label="Methods used">
+                    {step.methods.map((method) => (
+                      <span className="process-method" key={method}>
+                        {method}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="process-takeaway">{step.takeaway}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="case-section">
+          <div className="case-section-heading">{SECTIONS[1].heading}</div>
+          <p className="case-section-body">{SECTIONS[1].body}</p>
+          <ShimmerVideo
+            videoSrc={SECTIONS[1].videoSrc}
+            imageSrc={SECTIONS[1].imageSrc}
+            alt={SECTIONS[1].alt}
+            aspectRatio={SECTIONS[1].aspectRatio}
+          >
+            <button
+              type="button"
+              className="case-expand-btn"
+              aria-label="Expand After"
+              onClick={() => setExpanded(1)}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 3 21 3 21 9" />
+                <polyline points="9 21 3 21 3 15" />
+                <line x1="21" y1="3" x2="14" y2="10" />
+                <line x1="3" y1="21" x2="10" y2="14" />
+              </svg>
+            </button>
+          </ShimmerVideo>
+        </section>
 
         <section className="case-section">
           <div className="case-section-heading">Outcome</div>
