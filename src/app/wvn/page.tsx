@@ -192,7 +192,7 @@ export default function WvnCaseStudy() {
           max-width: 768px;
           margin-inline: auto;
           margin-top: clamp(56px, calc(6vh + 32px), 120px);
-          margin-bottom: 24px;
+          margin-bottom: 100px;
         }
         .case-title-row {
           display: flex;
@@ -682,13 +682,6 @@ export default function WvnCaseStudy() {
           </p>
         </section>
 
-        <Link href="/fitably" className="case-next">
-          <p className="case-next-label">Next</p>
-          <h3 className="case-next-title">Fitably</h3>
-          <p className="case-next-body">
-            A UX research-led redesign of a fitness partner matching app.
-          </p>
-        </Link>
       </article>
 
       {expanded !== null && (

@@ -11,9 +11,8 @@ const TILE_MORPH_TARGET: Record<number, number> = {
   0: 0, // Microsoft Fluent → MS 4-square mark
   1: 1, // Microsoft Teams → Teams (SDF texture)
   2: 4, // Diffui.ai → 3x3 grid (SDF texture)
-  3: 3, // WVN → "W" letterform (SDF texture)
-  4: 2, // Fitably → radial-burst (SDF texture)
-  5: 5, // Medium → Medium logo (SDF texture)
+  3: 3, // Women's Voices Now → "W" letterform (SDF texture)
+  4: 5, // Medium → Medium logo (SDF texture)
 };
 
 const figtree = Figtree({
@@ -49,8 +48,7 @@ const tiles: Array<{ title: string; href?: string; comingSoon?: true }> = [
   { title: "Microsoft\nFluent", comingSoon: true },
   { title: "Microsoft Teams", comingSoon: true },
   { title: "Diffui.ai", href: "/diffui" },
-  { title: "WVN", href: "/wvn" },
-  { title: "Fitably", href: "/fitably" },
+  { title: "Women's Voices Now", href: "/wvn" },
   {
     title: "Medium",
     href: "https://medium.com/design-bootcamp/designing-amidst-the-acceleration-towards-ai-singularity-ea35a0429470",
@@ -389,11 +387,11 @@ export default function Home() {
           color: "rgba(41,41,41,0.5)",
         }}
       >
-        Hi, I&rsquo;m <span style={{ color: INK_DARK }}>Anna Sandlin</span>.
+        Hi, I&rsquo;m <span style={{ color: INK_DARK }}>Anna Sandlin</span>. I manage
         <br />
-        I&rsquo;m currently doing design
+        the design library for the world&rsquo;s largest
         <br />
-        systems work at <span style={{ color: INK_DARK }}>Microsoft</span>.
+        enterprise app, <span style={{ color: INK_DARK }}>Microsoft Teams</span>.
       </h1>
 
       {/* Blob — inline, centered under the hero. */}
