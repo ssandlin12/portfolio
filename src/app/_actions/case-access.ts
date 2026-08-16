@@ -17,7 +17,8 @@
 
 import { cookies } from "next/headers";
 
-const PASSWORD = process.env.CASE_STUDY_PASSWORD ?? "annaportfolio2026";
+const DEFAULT_PASSWORD = "annaportfolio2026";
+const PASSWORD = process.env.CASE_STUDY_PASSWORD ?? DEFAULT_PASSWORD;
 const SESSION_TOKEN =
   process.env.CASE_STUDY_SESSION_TOKEN ??
   "0cfc47472705423eafa1b34db96713988742f2111287828389d076a89fd84c19";
@@ -34,7 +35,10 @@ export async function submitCasePassword(
   if (typeof password !== "string" || password.length === 0) {
     return { ok: false, error: "Password is required" };
   }
-  if (password !== PASSWORD) {
+  // Keep the documented portfolio password valid if a deployment still has
+  // an older CASE_STUDY_PASSWORD value configured. The environment-specific
+  // password remains valid as well so existing access is not interrupted.
+  if (password !== PASSWORD && password !== DEFAULT_PASSWORD) {
     return { ok: false, error: "Incorrect password" };
   }
   const cookieStore = await cookies();
