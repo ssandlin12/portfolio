@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export type ProcessStep = {
   number: string;
   eyebrow: string;
@@ -9,12 +11,21 @@ export type ProcessStep = {
 
 type CaseProcessProps = {
   id: string;
+  kicker?: string;
   title: string;
   intro: string;
   steps: readonly ProcessStep[];
+  children?: ReactNode;
 };
 
-export function CaseProcess({ id, title, intro, steps }: CaseProcessProps) {
+export function CaseProcess({
+  id,
+  kicker = "The process",
+  title,
+  intro,
+  steps,
+  children,
+}: CaseProcessProps) {
   return (
     <section className="process" aria-labelledby={id}>
       <style>{`
@@ -128,11 +139,12 @@ export function CaseProcess({ id, title, intro, steps }: CaseProcessProps) {
         }
       `}</style>
 
-      <p className="process-kicker">The process</p>
+      <p className="process-kicker">{kicker}</p>
       <h2 id={id} className="process-title">
         {title}
       </h2>
       <p className="process-intro">{intro}</p>
+      {children}
       <div className="process-list">
         {steps.map((step) => (
           <article className="process-step" key={step.number}>

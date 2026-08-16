@@ -45,7 +45,7 @@ const navItem: CSSProperties = {
 // (internal routes use next/link, external URLs open in a new tab).
 // Tiles without an href are "disabled" — greyed out and non-interactive.
 const tiles: Array<{ title: string; href?: string; comingSoon?: true }> = [
-  { title: "Microsoft\nFluent", comingSoon: true },
+  { title: "Microsoft\nFluent", href: "/fluent" },
   { title: "Microsoft Teams", comingSoon: true },
   { title: "Diffui.ai", href: "/diffui" },
   { title: "Women's Voices Now", href: "/wvn" },
