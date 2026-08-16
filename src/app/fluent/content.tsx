@@ -236,6 +236,14 @@ export default function FluentContent() {
           border-radius: 14px;
           box-sizing: border-box;
         }
+        .case-bottom-media {
+          display: grid;
+          gap: 28px;
+          margin-top: 72px;
+        }
+        .case-bottom-media .case-media-image {
+          margin-top: 0;
+        }
         .case-next {
           display: block;
           margin-top: 64px;
@@ -384,6 +392,27 @@ export default function FluentContent() {
             alt="Microsoft Fluent Avatar specification showing sizes, presence badges, activity rings, and appearance variants"
           />
         </CaseProcess>
+
+        <section className="case-bottom-media" aria-label="Additional Avatar component work">
+          <Image
+            className="case-media-image"
+            src="/case-studies/fluent/avatar-frame-119.svg"
+            width={800}
+            height={586}
+            sizes="(max-width: 808px) calc(100vw - 40px), 768px"
+            unoptimized
+            alt="Additional Microsoft Fluent Avatar component exploration"
+          />
+          <Image
+            className="case-media-image"
+            src="/case-studies/fluent/avatar-frame-122.svg"
+            width={800}
+            height={586}
+            sizes="(max-width: 808px) calc(100vw - 40px), 768px"
+            unoptimized
+            alt="Additional Microsoft Fluent Avatar component specification"
+          />
+        </section>
 
         <section className="case-section">
           <h2 className="case-section-heading">After</h2>
