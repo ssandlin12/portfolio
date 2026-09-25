@@ -40,7 +40,7 @@ export default function TeamsContent() {
         @keyframes teams-shimmer { from { background-position: 100% 0; } to { background-position: -120% 0; } }
         .teams-video video { position: relative; z-index: 1; display: block; width: 100%; height: auto; border-radius: clamp(18px, 2vw, 34px); opacity: 0; transition: opacity 280ms ease-out; }
         .teams-video.is-ready video { opacity: 1; }
-        .teams-preview { position: absolute; z-index: 2; bottom: -36px; right: calc(-1 * var(--preview-overhang)); width: clamp(176px, 21vw, 270px); height: auto; border-radius: clamp(14px, 1.5vw, 24px); box-shadow: 0 18px 40px rgba(28, 37, 76, .18); }
+        .teams-preview { position: absolute; z-index: 4; bottom: -36px; right: calc(-1 * var(--preview-overhang)); width: clamp(176px, 21vw, 270px); height: auto; border-radius: clamp(14px, 1.5vw, 24px); box-shadow: 0 18px 40px rgba(28, 37, 76, .18); }
         .teams-article { width: min(900px, calc(100% - 40px)); margin: 112px auto 0; padding-bottom: 120px; }
         .teams-intro { margin: 0 0 52px; color: #737373; font-size: clamp(24px, 2.25vw, 34px); font-weight: 300; letter-spacing: -0.035em; line-height: 1.28; }
         .teams-section { margin-top: 116px; }

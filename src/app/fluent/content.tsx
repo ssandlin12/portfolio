@@ -178,7 +178,7 @@ export default function FluentContent({
           height: auto;
           border-radius: clamp(14px, 1.5vw, 24px);
           box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
-          z-index: 2;
+          z-index: 4;
         }
         .back-pill {
           display: inline-flex;
