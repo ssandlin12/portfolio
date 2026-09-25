@@ -207,12 +207,12 @@ vec3 swirlPalette(vec3 p) {
                       + 0.11 * sin((q.x + q.y) * 6.0 + t * 1.8);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 cream      = vec3(0.98, 0.94, 0.80);
-  vec3 violet     = vec3(0.67, 0.65, 0.75);
-  vec3 periwinkle = vec3(0.72, 0.76, 0.80);
-  vec3 lavender   = vec3(0.80, 0.76, 0.79);
-  vec3 rose       = vec3(0.91, 0.79, 0.75);
-  vec3 cyan       = vec3(0.58, 0.79, 0.84);
+  vec3 cream      = vec3(0.96, 0.93, 0.92);
+  vec3 violet     = vec3(0.94, 0.86, 0.84);
+  vec3 periwinkle = vec3(0.95, 0.80, 0.75);
+  vec3 lavender   = vec3(0.96, 0.73, 0.65);
+  vec3 rose       = vec3(0.97, 0.67, 0.56);
+  vec3 cyan       = vec3(0.98, 0.79, 0.65);
 
   vec3 color = mix(cream, rose, smoothstep(0.02, 0.24, field));
   color = mix(color, lavender, smoothstep(0.16, 0.42, field));
@@ -603,12 +603,12 @@ vec3 swirlPalette(vec3 p) {
                       + 0.11 * sin((q.x + q.y) * 6.0 + t * 1.8);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 cream      = vec3(0.98, 0.94, 0.80);
-  vec3 violet     = vec3(0.67, 0.65, 0.75);
-  vec3 periwinkle = vec3(0.72, 0.76, 0.80);
-  vec3 lavender   = vec3(0.80, 0.76, 0.79);
-  vec3 rose       = vec3(0.91, 0.79, 0.75);
-  vec3 cyan       = vec3(0.58, 0.79, 0.84);
+  vec3 cream      = vec3(0.96, 0.93, 0.92);
+  vec3 violet     = vec3(0.94, 0.86, 0.84);
+  vec3 periwinkle = vec3(0.95, 0.80, 0.75);
+  vec3 lavender   = vec3(0.96, 0.73, 0.65);
+  vec3 rose       = vec3(0.97, 0.67, 0.56);
+  vec3 cyan       = vec3(0.98, 0.79, 0.65);
 
   vec3 color = mix(cream, rose, smoothstep(0.02, 0.24, field));
   color = mix(color, lavender, smoothstep(0.16, 0.42, field));
