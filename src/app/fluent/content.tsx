@@ -67,6 +67,7 @@ type CaseStudyProps = {
   subtitle?: string;
   linkHref?: string;
   linkLabel?: string;
+  videoSrc?: string;
 };
 
 export default function FluentContent({
@@ -74,6 +75,7 @@ export default function FluentContent({
   subtitle = "How do you build a Figma component that gets 1.2 million internal uses per day?",
   linkHref = "https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web",
   linkLabel = "Fluent 2 Web",
+  videoSrc = "/fluent-hero.mp4",
 }: CaseStudyProps) {
   const [videoReady, setVideoReady] = useState(false);
 
@@ -404,7 +406,7 @@ export default function FluentContent({
         <div className={`fluent-video-card${videoReady ? " is-ready" : ""}`} aria-label="Microsoft Fluent case study video">
           <div className="fluent-video-skeleton" aria-hidden="true" />
           <video autoPlay loop muted playsInline preload="auto" onLoadedData={() => setVideoReady(true)}>
-            <source src="/fluent-hero.mp4" type="video/mp4" />
+            <source src={videoSrc} type="video/mp4" />
           </video>
           <Image
             className="fluent-preview-image"
