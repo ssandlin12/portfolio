@@ -76,7 +76,7 @@ type CaseStudyProps = {
 
 export default function FluentContent({
   title = "Microsoft Fluent",
-  subtitle = "“How do you structure a Figma component that gets 1.2 million internal uses per day?”",
+  subtitle = "“How do you structure Figma components that get 1 million internal uses per day?”",
   linkHref = "https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web",
   linkLabel = "Fluent 2 Web",
   videoSrc = "/fluent-hero.mp4",
