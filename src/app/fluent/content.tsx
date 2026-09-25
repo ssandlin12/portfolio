@@ -119,6 +119,7 @@ export default function FluentContent() {
         .fluent-hero-video {
           position: relative;
           width: 100%;
+          font-family: var(--font-figtree), system-ui, sans-serif;
           line-height: 0;
         }
         .fluent-hero-video video {
