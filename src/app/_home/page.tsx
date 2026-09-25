@@ -10,10 +10,9 @@ import Blob from "./blob";
 const TILE_MORPH_TARGET: Record<number, number> = {
   0: 0, // Microsoft Fluent → MS 4-square mark
   1: 1, // Microsoft Teams → Teams (SDF texture)
-  2: 4, // Diffui.ai → 3x3 grid (SDF texture)
-  3: 3, // Women's Voices Now → "W" letterform (SDF texture)
-  4: 2, // Fitably → radial burst mark (SDF texture)
-  5: 5, // Medium → Medium logo (SDF texture)
+  2: 3, // Women's Voices Now → "W" letterform (SDF texture)
+  3: 2, // Fitably → radial burst mark (SDF texture)
+  4: 5, // Medium → Medium logo (SDF texture)
 };
 
 const figtree = Figtree({
@@ -51,7 +50,6 @@ const tiles: Array<{ title: string; href?: string; comingSoon?: true }> = [
     title: "Microsoft Teams",
     href: "https://www.figma.com/proto/R6gM5bMmaOwrJYibX4wgso/Basic-Screens-Recap?node-id=1-24716&scaling=scale-down&content-scaling=fixed&t=tEoBBXMvRJGGgNxb-1",
   },
-  { title: "Diffui.ai", href: "/diffui" },
   { title: "Women's Voices Now", href: "/wvn" },
   { title: "Fitably", href: "/fitably" },
   {

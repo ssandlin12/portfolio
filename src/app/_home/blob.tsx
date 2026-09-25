@@ -11,13 +11,11 @@ import {
   setBlobSdfTexture,
   setBlobFitablySdfTexture,
   setBlobWvnSdfTexture,
-  setBlobDiffuiSdfTexture,
   setBlobBcSdfTexture,
 } from "../../../diffui-blob/diffui-blob-shader.js";
 import { TEAMS_SVG } from "./teams-svg";
 import { FITABLY_SVG } from "./fitably-svg";
 import { WVN_SVG } from "./wvn-svg";
-import { DIFFUI_SVG } from "./diffui-svg";
 import { MEDIUM_SVG } from "./medium-svg";
 import { bakeSdfFromSvg } from "./sdf-bake";
 
@@ -156,18 +154,6 @@ export default function Blob({
         .catch((err) => {
           // eslint-disable-next-line no-console
           console.error("[blob] WVN SDF bake failed:", err);
-        });
-      bakeSdfFromSvg(DIFFUI_SVG, 256)
-        .then(({ data, size, sdfRange }) => {
-          if (cancelled || !renderer) return;
-          // worldHalf 0.4741 = 0.575 * 0.75 * 1.10, i.e. the dense 3x3 pattern
-          // keeps its 25% downscale (so it doesn't overwhelm the blob) and
-          // then picks up the +10% bump applied to all non-Microsoft logos.
-          setBlobDiffuiSdfTexture(renderer, data, size, sdfRange, 0.4741);
-        })
-        .catch((err) => {
-          // eslint-disable-next-line no-console
-          console.error("[blob] Diffui SDF bake failed:", err);
         });
       bakeSdfFromSvg(MEDIUM_SVG, 256)
         .then(({ data, size, sdfRange }) => {
