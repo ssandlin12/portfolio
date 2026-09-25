@@ -159,8 +159,22 @@ export default function WvnCaseStudy() {
           width: 100%;
           max-width: 900px;
           margin-inline: auto;
-          margin-top: clamp(56px, calc(6vh + 32px), 120px);
+          margin-top: 72px;
           margin-bottom: 100px;
+        }
+        .case-hero {
+          width: 100%;
+          max-width: 900px;
+          margin: clamp(56px, calc(6vh + 32px), 120px) auto 0;
+        }
+        .case-hero-heading { margin-bottom: 48px; }
+        .case-hero-title {
+          font-size: 34px;
+          line-height: 1.2;
+          letter-spacing: -0.02em;
+          font-weight: 300;
+          color: ${INK_DARK};
+          margin: 0;
         }
         .case-title-row {
           display: flex;
@@ -484,9 +498,9 @@ export default function WvnCaseStudy() {
         </a>
       </div>
 
-      <article className="case-article">
+      <section className="case-hero" aria-labelledby="wvn-case-title">
         <div className="case-title-row">
-          <h1 className="case-title">Women&rsquo;s Voices Now</h1>
+          <h1 id="wvn-case-title" className="case-hero-title">Women&rsquo;s Voices Now</h1>
           <a
             className="case-link-pill"
             href="https://womensvoicesnow.org"
@@ -525,31 +539,20 @@ export default function WvnCaseStudy() {
           <span className="case-study-pill case-study-pill--descriptor">Film discovery</span>
           <span className="case-study-pill case-study-pill--descriptor">Visual identity</span>
         </div>
+        <ShimmerVideo
+          videoSrc={SECTIONS[0].videoSrc}
+          imageSrc={SECTIONS[0].imageSrc}
+          alt={SECTIONS[0].alt}
+          aspectRatio={SECTIONS[0].aspectRatio}
+          bgVariant={SECTIONS[0].bg}
+        />
+      </section>
+
+      <article className="case-article">
 
         <section className="case-section">
           <div className="case-section-heading">{SECTIONS[0].heading}</div>
           <p className="case-section-body">{SECTIONS[0].body}</p>
-          <ShimmerVideo
-            videoSrc={SECTIONS[0].videoSrc}
-            imageSrc={SECTIONS[0].imageSrc}
-            alt={SECTIONS[0].alt}
-            aspectRatio={SECTIONS[0].aspectRatio}
-            bgVariant={SECTIONS[0].bg}
-          >
-            <button
-              type="button"
-              className="case-expand-btn"
-              aria-label="Expand Before"
-              onClick={() => setExpanded(0)}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 3 21 3 21 9" />
-                <polyline points="9 21 3 21 3 15" />
-                <line x1="21" y1="3" x2="14" y2="10" />
-                <line x1="3" y1="21" x2="10" y2="14" />
-              </svg>
-            </button>
-          </ShimmerVideo>
         </section>
 
         <section className="case-section">

@@ -341,7 +341,7 @@ export default function Home() {
           </span>
           <span
             style={{
-              fontSize: 15,
+              fontSize: 17,
               fontWeight: 500,
               color: INK_DARK,
               lineHeight: "27px",

@@ -167,8 +167,22 @@ export default function FitablyCaseStudy() {
           width: 100%;
           max-width: 900px;
           margin-inline: auto;
-          margin-top: clamp(56px, calc(6vh + 32px), 120px);
+          margin-top: 72px;
           margin-bottom: 124px;
+        }
+        .case-hero {
+          width: 100%;
+          max-width: 900px;
+          margin: clamp(56px, calc(6vh + 32px), 120px) auto 0;
+        }
+        .case-hero-heading { margin-bottom: 48px; }
+        .case-hero-title {
+          font-size: 34px;
+          line-height: 1.2;
+          letter-spacing: -0.02em;
+          font-weight: 300;
+          color: ${INK_DARK};
+          margin: 0;
         }
         .case-title-row {
           display: flex;
@@ -356,9 +370,9 @@ export default function FitablyCaseStudy() {
         </a>
       </div>
 
-      <article className="case-article">
+      <section className="case-hero" aria-labelledby="fitably-case-title">
         <div className="case-title-row">
-          <h1 className="case-title">Fitably</h1>
+          <h1 id="fitably-case-title" className="case-hero-title">Fitably</h1>
           <a
             className="case-link-pill"
             href="https://fitably.com"
@@ -396,13 +410,26 @@ export default function FitablyCaseStudy() {
           <span className="case-study-pill case-study-pill--descriptor">User flows</span>
           <span className="case-study-pill case-study-pill--descriptor">Brand identity</span>
         </div>
+        <div className="case-triptych" aria-label="Fitably product screens">
+          {SECTIONS[0].triptych?.map((img) => (
+            <ShimmerImage
+              key={img.src}
+              src={img.src}
+              alt={img.alt}
+              aspectRatio={SECTIONS[0].triptychAspectRatio ?? "1 / 1"}
+            />
+          ))}
+        </div>
+      </section>
+
+      <article className="case-article">
 
         {SECTIONS.map((s, i) => (
           <Fragment key={s.heading}>
             <section className="case-section">
               <div className="case-section-heading">{s.heading}</div>
               <p className="case-section-body">{s.body}</p>
-              {s.triptych ? (
+              {s.triptych ? (i !== 0 ? (
                 <div className="case-triptych">
                   {s.triptych.map((img) => (
                     <ShimmerImage
@@ -413,7 +440,7 @@ export default function FitablyCaseStudy() {
                     />
                   ))}
                 </div>
-              ) : (
+              ) : null) : (
                 <div className="case-media-wrap">
                   <FallbackVideo
                     videoSrc={s.videoSrc}
