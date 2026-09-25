@@ -63,47 +63,7 @@ function MediaPlaceholder({ label }: { label: string }) {
 
 export default function FluentContent() {
   return (
-    <>
-      <div className={`${figtree.variable} fluent-hero-video`} aria-label="Microsoft Fluent case study video">
-        <video autoPlay loop muted playsInline preload="auto">
-          <source src="/fluent-hero.mp4" type="video/mp4" />
-        </video>
-        <Link href="/" className="back-pill fluent-hero-back" aria-label="Back to home">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M10 4L5 8L10 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back
-        </Link>
-        <a
-          className="back-pill fluent-hero-link"
-          href="https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Open Microsoft Fluent 2 Web in Figma Community"
-        >
-          Fluent 2 Web
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-            <polyline points="15 3 21 3 21 9" />
-            <line x1="10" y1="14" x2="21" y2="3" />
-          </svg>
-        </a>
-        <h1 className="fluent-hero-title">
-          <span>Microsoft</span>
-          <strong>Fluent</strong>
-        </h1>
-      </div>
-      <main
+    <main
       className={`${figtree.variable} min-h-screen flex flex-col relative`}
       style={{
         fontFamily: "var(--font-figtree), system-ui, sans-serif",
@@ -116,58 +76,53 @@ export default function FluentContent() {
       }}
     >
       <style>{`
-        .fluent-hero-video {
+        .fluent-page-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .fluent-case-hero {
+          display: grid;
+          grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.35fr);
+          align-items: center;
+          gap: clamp(36px, 7vw, 140px);
+          max-width: 1560px;
+          margin: clamp(72px, 12vh, 160px) auto 0;
+        }
+        .fluent-case-heading { color: ${INK_DARK}; }
+        .fluent-case-title {
+          margin: 0;
+          font-size: clamp(38px, 4vw, 76px);
+          font-weight: 300;
+          line-height: 1.08;
+          letter-spacing: -0.045em;
+        }
+        .fluent-case-subtitle {
+          margin: 18px 0 0;
+          font-size: clamp(28px, 2.6vw, 52px);
+          font-weight: 300;
+          line-height: 1.15;
+          letter-spacing: -0.035em;
+        }
+        .fluent-video-card {
           position: relative;
-          width: 100%;
-          font-family: var(--font-figtree), system-ui, sans-serif;
+          min-width: 0;
           line-height: 0;
         }
-        .fluent-hero-video video {
+        .fluent-video-card video {
           display: block;
           width: 100%;
           height: auto;
+          border-radius: clamp(18px, 2vw, 34px);
         }
-        .fluent-hero-back {
+        .fluent-preview-image {
           position: absolute;
-          top: calc(clamp(24px, 6vh, 72px) - 24px);
-          left: clamp(20px, 6vw, 120px);
-          z-index: 1;
-        }
-        .fluent-hero-link {
-          position: absolute;
-          top: calc(clamp(24px, 6vh, 72px) - 24px);
-          right: clamp(20px, 6vw, 120px);
-          z-index: 1;
-        }
-        .fluent-hero-title {
-          position: absolute;
-          top: 49%;
-          left: 36%;
-          z-index: 1;
-          margin: 0;
-          color: #ffffff;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          font-family: var(--font-figtree), system-ui, sans-serif;
-          font-weight: 300;
-          line-height: 0.84;
-          letter-spacing: -0.055em;
-          text-align: center;
-          transform: translateY(-50%);
-          text-shadow: 0 2px 18px rgba(18, 24, 54, 0.16);
-        }
-        .fluent-hero-title span,
-        .fluent-hero-title strong {
-          display: block;
-          font-weight: 300;
-        }
-        .fluent-hero-title span {
-          font-size: clamp(40px, 6.2vw, 126px);
-        }
-        .fluent-hero-title strong {
-          margin-top: 0.08em;
-          font-size: clamp(70px, 10.4vw, 212px);
+          bottom: clamp(-52px, -4vw, -28px);
+          left: clamp(-76px, -6vw, -36px);
+          width: clamp(170px, 22vw, 350px);
+          height: auto;
+          border-radius: clamp(14px, 1.5vw, 24px);
+          box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
         }
         .back-pill {
           display: inline-flex;
@@ -358,9 +313,57 @@ export default function FluentContent() {
         @media (max-width: 560px) {
           .case-title-row { align-items: flex-start; flex-direction: column; }
           .case-tag { font-size: 14px; }
-          .fluent-hero-title { left: 28%; }
+          .fluent-case-hero {
+            grid-template-columns: 1fr;
+            gap: 36px;
+            margin-top: 64px;
+          }
+          .fluent-video-card { margin-left: 12px; }
+          .fluent-preview-image {
+            bottom: -36px;
+            left: -12px;
+            width: min(56vw, 250px);
+          }
         }
       `}</style>
+
+      <header className="fluent-page-header">
+        <Link href="/" className="back-pill" aria-label="Back to home">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 4L5 8L10 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Back
+        </Link>
+        <a
+          className="back-pill"
+          href="https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open Microsoft Fluent 2 Web in Figma Community"
+        >
+          Fluent 2 Web
+        </a>
+      </header>
+
+      <section className="fluent-case-hero" aria-labelledby="fluent-case-title">
+        <div className="fluent-case-heading">
+          <h1 id="fluent-case-title" className="fluent-case-title">Microsoft Fluent</h1>
+          <p className="fluent-case-subtitle">&ldquo;Avatar&rdquo; Case Study</p>
+        </div>
+        <div className="fluent-video-card" aria-label="Microsoft Fluent case study video">
+          <video autoPlay loop muted playsInline preload="auto">
+            <source src="/fluent-hero.mp4" type="video/mp4" />
+          </video>
+          <Image
+            className="fluent-preview-image"
+            src="/fluent-web-ui-kit.png"
+            width={2048}
+            height={1152}
+            sizes="(max-width: 560px) 56vw, 22vw"
+            alt="Web UI Kit preview"
+          />
+        </div>
+      </section>
 
       <article className="case-article">
         <p className="case-intro">
@@ -471,7 +474,6 @@ export default function FluentContent() {
           <p className="case-next-body">Continue to the Microsoft Teams case study.</p>
         </Link>
       </article>
-      </main>
-    </>
+    </main>
   );
 }
