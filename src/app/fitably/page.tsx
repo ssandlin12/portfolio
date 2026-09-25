@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Figtree } from "next/font/google";
 import { Fragment, useEffect, useState, type CSSProperties } from "react";
 import { ShimmerImage } from "../_components/shimmer";
-import { CaseProcess, type ProcessStep } from "../_components/case-process";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -65,59 +64,6 @@ const SECTIONS: Section[] = [
       { src: "/case-studies/fitably/03.PNG", alt: "Fitably screen 3" },
     ],
     triptychAspectRatio: "1290 / 2796",
-  },
-];
-
-const PROCESS: readonly ProcessStep[] = [
-  {
-    number: "01",
-    eyebrow: "Discover",
-    heading: "Looking beyond the swipe",
-    body:
-      "I began with interviews and competitive research around how college students found workout partners, what made plans fall apart, and why the existing swipe interaction felt uncomfortable. The research showed that compatibility depended less on appearance and more on schedule, location, ability, and workout intent.",
-    methods: ["User interviews", "Competitive audit", "App review"],
-    takeaway:
-      "Students were not looking for a match. They were trying to find a reliable person for a specific workout.",
-  },
-  {
-    number: "02",
-    eyebrow: "Define",
-    heading: "Mapping motivation and trust",
-    body:
-      "I translated the research into personas, jobs to be done, and journey maps covering new students, experienced gym-goers, and people returning to fitness. These artifacts surfaced shared concerns around safety, uncertainty, and the social friction of messaging a stranger without a concrete plan.",
-    methods: ["Personas", "JTBD", "Journey mapping"],
-    takeaway:
-      "A useful connection needed context and a low-pressure reason to meet—not just mutual interest.",
-  },
-  {
-    number: "03",
-    eyebrow: "Structure",
-    heading: "Organizing around real workouts",
-    body:
-      "I replaced the swipe model with workout events tied to campus, time, activity, and experience level. Sitemaps and end-to-end flows accounted for creating a workout, joining one, discovering people through a shared gym, and continuing a connection afterward.",
-    methods: ["Sitemapping", "User flows", "Information architecture"],
-    takeaway:
-      "The workout became the social object: a clearer, safer entry point than browsing people one at a time.",
-  },
-  {
-    number: "04",
-    eyebrow: "Test",
-    heading: "Iterating on connection and safety",
-    body:
-      "I tested early wireframes and prototypes with students, refining what information appeared before joining, how availability was communicated, and when messaging became available. Multiple rounds reduced ambiguity and made the commitment required at each step feel more predictable.",
-    methods: ["Usability testing", "Prototyping", "Flow iteration"],
-    takeaway:
-      "Showing the plan before asking users to connect made participation feel more purposeful and less risky.",
-  },
-  {
-    number: "05",
-    eyebrow: "Unify",
-    heading: "Building a campus-ready identity",
-    body:
-      "The final iteration paired the new interaction model with a new name, logo, custom illustration, and streamlined visual system. Responsive components were designed for workout discovery, profiles, messages, and event creation so the product could scale beyond a single matching flow.",
-    methods: ["Brand identity", "UI system", "Responsive design"],
-    takeaway:
-      "Fitably became a community product built around shared activity rather than a dating pattern repurposed for fitness.",
   },
 ];
 
@@ -507,14 +453,6 @@ export default function FitablyCaseStudy() {
                 </div>
               )}
             </section>
-            {i === 0 && (
-              <CaseProcess
-                id="fitably-process-title"
-                title="From matching mechanic to fitness community"
-                intro="The redesign moved through research, product definition, structure, and repeated testing. Each layer replaced a transactional swipe experience with a clearer reason for students to connect."
-                steps={PROCESS}
-              />
-            )}
           </Fragment>
         ))}
 
