@@ -192,6 +192,34 @@ vec3 calcNormal(vec3 p, vec3 c1, vec3 c2, vec3 c3, vec3 n1, vec3 n2) {
   ));
 }
 
+// Moving blue-violet-pink field inspired by the supplied reference image.
+// Its flow coordinates are independent of the SDF, so the color keeps
+// drifting across the surface while the blob's shape evolves.
+vec3 swirlPalette(vec3 p) {
+  float t = u_time * 0.24;
+  vec2 q = p.xy;
+  q += vec2(
+    sin(q.y * 2.8 - t * 1.3),
+    cos(q.x * 2.3 + t * 1.1)
+  ) * 0.16;
+  float field = 0.50 + 0.26 * sin(q.x * 3.4 + q.y * 1.7 + t)
+                      + 0.18 * sin(q.y * 4.1 - q.x * 1.3 - t * 1.4)
+                      + 0.11 * sin((q.x + q.y) * 6.0 + t * 1.8);
+  field = clamp(field, 0.0, 1.0);
+
+  vec3 violet     = vec3(0.30, 0.16, 0.62);
+  vec3 periwinkle = vec3(0.43, 0.50, 0.84);
+  vec3 lavender   = vec3(0.70, 0.56, 0.87);
+  vec3 rose       = vec3(0.93, 0.61, 0.78);
+  vec3 cyan       = vec3(0.36, 0.76, 0.94);
+
+  vec3 color = mix(violet, periwinkle, smoothstep(0.02, 0.36, field));
+  color = mix(color, lavender, smoothstep(0.24, 0.58, field));
+  color = mix(color, rose, smoothstep(0.49, 0.76, field));
+  color = mix(color, cyan, smoothstep(0.73, 1.00, field));
+  return color;
+}
+
 void main() {
   vec2 uv = v_uv * 2.0 - 1.0;
   uv.x *= u_res.x / u_res.y;
@@ -280,14 +308,11 @@ void main() {
       lit *= (1.0 + g * u_grain);
       lit  = clamp(lit, 0.0, 1.0);
     } else {
-      vec3 cTop = vec3(0.96);
-      vec3 cBot = vec3(0.00);
-      float gy  = clamp(wp.y * 0.55 + 0.5, 0.0, 1.0);
-      vec3 base = mix(cBot, cTop, pow(gy, 1.5));
+      vec3 base = swirlPalette(invRotY(wp));
       float halfL = NdotL * 0.5 + 0.5;
-      lit  = base * (0.75 + 0.25 * halfL);
-      lit += vec3(0.92) * pow(NdotH, specExp) * 0.15;
-      lit += vec3(fuzz);
+      lit  = base * (0.68 + 0.32 * halfL);
+      lit += vec3(0.96, 0.94, 1.0) * pow(NdotH, specExp) * 0.24;
+      lit += vec3(0.88, 0.90, 1.0) * fuzz * 0.65;
       lit *= (1.0 + g * u_grain);
       lit  = clamp(lit, 0.0, 1.0);
     }
@@ -564,6 +589,31 @@ vec3 calcNormal(vec3 p) {
   ));
 }
 
+vec3 swirlPalette(vec3 p) {
+  float t = u_time * 0.24;
+  vec2 q = p.xy;
+  q += vec2(
+    sin(q.y * 2.8 - t * 1.3),
+    cos(q.x * 2.3 + t * 1.1)
+  ) * 0.16;
+  float field = 0.50 + 0.26 * sin(q.x * 3.4 + q.y * 1.7 + t)
+                      + 0.18 * sin(q.y * 4.1 - q.x * 1.3 - t * 1.4)
+                      + 0.11 * sin((q.x + q.y) * 6.0 + t * 1.8);
+  field = clamp(field, 0.0, 1.0);
+
+  vec3 violet     = vec3(0.30, 0.16, 0.62);
+  vec3 periwinkle = vec3(0.43, 0.50, 0.84);
+  vec3 lavender   = vec3(0.70, 0.56, 0.87);
+  vec3 rose       = vec3(0.93, 0.61, 0.78);
+  vec3 cyan       = vec3(0.36, 0.76, 0.94);
+
+  vec3 color = mix(violet, periwinkle, smoothstep(0.02, 0.36, field));
+  color = mix(color, lavender, smoothstep(0.24, 0.58, field));
+  color = mix(color, rose, smoothstep(0.49, 0.76, field));
+  color = mix(color, cyan, smoothstep(0.73, 1.00, field));
+  return color;
+}
+
 void main() {
   vec2 uv = v_uv * 2.0 - 1.0;
   uv.x *= u_res.x / u_res.y;
@@ -619,14 +669,11 @@ void main() {
       lit += vec3(1.0) * pow(NdotH, specExp) * 0.45;
       lit += vec3(fuzz);
     } else {
-      vec3 cTop = vec3(0.96);
-      vec3 cBot = vec3(0.00);
-      float gy  = clamp(wp.y * 0.55 + 0.5, 0.0, 1.0);
-      vec3 base = mix(cBot, cTop, pow(gy, 1.5));
+      vec3 base = swirlPalette(wp);
       float halfL = NdotL * 0.5 + 0.5;
-      lit  = base * (0.75 + 0.25 * halfL);
-      lit += vec3(0.92) * pow(NdotH, specExp) * 0.15;
-      lit += vec3(fuzz);
+      lit  = base * (0.68 + 0.32 * halfL);
+      lit += vec3(0.96, 0.94, 1.0) * pow(NdotH, specExp) * 0.24;
+      lit += vec3(0.88, 0.90, 1.0) * fuzz * 0.65;
     }
 
     lit = clamp(lit, 0.0, 1.0);
