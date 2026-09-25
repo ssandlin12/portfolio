@@ -74,6 +74,30 @@ export default function FluentContent() {
           </svg>
           Back
         </Link>
+        <a
+          className="case-tag fluent-hero-link"
+          href="https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open Microsoft Fluent 2 Web in Figma Community"
+        >
+          Fluent 2 Web
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+        </a>
         <h1 className="fluent-hero-title">
           <span>Microsoft</span>
           <strong>Fluent</strong>
@@ -106,6 +130,12 @@ export default function FluentContent() {
           position: absolute;
           top: calc(clamp(24px, 6vh, 72px) - 24px);
           left: clamp(20px, 6vw, 120px);
+          z-index: 1;
+        }
+        .fluent-hero-link {
+          position: absolute;
+          top: calc(clamp(24px, 6vh, 72px) - 24px);
+          right: clamp(20px, 6vw, 120px);
           z-index: 1;
         }
         .fluent-hero-title {
