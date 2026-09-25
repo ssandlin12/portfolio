@@ -83,9 +83,9 @@ export default function FluentContent() {
         }
         .fluent-case-hero {
           display: grid;
-          grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.35fr);
+          grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.35fr);
           align-items: center;
-          gap: clamp(36px, 7vw, 140px);
+          gap: clamp(24px, 3vw, 64px);
           max-width: 1560px;
           margin: clamp(72px, 12vh, 160px) auto 0;
         }
@@ -119,7 +119,7 @@ export default function FluentContent() {
           position: absolute;
           bottom: clamp(-52px, -4vw, -28px);
           left: clamp(-76px, -6vw, -36px);
-          width: clamp(150px, 16vw, 270px);
+          width: clamp(170px, 18vw, 300px);
           height: auto;
           border-radius: clamp(14px, 1.5vw, 24px);
           box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
@@ -143,7 +143,7 @@ export default function FluentContent() {
         .case-article {
           width: 100%;
           max-width: 768px;
-          margin: clamp(56px, calc(6vh + 32px), 120px) auto 100px;
+          margin: clamp(88px, calc(7vh + 48px), 150px) auto 100px;
         }
         .case-title-row {
           display: flex;
@@ -342,6 +342,21 @@ export default function FluentContent() {
           aria-label="Open Microsoft Fluent 2 Web in Figma Community"
         >
           Fluent 2 Web
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
         </a>
       </header>
 
