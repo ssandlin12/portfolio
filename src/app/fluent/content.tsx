@@ -115,10 +115,14 @@ export default function FluentContent() {
           z-index: 1;
           margin: 0;
           color: #ffffff;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           font-family: var(--font-figtree), system-ui, sans-serif;
           font-weight: 300;
           line-height: 0.84;
           letter-spacing: -0.055em;
+          text-align: center;
           transform: translateY(-50%);
           text-shadow: 0 2px 18px rgba(18, 24, 54, 0.16);
         }
@@ -128,7 +132,6 @@ export default function FluentContent() {
           font-weight: 300;
         }
         .fluent-hero-title span {
-          margin-left: 0.04em;
           font-size: clamp(40px, 6.2vw, 126px);
         }
         .fluent-hero-title strong {
