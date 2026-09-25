@@ -318,18 +318,7 @@ export default function Home() {
               flexShrink: 0,
             }}
           >
-            <svg
-              width="28"
-              height="28"
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden
-            >
-              <path d="M19 6L7.5996 25H2L13.4004 6H19Z" fill="black" />
-              <rect width="11" height="5" transform="translate(16 20)" fill="black" />
-              <rect width="9" height="5" transform="translate(27 6) rotate(90)" fill="black" />
-            </svg>
+            <img src="/anna-sandlin-logo.svg" alt="" width="28" height="28" />
           </span>
           <span
             style={{

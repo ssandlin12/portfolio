@@ -325,22 +325,8 @@ export default function FitablyCaseStudy() {
           columnGap: "clamp(20px, 4vw, 48px)",
         }}
       >
-        <Link
-          href="/"
-          className="back-pill"
-          aria-label="Back to home"
-          style={{ justifySelf: "start" }}
-        >
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M10 4L5 8L10 12"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          Back
+        <Link href="/" aria-label="Anna Sandlin — Home" style={{ justifySelf: "start", lineHeight: 0 }}>
+          <img src="/anna-sandlin-logo.svg" alt="" width="28" height="28" />
         </Link>
         <nav
           className="flex"
