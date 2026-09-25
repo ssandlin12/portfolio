@@ -101,6 +101,7 @@ export default function FluentContent({
     >
       <style>{`
         .fluent-page-header {
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -199,6 +200,22 @@ export default function FluentContent({
           transition: background-color 160ms ease-out;
         }
         .back-pill:hover { background: #e8e8e8; }
+        .case-type-pill {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          display: inline-flex;
+          align-items: center;
+          height: 36px;
+          padding: 0 16px;
+          border-radius: 999px;
+          background: ${INK_DARK};
+          color: #fff;
+          font-size: 15px;
+          font-weight: 400;
+          line-height: 1;
+          white-space: nowrap;
+        }
         .case-article {
           width: 100%;
           max-width: 900px;
@@ -388,6 +405,7 @@ export default function FluentContent({
           <BackIcon />
           Back
         </Link>
+        <span className="case-type-pill">Full case study</span>
         <a
           className="back-pill"
           href={linkHref}

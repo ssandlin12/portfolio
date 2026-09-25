@@ -143,6 +143,24 @@ export default function FitablyCaseStudy() {
         .back-pill:hover {
           background: #e8e8e8;
         }
+        .case-page-header { position: relative; }
+        .case-type-pill {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          display: inline-flex;
+          align-items: center;
+          height: 36px;
+          padding: 0 16px;
+          border: 1px solid ${INK_DARK};
+          border-radius: 999px;
+          background: #fff;
+          color: ${INK_DARK};
+          font-size: 15px;
+          font-weight: 400;
+          line-height: 1;
+          white-space: nowrap;
+        }
 
         .case-article {
           width: 100%;
@@ -320,6 +338,7 @@ export default function FitablyCaseStudy() {
 
       {/* Top header — Back pill (left), nav links (right). */}
       <div
+        className="case-page-header"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -331,6 +350,7 @@ export default function FitablyCaseStudy() {
           <BackIcon />
           Back
         </Link>
+        <span className="case-type-pill">Micro case study</span>
         <a href="https://fitably.com" target="_blank" rel="noopener noreferrer" className="back-pill" style={{ justifySelf: "end" }} aria-label="Visit fitably.com">
           fitably.com
           <ExternalLinkIcon />
