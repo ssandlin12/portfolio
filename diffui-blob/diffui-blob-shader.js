@@ -202,13 +202,15 @@ vec3 swirlPalette(vec3 p) {
     sin(q.y * 1.4 - t),
     cos(q.x * 1.2 + t)
   ) * 0.07;
-  float field = 0.50 + 0.10 * sin(q.x * 1.7 + q.y * 0.9 + t)
-                      + 0.06 * sin(q.y * 2.0 - q.x * 0.7 - t * 0.8);
+  // A broad light-to-dark wash, with only a small moving variation so it
+  // stays continuous rather than breaking into visible color bands.
+  float field = 0.52 + q.y * 0.62
+                      + 0.05 * sin(q.x * 1.4 + q.y * 0.8 + t);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 coolShadow = vec3(0.70, 0.69, 0.89);
-  vec3 coolLight  = vec3(0.87, 0.86, 0.96);
-  return mix(coolShadow, coolLight, smoothstep(0.25, 0.75, field));
+  vec3 coolShadow = vec3(0.48, 0.45, 0.76);
+  vec3 coolLight  = vec3(0.98, 0.97, 1.00);
+  return mix(coolShadow, coolLight, smoothstep(0.08, 0.92, field));
 }
 
 void main() {
@@ -301,7 +303,7 @@ void main() {
     } else {
       vec3 base = swirlPalette(invRotY(wp));
       float halfL = NdotL * 0.5 + 0.5;
-      lit  = base * (0.84 + 0.16 * halfL);
+      lit  = base * (0.72 + 0.28 * halfL);
       lit += vec3(0.96, 0.99, 1.0) * pow(NdotH, specExp) * 0.10;
       lit += vec3(0.92, 0.96, 1.0) * fuzz * 0.24;
       lit *= (1.0 + g * u_grain);
@@ -587,13 +589,15 @@ vec3 swirlPalette(vec3 p) {
     sin(q.y * 1.4 - t),
     cos(q.x * 1.2 + t)
   ) * 0.07;
-  float field = 0.50 + 0.10 * sin(q.x * 1.7 + q.y * 0.9 + t)
-                      + 0.06 * sin(q.y * 2.0 - q.x * 0.7 - t * 0.8);
+  // A broad light-to-dark wash, with only a small moving variation so it
+  // stays continuous rather than breaking into visible color bands.
+  float field = 0.52 + q.y * 0.62
+                      + 0.05 * sin(q.x * 1.4 + q.y * 0.8 + t);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 coolShadow = vec3(0.70, 0.69, 0.89);
-  vec3 coolLight  = vec3(0.87, 0.86, 0.96);
-  return mix(coolShadow, coolLight, smoothstep(0.25, 0.75, field));
+  vec3 coolShadow = vec3(0.48, 0.45, 0.76);
+  vec3 coolLight  = vec3(0.98, 0.97, 1.00);
+  return mix(coolShadow, coolLight, smoothstep(0.08, 0.92, field));
 }
 
 void main() {
@@ -653,7 +657,7 @@ void main() {
     } else {
       vec3 base = swirlPalette(wp);
       float halfL = NdotL * 0.5 + 0.5;
-      lit  = base * (0.84 + 0.16 * halfL);
+      lit  = base * (0.72 + 0.28 * halfL);
       lit += vec3(0.96, 0.99, 1.0) * pow(NdotH, specExp) * 0.10;
       lit += vec3(0.92, 0.96, 1.0) * fuzz * 0.24;
     }
