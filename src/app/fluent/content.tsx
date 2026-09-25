@@ -92,14 +92,14 @@ export default function FluentContent() {
         .fluent-case-heading { color: ${INK_DARK}; }
         .fluent-case-title {
           margin: 0;
-          font-size: clamp(38px, 4vw, 76px);
+          font-size: clamp(32px, 3.2vw, 62px);
           font-weight: 300;
           line-height: 1.08;
           letter-spacing: -0.045em;
         }
         .fluent-case-subtitle {
           margin: 18px 0 0;
-          font-size: clamp(28px, 2.6vw, 52px);
+          font-size: clamp(24px, 2.1vw, 42px);
           font-weight: 300;
           line-height: 1.15;
           letter-spacing: -0.035em;
@@ -119,7 +119,7 @@ export default function FluentContent() {
           position: absolute;
           bottom: clamp(-52px, -4vw, -28px);
           left: clamp(-76px, -6vw, -36px);
-          width: clamp(170px, 22vw, 350px);
+          width: clamp(150px, 16vw, 270px);
           height: auto;
           border-radius: clamp(14px, 1.5vw, 24px);
           box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
