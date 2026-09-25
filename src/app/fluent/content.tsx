@@ -75,7 +75,7 @@ export default function FluentContent() {
           Back
         </Link>
         <a
-          className="case-tag fluent-hero-link"
+          className="back-pill fluent-hero-link"
           href="https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web"
           target="_blank"
           rel="noopener noreferrer"
