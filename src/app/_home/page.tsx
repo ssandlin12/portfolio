@@ -395,9 +395,30 @@ export default function Home() {
           aspectRatio: "1 / 1",
           marginInline: "auto",
           marginTop: "calc(clamp(16px, 3vh, 32px) - 8px)",
+          position: "relative",
         }}
       >
-        <Blob morph={morph} morphTarget={morphTarget} />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: 0.18,
+            filter: "blur(16px)",
+            transform: "translateY(36px) scaleX(0.94) scaleY(0.34)",
+            transformOrigin: "center",
+          }}
+        >
+          <Blob morph={morph} morphTarget={morphTarget} colorMode={0} />
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            transform: "translateY(-36px)",
+          }}
+        >
+          <Blob morph={morph} morphTarget={morphTarget} />
+        </div>
       </div>
 
 
