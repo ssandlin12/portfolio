@@ -13,6 +13,7 @@ export default function TeamsContent() {
       previewSrc="/teams-preview.png"
       previewWidth={1920}
       previewHeight={1152}
+      descriptors={["Design systems", "Basic screens", "Templates"]}
     />
   );
 }

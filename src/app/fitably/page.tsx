@@ -143,24 +143,25 @@ export default function FitablyCaseStudy() {
         .back-pill:hover {
           background: #e8e8e8;
         }
-        .case-page-header { position: relative; }
-        .case-type-pill {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
+        .case-study-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 20px;
+        }
+        .case-study-pill {
           display: inline-flex;
           align-items: center;
           height: 36px;
           padding: 0 16px;
-          border: 1px solid ${INK_DARK};
           border-radius: 999px;
-          background: #fff;
-          color: ${INK_DARK};
           font-size: 15px;
           font-weight: 400;
           line-height: 1;
           white-space: nowrap;
         }
+        .case-study-pill--micro { background: #f1f1f1; color: ${INK_DARK}; }
+        .case-study-pill--descriptor { border: 1px solid ${INK_DARK}; background: #fff; color: ${INK_DARK}; box-sizing: border-box; }
 
         .case-article {
           width: 100%;
@@ -338,7 +339,6 @@ export default function FitablyCaseStudy() {
 
       {/* Top header — Back pill (left), nav links (right). */}
       <div
-        className="case-page-header"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -350,7 +350,6 @@ export default function FitablyCaseStudy() {
           <BackIcon />
           Back
         </Link>
-        <span className="case-type-pill">Micro case study</span>
         <a href="https://fitably.com" target="_blank" rel="noopener noreferrer" className="back-pill" style={{ justifySelf: "end" }} aria-label="Visit fitably.com">
           fitably.com
           <ExternalLinkIcon />
@@ -391,6 +390,12 @@ export default function FitablyCaseStudy() {
           part of the redesign of the original product, I provided a
           visual refresh, full UX research effort, and complete app flow.
         </p>
+        <div className="case-study-pills" aria-label="Case study topics">
+          <span className="case-study-pill case-study-pill--micro">Micro case study</span>
+          <span className="case-study-pill case-study-pill--descriptor">Product strategy</span>
+          <span className="case-study-pill case-study-pill--descriptor">User flows</span>
+          <span className="case-study-pill case-study-pill--descriptor">Brand identity</span>
+        </div>
 
         {SECTIONS.map((s, i) => (
           <Fragment key={s.heading}>

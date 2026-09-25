@@ -72,6 +72,8 @@ type CaseStudyProps = {
   previewSrc?: string;
   previewWidth?: number;
   previewHeight?: number;
+  caseType?: "full" | "micro";
+  descriptors?: readonly string[];
 };
 
 export default function FluentContent({
@@ -83,6 +85,8 @@ export default function FluentContent({
   previewSrc = "/fluent-web-ui-kit.png",
   previewWidth = 2048,
   previewHeight = 1152,
+  caseType = "full",
+  descriptors = ["Component architecture", "Documentation", "System design"],
 }: CaseStudyProps) {
   const [videoReady, setVideoReady] = useState(false);
 
@@ -101,7 +105,6 @@ export default function FluentContent({
     >
       <style>{`
         .fluent-page-header {
-          position: relative;
           display: flex;
           align-items: center;
           justify-content: space-between;
@@ -200,22 +203,26 @@ export default function FluentContent({
           transition: background-color 160ms ease-out;
         }
         .back-pill:hover { background: #e8e8e8; }
-        .case-type-pill {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
+        .case-study-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 20px;
+        }
+        .case-study-pill {
           display: inline-flex;
           align-items: center;
           height: 36px;
           padding: 0 16px;
           border-radius: 999px;
-          background: ${INK_DARK};
-          color: #fff;
           font-size: 15px;
           font-weight: 400;
           line-height: 1;
           white-space: nowrap;
         }
+        .case-study-pill--full { background: ${INK_DARK}; color: #fff; }
+        .case-study-pill--micro { background: #f1f1f1; color: ${INK_DARK}; }
+        .case-study-pill--descriptor { border: 1px solid ${INK_DARK}; background: #fff; color: ${INK_DARK}; box-sizing: border-box; }
         .case-article {
           width: 100%;
           max-width: 900px;
@@ -405,7 +412,6 @@ export default function FluentContent({
           <BackIcon />
           Back
         </Link>
-        <span className="case-type-pill">Full case study</span>
         <a
           className="back-pill"
           href={linkHref}
@@ -422,6 +428,10 @@ export default function FluentContent({
         <div className="fluent-case-heading">
           <h1 id="fluent-case-title" className="fluent-case-title">{title}</h1>
           <p className="fluent-case-subtitle">{subtitle}</p>
+          <div className="case-study-pills" aria-label="Case study topics">
+            <span className={`case-study-pill case-study-pill--${caseType}`}>{caseType === "full" ? "Full case study" : "Micro case study"}</span>
+            {descriptors.map((descriptor) => <span className="case-study-pill case-study-pill--descriptor" key={descriptor}>{descriptor}</span>)}
+          </div>
         </div>
         <div className={`fluent-video-card${videoReady ? " is-ready" : ""}`} aria-label="Microsoft Fluent case study video">
           <div className="fluent-video-skeleton" aria-hidden="true" />

@@ -135,24 +135,25 @@ export default function WvnCaseStudy() {
         .back-pill:hover {
           background: #e8e8e8;
         }
-        .case-page-header { position: relative; }
-        .case-type-pill {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
+        .case-study-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 20px;
+        }
+        .case-study-pill {
           display: inline-flex;
           align-items: center;
           height: 36px;
           padding: 0 16px;
-          border: 1px solid ${INK_DARK};
           border-radius: 999px;
-          background: #fff;
-          color: ${INK_DARK};
           font-size: 15px;
           font-weight: 400;
           line-height: 1;
           white-space: nowrap;
         }
+        .case-study-pill--micro { background: #f1f1f1; color: ${INK_DARK}; }
+        .case-study-pill--descriptor { border: 1px solid ${INK_DARK}; background: #fff; color: ${INK_DARK}; box-sizing: border-box; }
 
         .case-article {
           width: 100%;
@@ -466,7 +467,6 @@ export default function WvnCaseStudy() {
 
       {/* Top header — Back pill (left), nav links (right). */}
       <div
-        className="case-page-header"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -478,7 +478,6 @@ export default function WvnCaseStudy() {
           <BackIcon />
           Back
         </Link>
-        <span className="case-type-pill">Micro case study</span>
         <a href="https://womensvoicesnow.org" target="_blank" rel="noopener noreferrer" className="back-pill" style={{ justifySelf: "end" }} aria-label="Visit womensvoicesnow.org">
           womensvoicesnow.org
           <ExternalLinkIcon />
@@ -520,6 +519,12 @@ export default function WvnCaseStudy() {
           helped shift them from a non-profit blog to a modern streaming
           platform.
         </p>
+        <div className="case-study-pills" aria-label="Case study topics">
+          <span className="case-study-pill case-study-pill--micro">Micro case study</span>
+          <span className="case-study-pill case-study-pill--descriptor">Content strategy</span>
+          <span className="case-study-pill case-study-pill--descriptor">Film discovery</span>
+          <span className="case-study-pill case-study-pill--descriptor">Visual identity</span>
+        </div>
 
         <section className="case-section">
           <div className="case-section-heading">{SECTIONS[0].heading}</div>
