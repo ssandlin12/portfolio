@@ -12,7 +12,8 @@ const TILE_MORPH_TARGET: Record<number, number> = {
   1: 1, // Microsoft Teams → Teams (SDF texture)
   2: 4, // Diffui.ai → 3x3 grid (SDF texture)
   3: 3, // Women's Voices Now → "W" letterform (SDF texture)
-  4: 5, // Medium → Medium logo (SDF texture)
+  4: 2, // Fitably → radial burst mark (SDF texture)
+  5: 5, // Medium → Medium logo (SDF texture)
 };
 
 const figtree = Figtree({
@@ -52,6 +53,7 @@ const tiles: Array<{ title: string; href?: string; comingSoon?: true }> = [
   },
   { title: "Diffui.ai", href: "/diffui" },
   { title: "Women's Voices Now", href: "/wvn" },
+  { title: "Fitably", href: "/fitably" },
   {
     title: "Medium",
     href: "https://medium.com/design-bootcamp/designing-amidst-the-acceleration-towards-ai-singularity-ea35a0429470",
