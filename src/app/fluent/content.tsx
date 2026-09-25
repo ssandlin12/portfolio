@@ -445,15 +445,17 @@ export default function FluentContent({
           rebuild for one of Fluent&rsquo;s most used components: the Avatar
           component.
         </p>
-        <Image
+        <video
           className="case-media-image"
-          src="/case-studies/fluent/avatar-hero-final.svg"
-          width={960}
-          height={492}
-          sizes="(max-width: 940px) calc(100vw - 40px), 900px"
-          unoptimized
-          alt="Fluent Avatar component shown across image, initials, icon, size, and presence variants"
-        />
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-label="Fluent Avatar component documentation"
+        >
+          <source src="/case-studies/fluent/avatar-documentation.mp4" type="video/mp4" />
+        </video>
         <section className="case-section">
           <p className="case-feature-kicker">The problem</p>
           <h2 className="case-feature-title">
