@@ -196,30 +196,19 @@ vec3 calcNormal(vec3 p, vec3 c1, vec3 c2, vec3 c3, vec3 n1, vec3 n2) {
 // Its flow coordinates are independent of the SDF, so the color keeps
 // drifting across the surface while the blob's shape evolves.
 vec3 swirlPalette(vec3 p) {
-  float t = u_time * 0.24;
+  float t = u_time * 0.12;
   vec2 q = p.xy;
   q += vec2(
-    sin(q.y * 2.8 - t * 1.3),
-    cos(q.x * 2.3 + t * 1.1)
-  ) * 0.16;
-  float field = 0.50 + 0.26 * sin(q.x * 3.4 + q.y * 1.7 + t)
-                      + 0.18 * sin(q.y * 4.1 - q.x * 1.3 - t * 1.4)
-                      + 0.11 * sin((q.x + q.y) * 6.0 + t * 1.8);
+    sin(q.y * 1.4 - t),
+    cos(q.x * 1.2 + t)
+  ) * 0.07;
+  float field = 0.50 + 0.10 * sin(q.x * 1.7 + q.y * 0.9 + t)
+                      + 0.06 * sin(q.y * 2.0 - q.x * 0.7 - t * 0.8);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 cream      = vec3(0.96, 0.93, 0.92);
-  vec3 violet     = vec3(0.94, 0.86, 0.84);
-  vec3 periwinkle = vec3(0.95, 0.80, 0.75);
-  vec3 lavender   = vec3(0.96, 0.73, 0.65);
-  vec3 rose       = vec3(0.97, 0.67, 0.56);
-  vec3 cyan       = vec3(0.98, 0.79, 0.65);
-
-  vec3 color = mix(cream, rose, smoothstep(0.02, 0.24, field));
-  color = mix(color, lavender, smoothstep(0.16, 0.42, field));
-  color = mix(color, violet, smoothstep(0.34, 0.62, field));
-  color = mix(color, periwinkle, smoothstep(0.52, 0.78, field));
-  color = mix(color, cyan, smoothstep(0.72, 1.00, field));
-  return color;
+  vec3 coolShadow = vec3(0.71, 0.85, 0.92);
+  vec3 coolLight  = vec3(0.89, 0.95, 0.98);
+  return mix(coolShadow, coolLight, smoothstep(0.25, 0.75, field));
 }
 
 void main() {
@@ -312,9 +301,9 @@ void main() {
     } else {
       vec3 base = swirlPalette(invRotY(wp));
       float halfL = NdotL * 0.5 + 0.5;
-      lit  = base * (0.78 + 0.22 * halfL);
-      lit += vec3(1.0, 0.99, 1.0) * pow(NdotH, specExp) * 0.20;
-      lit += vec3(0.94, 0.96, 1.0) * fuzz * 0.48;
+      lit  = base * (0.84 + 0.16 * halfL);
+      lit += vec3(0.96, 0.99, 1.0) * pow(NdotH, specExp) * 0.10;
+      lit += vec3(0.92, 0.96, 1.0) * fuzz * 0.24;
       lit *= (1.0 + g * u_grain);
       lit  = clamp(lit, 0.0, 1.0);
     }
@@ -592,30 +581,19 @@ vec3 calcNormal(vec3 p) {
 }
 
 vec3 swirlPalette(vec3 p) {
-  float t = u_time * 0.24;
+  float t = u_time * 0.12;
   vec2 q = p.xy;
   q += vec2(
-    sin(q.y * 2.8 - t * 1.3),
-    cos(q.x * 2.3 + t * 1.1)
-  ) * 0.16;
-  float field = 0.50 + 0.26 * sin(q.x * 3.4 + q.y * 1.7 + t)
-                      + 0.18 * sin(q.y * 4.1 - q.x * 1.3 - t * 1.4)
-                      + 0.11 * sin((q.x + q.y) * 6.0 + t * 1.8);
+    sin(q.y * 1.4 - t),
+    cos(q.x * 1.2 + t)
+  ) * 0.07;
+  float field = 0.50 + 0.10 * sin(q.x * 1.7 + q.y * 0.9 + t)
+                      + 0.06 * sin(q.y * 2.0 - q.x * 0.7 - t * 0.8);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 cream      = vec3(0.96, 0.93, 0.92);
-  vec3 violet     = vec3(0.94, 0.86, 0.84);
-  vec3 periwinkle = vec3(0.95, 0.80, 0.75);
-  vec3 lavender   = vec3(0.96, 0.73, 0.65);
-  vec3 rose       = vec3(0.97, 0.67, 0.56);
-  vec3 cyan       = vec3(0.98, 0.79, 0.65);
-
-  vec3 color = mix(cream, rose, smoothstep(0.02, 0.24, field));
-  color = mix(color, lavender, smoothstep(0.16, 0.42, field));
-  color = mix(color, violet, smoothstep(0.34, 0.62, field));
-  color = mix(color, periwinkle, smoothstep(0.52, 0.78, field));
-  color = mix(color, cyan, smoothstep(0.72, 1.00, field));
-  return color;
+  vec3 coolShadow = vec3(0.71, 0.85, 0.92);
+  vec3 coolLight  = vec3(0.89, 0.95, 0.98);
+  return mix(coolShadow, coolLight, smoothstep(0.25, 0.75, field));
 }
 
 void main() {
@@ -675,9 +653,9 @@ void main() {
     } else {
       vec3 base = swirlPalette(wp);
       float halfL = NdotL * 0.5 + 0.5;
-      lit  = base * (0.78 + 0.22 * halfL);
-      lit += vec3(1.0, 0.99, 1.0) * pow(NdotH, specExp) * 0.20;
-      lit += vec3(0.94, 0.96, 1.0) * fuzz * 0.48;
+      lit  = base * (0.84 + 0.16 * halfL);
+      lit += vec3(0.96, 0.99, 1.0) * pow(NdotH, specExp) * 0.10;
+      lit += vec3(0.92, 0.96, 1.0) * fuzz * 0.24;
     }
 
     lit = clamp(lit, 0.0, 1.0);
