@@ -82,24 +82,25 @@ export default function FluentContent() {
           justify-content: space-between;
         }
         .fluent-case-hero {
-          display: grid;
-          grid-template-columns: minmax(240px, 0.72fr) minmax(0, 1.35fr);
-          align-items: center;
-          gap: clamp(24px, 3vw, 64px);
-          max-width: 1560px;
+          --preview-overhang: 48px;
+          width: 100%;
+          max-width: 768px;
           margin: clamp(72px, 12vh, 160px) auto 0;
         }
-        .fluent-case-heading { color: ${INK_DARK}; }
+        .fluent-case-heading {
+          margin: 0 0 32px;
+          color: ${INK_DARK};
+        }
         .fluent-case-title {
           margin: 0;
-          font-size: clamp(32px, 3.2vw, 62px);
+          font-size: clamp(30px, 2.4vw, 42px);
           font-weight: 300;
           line-height: 1.08;
           letter-spacing: -0.045em;
         }
         .fluent-case-subtitle {
-          margin: 18px 0 0;
-          font-size: clamp(24px, 2.1vw, 42px);
+          margin: 10px 0 0;
+          font-size: clamp(21px, 1.7vw, 30px);
           font-weight: 300;
           line-height: 1.15;
           letter-spacing: -0.035em;
@@ -107,6 +108,8 @@ export default function FluentContent() {
         .fluent-video-card {
           position: relative;
           min-width: 0;
+          width: calc(100% - var(--preview-overhang));
+          margin-left: var(--preview-overhang);
           line-height: 0;
         }
         .fluent-video-card video {
@@ -117,9 +120,9 @@ export default function FluentContent() {
         }
         .fluent-preview-image {
           position: absolute;
-          bottom: clamp(-52px, -4vw, -28px);
-          left: clamp(-76px, -6vw, -36px);
-          width: clamp(170px, 18vw, 300px);
+          bottom: -36px;
+          left: calc(-1 * var(--preview-overhang));
+          width: clamp(150px, 18vw, 230px);
           height: auto;
           border-radius: clamp(14px, 1.5vw, 24px);
           box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
@@ -314,15 +317,12 @@ export default function FluentContent() {
           .case-title-row { align-items: flex-start; flex-direction: column; }
           .case-tag { font-size: 14px; }
           .fluent-case-hero {
-            grid-template-columns: 1fr;
-            gap: 36px;
+            --preview-overhang: 24px;
             margin-top: 64px;
           }
-          .fluent-video-card { margin-left: 12px; }
           .fluent-preview-image {
-            bottom: -36px;
-            left: -12px;
-            width: min(56vw, 250px);
+            bottom: -24px;
+            width: min(48vw, 190px);
           }
         }
       `}</style>
