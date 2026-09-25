@@ -38,7 +38,7 @@ export default function TeamsContent() {
         .teams-video::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; border: 1px solid rgba(41, 41, 41, .14); border-radius: clamp(18px, 2vw, 34px); }
         .teams-video-skeleton { position: absolute; inset: 0; border-radius: clamp(18px, 2vw, 34px); background: linear-gradient(105deg, #e6e6e6 20%, #f4f4f4 42%, #e6e6e6 64%); background-size: 220% 100%; animation: teams-shimmer 1.6s linear infinite; }
         @keyframes teams-shimmer { from { background-position: 100% 0; } to { background-position: -120% 0; } }
-        .teams-video video { position: relative; z-index: 1; display: block; width: 100%; height: auto; border-radius: clamp(18px, 2vw, 34px); opacity: 0; transition: opacity 280ms ease-out; }
+        .teams-video video { position: absolute; inset: 0; z-index: 1; display: block; width: 100%; height: 100%; object-fit: cover; border-radius: clamp(18px, 2vw, 34px); opacity: 0; transition: opacity 280ms ease-out; }
         .teams-video.is-ready video { opacity: 1; }
         .teams-preview { position: absolute; z-index: 4; bottom: -36px; right: calc(-1 * var(--preview-overhang)); width: clamp(176px, 21vw, 270px); height: auto; border-radius: clamp(14px, 1.5vw, 24px); box-shadow: 0 18px 40px rgba(28, 37, 76, .18); }
         .teams-article { width: min(900px, calc(100% - 40px)); margin: 112px auto 0; padding-bottom: 120px; }

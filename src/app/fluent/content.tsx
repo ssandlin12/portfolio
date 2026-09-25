@@ -158,11 +158,13 @@ export default function FluentContent({
           to { background-position: -120% 0; }
         }
         .fluent-video-card video {
-          position: relative;
+          position: absolute;
+          inset: 0;
           z-index: 1;
           display: block;
           width: 100%;
-          height: auto;
+          height: 100%;
+          object-fit: cover;
           border-radius: clamp(18px, 2vw, 34px);
           opacity: 0;
           transition: opacity 280ms ease-out;
