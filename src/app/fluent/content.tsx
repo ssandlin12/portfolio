@@ -68,6 +68,9 @@ type CaseStudyProps = {
   linkHref?: string;
   linkLabel?: string;
   videoSrc?: string;
+  previewSrc?: string;
+  previewWidth?: number;
+  previewHeight?: number;
 };
 
 export default function FluentContent({
@@ -76,6 +79,9 @@ export default function FluentContent({
   linkHref = "https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web",
   linkLabel = "Fluent 2 Web",
   videoSrc = "/fluent-hero.mp4",
+  previewSrc = "/fluent-web-ui-kit.png",
+  previewWidth = 2048,
+  previewHeight = 1152,
 }: CaseStudyProps) {
   const [videoReady, setVideoReady] = useState(false);
 
@@ -410,9 +416,9 @@ export default function FluentContent({
           </video>
           <Image
             className="fluent-preview-image"
-            src="/fluent-web-ui-kit.png"
-            width={2048}
-            height={1152}
+            src={previewSrc}
+            width={previewWidth}
+            height={previewHeight}
             sizes="(max-width: 560px) 56vw, 22vw"
             alt="Web UI Kit preview"
           />

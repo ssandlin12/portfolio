@@ -10,6 +10,9 @@ export default function TeamsContent() {
       linkHref="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software"
       linkLabel="Microsoft Teams"
       videoSrc="/teams-hero.mp4"
+      previewSrc="/teams-preview.png"
+      previewWidth={1920}
+      previewHeight={1152}
     />
   );
 }
