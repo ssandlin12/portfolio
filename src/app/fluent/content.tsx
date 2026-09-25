@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Figtree } from "next/font/google";
+import { useState } from "react";
 import {
   CaseProcess,
   type ProcessStep,
@@ -62,6 +63,8 @@ function MediaPlaceholder({ label }: { label: string }) {
 }
 
 export default function FluentContent() {
+  const [videoReady, setVideoReady] = useState(false);
+
   return (
     <main
       className={`${figtree.variable} min-h-screen flex flex-col relative`}
@@ -110,13 +113,33 @@ export default function FluentContent() {
           position: relative;
           min-width: 0;
           width: calc(100% - var(--preview-overhang));
+          aspect-ratio: 16 / 9;
           line-height: 0;
         }
+        .fluent-video-skeleton {
+          position: absolute;
+          inset: 0;
+          border-radius: clamp(18px, 2vw, 34px);
+          background: linear-gradient(105deg, #e6e6e6 20%, #f4f4f4 42%, #e6e6e6 64%);
+          background-size: 220% 100%;
+          animation: fluent-video-shimmer 1.6s linear infinite;
+        }
+        @keyframes fluent-video-shimmer {
+          from { background-position: 100% 0; }
+          to { background-position: -120% 0; }
+        }
         .fluent-video-card video {
+          position: relative;
+          z-index: 1;
           display: block;
           width: 100%;
           height: auto;
           border-radius: clamp(18px, 2vw, 34px);
+          opacity: 0;
+          transition: opacity 280ms ease-out;
+        }
+        .fluent-video-card.is-ready video {
+          opacity: 1;
         }
         .fluent-preview-image {
           position: absolute;
@@ -126,6 +149,7 @@ export default function FluentContent() {
           height: auto;
           border-radius: clamp(14px, 1.5vw, 24px);
           box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
+          z-index: 2;
         }
         .back-pill {
           display: inline-flex;
@@ -365,8 +389,9 @@ export default function FluentContent() {
           <h1 id="fluent-case-title" className="fluent-case-title">Microsoft Fluent</h1>
           <p className="fluent-case-subtitle">How do you build a Figma component that gets 1.2 million internal uses per day?</p>
         </div>
-        <div className="fluent-video-card" aria-label="Microsoft Fluent case study video">
-          <video autoPlay loop muted playsInline preload="auto">
+        <div className={`fluent-video-card${videoReady ? " is-ready" : ""}`} aria-label="Microsoft Fluent case study video">
+          <div className="fluent-video-skeleton" aria-hidden="true" />
+          <video autoPlay loop muted playsInline preload="auto" onLoadedData={() => setVideoReady(true)}>
             <source src="/fluent-hero.mp4" type="video/mp4" />
           </video>
           <Image
