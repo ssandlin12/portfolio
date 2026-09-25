@@ -64,7 +64,7 @@ function MediaPlaceholder({ label }: { label: string }) {
 export default function FluentContent() {
   return (
     <>
-      <div className="fluent-hero-video" aria-label="Microsoft Fluent case study video">
+      <div className={`${figtree.variable} fluent-hero-video`} aria-label="Microsoft Fluent case study video">
         <video autoPlay loop muted playsInline preload="auto">
           <source src="/fluent-hero.mp4" type="video/mp4" />
         </video>
@@ -74,6 +74,10 @@ export default function FluentContent() {
           </svg>
           Back
         </Link>
+        <h1 className="fluent-hero-title">
+          <span>Microsoft</span>
+          <strong>Fluent</strong>
+        </h1>
       </div>
       <main
       className={`${figtree.variable} min-h-screen flex flex-col relative`}
@@ -103,6 +107,33 @@ export default function FluentContent() {
           top: calc(clamp(24px, 6vh, 72px) - 24px);
           left: clamp(20px, 6vw, 120px);
           z-index: 1;
+        }
+        .fluent-hero-title {
+          position: absolute;
+          top: 49%;
+          left: 36%;
+          z-index: 1;
+          margin: 0;
+          color: #ffffff;
+          font-family: var(--font-figtree), system-ui, sans-serif;
+          font-weight: 300;
+          line-height: 0.84;
+          letter-spacing: -0.055em;
+          transform: translateY(-50%);
+          text-shadow: 0 2px 18px rgba(18, 24, 54, 0.16);
+        }
+        .fluent-hero-title span,
+        .fluent-hero-title strong {
+          display: block;
+          font-weight: 300;
+        }
+        .fluent-hero-title span {
+          margin-left: 0.04em;
+          font-size: clamp(40px, 6.2vw, 126px);
+        }
+        .fluent-hero-title strong {
+          margin-top: 0.08em;
+          font-size: clamp(70px, 10.4vw, 212px);
         }
         .back-pill {
           display: inline-flex;
@@ -293,37 +324,11 @@ export default function FluentContent() {
         @media (max-width: 560px) {
           .case-title-row { align-items: flex-start; flex-direction: column; }
           .case-tag { font-size: 14px; }
+          .fluent-hero-title { left: 28%; }
         }
       `}</style>
 
       <article className="case-article">
-        <div className="case-title-row">
-          <h1 className="case-title">Microsoft Fluent</h1>
-          <a
-            className="case-tag"
-            href="https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open Microsoft Fluent 2 Web in Figma Community"
-          >
-            Fluent 2 Web
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-              <polyline points="15 3 21 3 21 9" />
-              <line x1="10" y1="14" x2="21" y2="3" />
-            </svg>
-          </a>
-        </div>
         <p className="case-intro">
           Planning, brainstorming, structuring, building, delivering a complete
           rebuild for one of Fluent&rsquo;s most used components: the Avatar
