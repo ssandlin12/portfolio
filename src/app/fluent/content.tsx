@@ -82,9 +82,9 @@ export default function FluentContent() {
           justify-content: space-between;
         }
         .fluent-case-hero {
-          --preview-overhang: 48px;
+          --preview-overhang: 53px;
           width: 100%;
-          max-width: 768px;
+          max-width: 850px;
           margin: clamp(72px, 12vh, 160px) auto 0;
         }
         .fluent-case-heading {
@@ -121,7 +121,7 @@ export default function FluentContent() {
           position: absolute;
           bottom: -36px;
           right: calc(-1 * var(--preview-overhang));
-          width: clamp(150px, 18vw, 230px);
+          width: clamp(166px, 20vw, 255px);
           height: auto;
           border-radius: clamp(14px, 1.5vw, 24px);
           box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
@@ -144,7 +144,7 @@ export default function FluentContent() {
         .back-pill:hover { background: #e8e8e8; }
         .case-article {
           width: 100%;
-          max-width: 768px;
+          max-width: 850px;
           margin: clamp(88px, calc(7vh + 48px), 150px) auto 100px;
         }
         .case-title-row {
@@ -316,7 +316,7 @@ export default function FluentContent() {
           .case-title-row { align-items: flex-start; flex-direction: column; }
           .case-tag { font-size: 14px; }
           .fluent-case-hero {
-            --preview-overhang: 24px;
+            --preview-overhang: 27px;
             margin-top: 64px;
           }
           .fluent-preview-image {
@@ -390,7 +390,7 @@ export default function FluentContent() {
           src="/case-studies/fluent/avatar-hero-final.svg"
           width={960}
           height={492}
-          sizes="(max-width: 808px) calc(100vw - 40px), 768px"
+          sizes="(max-width: 890px) calc(100vw - 40px), 850px"
           unoptimized
           alt="Fluent Avatar component shown across image, initials, icon, size, and presence variants"
         />
@@ -413,7 +413,7 @@ export default function FluentContent() {
             src="/case-studies/fluent/avatar-presence-comparison-v2.png"
             width={926}
             height={238}
-            sizes="(max-width: 808px) calc(100vw - 40px), 768px"
+            sizes="(max-width: 890px) calc(100vw - 40px), 850px"
             alt="Microsoft Fluent Avatar component comparing success and error presence badge borders"
           />
           <p className="case-media-caption">
@@ -441,7 +441,7 @@ export default function FluentContent() {
             src="/case-studies/fluent/avatar-specification-v2.png"
             width={1682}
             height={1771}
-            sizes="(max-width: 808px) calc(100vw - 40px), 768px"
+            sizes="(max-width: 890px) calc(100vw - 40px), 850px"
             alt="Microsoft Fluent Avatar specification showing sizes, presence badges, activity rings, and appearance variants"
           />
         </CaseProcess>
@@ -452,7 +452,7 @@ export default function FluentContent() {
             src="/case-studies/fluent/avatar-frame-119.svg"
             width={800}
             height={586}
-            sizes="(max-width: 808px) calc(100vw - 40px), 768px"
+            sizes="(max-width: 890px) calc(100vw - 40px), 850px"
             unoptimized
             alt="Additional Microsoft Fluent Avatar component exploration"
           />
@@ -461,7 +461,7 @@ export default function FluentContent() {
             src="/case-studies/fluent/avatar-frame-122.svg"
             width={800}
             height={586}
-            sizes="(max-width: 808px) calc(100vw - 40px), 768px"
+            sizes="(max-width: 890px) calc(100vw - 40px), 850px"
             unoptimized
             alt="Additional Microsoft Fluent Avatar component specification"
           />

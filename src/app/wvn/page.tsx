@@ -136,7 +136,7 @@ export default function WvnCaseStudy() {
 
         .case-article {
           width: 100%;
-          max-width: 768px;
+          max-width: 850px;
           margin-inline: auto;
           margin-top: clamp(56px, calc(6vh + 32px), 120px);
           margin-bottom: 100px;
