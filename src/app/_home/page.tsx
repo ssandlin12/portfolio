@@ -404,7 +404,7 @@ export default function Home() {
             inset: 0,
             opacity: 0.18,
             filter: "blur(16px)",
-            transform: "translateY(36px) scaleX(0.94) scaleY(0.34)",
+            transform: "translateY(calc(66% + 52px)) scaleX(0.94) scaleY(0.34)",
             transformOrigin: "center",
           }}
         >
