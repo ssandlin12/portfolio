@@ -192,7 +192,7 @@ vec3 calcNormal(vec3 p, vec3 c1, vec3 c2, vec3 c3, vec3 n1, vec3 n2) {
   ));
 }
 
-// Moving blue-violet-pink field inspired by the supplied reference image.
+// Moving, low-saturation pastel field inspired by the supplied reference image.
 // Its flow coordinates are independent of the SDF, so the color keeps
 // drifting across the surface while the blob's shape evolves.
 vec3 swirlPalette(vec3 p) {
@@ -207,11 +207,11 @@ vec3 swirlPalette(vec3 p) {
                       + 0.11 * sin((q.x + q.y) * 6.0 + t * 1.8);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 violet     = vec3(0.30, 0.16, 0.62);
-  vec3 periwinkle = vec3(0.43, 0.50, 0.84);
-  vec3 lavender   = vec3(0.70, 0.56, 0.87);
-  vec3 rose       = vec3(0.93, 0.61, 0.78);
-  vec3 cyan       = vec3(0.36, 0.76, 0.94);
+  vec3 violet     = vec3(0.62, 0.58, 0.79);
+  vec3 periwinkle = vec3(0.69, 0.72, 0.88);
+  vec3 lavender   = vec3(0.81, 0.70, 0.86);
+  vec3 rose       = vec3(0.91, 0.76, 0.82);
+  vec3 cyan       = vec3(0.62, 0.84, 0.87);
 
   vec3 color = mix(violet, periwinkle, smoothstep(0.02, 0.36, field));
   color = mix(color, lavender, smoothstep(0.24, 0.58, field));
@@ -310,9 +310,9 @@ void main() {
     } else {
       vec3 base = swirlPalette(invRotY(wp));
       float halfL = NdotL * 0.5 + 0.5;
-      lit  = base * (0.68 + 0.32 * halfL);
-      lit += vec3(0.96, 0.94, 1.0) * pow(NdotH, specExp) * 0.24;
-      lit += vec3(0.88, 0.90, 1.0) * fuzz * 0.65;
+      lit  = base * (0.78 + 0.22 * halfL);
+      lit += vec3(1.0, 0.99, 1.0) * pow(NdotH, specExp) * 0.20;
+      lit += vec3(0.94, 0.96, 1.0) * fuzz * 0.48;
       lit *= (1.0 + g * u_grain);
       lit  = clamp(lit, 0.0, 1.0);
     }
@@ -601,11 +601,11 @@ vec3 swirlPalette(vec3 p) {
                       + 0.11 * sin((q.x + q.y) * 6.0 + t * 1.8);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 violet     = vec3(0.30, 0.16, 0.62);
-  vec3 periwinkle = vec3(0.43, 0.50, 0.84);
-  vec3 lavender   = vec3(0.70, 0.56, 0.87);
-  vec3 rose       = vec3(0.93, 0.61, 0.78);
-  vec3 cyan       = vec3(0.36, 0.76, 0.94);
+  vec3 violet     = vec3(0.62, 0.58, 0.79);
+  vec3 periwinkle = vec3(0.69, 0.72, 0.88);
+  vec3 lavender   = vec3(0.81, 0.70, 0.86);
+  vec3 rose       = vec3(0.91, 0.76, 0.82);
+  vec3 cyan       = vec3(0.62, 0.84, 0.87);
 
   vec3 color = mix(violet, periwinkle, smoothstep(0.02, 0.36, field));
   color = mix(color, lavender, smoothstep(0.24, 0.58, field));
@@ -671,9 +671,9 @@ void main() {
     } else {
       vec3 base = swirlPalette(wp);
       float halfL = NdotL * 0.5 + 0.5;
-      lit  = base * (0.68 + 0.32 * halfL);
-      lit += vec3(0.96, 0.94, 1.0) * pow(NdotH, specExp) * 0.24;
-      lit += vec3(0.88, 0.90, 1.0) * fuzz * 0.65;
+      lit  = base * (0.78 + 0.22 * halfL);
+      lit += vec3(1.0, 0.99, 1.0) * pow(NdotH, specExp) * 0.20;
+      lit += vec3(0.94, 0.96, 1.0) * fuzz * 0.48;
     }
 
     lit = clamp(lit, 0.0, 1.0);
