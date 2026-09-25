@@ -136,6 +136,15 @@ export default function FluentContent({
           aspect-ratio: 16 / 9;
           line-height: 0;
         }
+        .fluent-video-card::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 3;
+          pointer-events: none;
+          border: 1px solid rgba(41, 41, 41, 0.14);
+          border-radius: clamp(18px, 2vw, 34px);
+        }
         .fluent-video-skeleton {
           position: absolute;
           inset: 0;
