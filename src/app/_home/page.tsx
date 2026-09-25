@@ -423,11 +423,11 @@ export default function Home() {
         <div
           style={{
             position: "absolute",
-            top: "calc(100% - 112px)",
+            top: "calc(100% - 128px)",
             left: 0,
             width: "100%",
             height: "100%",
-            opacity: 0.14,
+            opacity: 0.1,
             filter: "brightness(0) blur(10px)",
             transform: "perspective(720px) rotateX(72deg) scaleX(0.94)",
             transformOrigin: "top center",
