@@ -288,7 +288,7 @@ export default function FluentContent() {
         }}
       >
         <Link href="/" aria-label="Anna Sandlin — Home" style={{ justifySelf: "start", lineHeight: 0 }}>
-          <img src="/anna-sandlin-logo.svg" alt="" width="28" height="28" />
+          <img src="/anna-sandlin-logo.svg" alt="" width="32.2" height="32.2" />
         </Link>
         <nav className="flex" style={{ justifySelf: "end", columnGap: "clamp(20px, 4vw, 40px)" }}>
           <a href="https://drive.google.com/file/d/1Vc50sGAOZPn380b65T648lka6LVHIrct/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="nav-link" style={navItem}>Resume</a>

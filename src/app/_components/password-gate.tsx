@@ -159,7 +159,7 @@ export default function PasswordGate({ title }: Props) {
         }}
       >
         <Link href="/" aria-label="Anna Sandlin — Home" style={{ justifySelf: "start", lineHeight: 0 }}>
-          <img src="/anna-sandlin-logo.svg" alt="" width="28" height="28" />
+          <img src="/anna-sandlin-logo.svg" alt="" width="32.2" height="32.2" />
         </Link>
         <nav
           className="flex"
