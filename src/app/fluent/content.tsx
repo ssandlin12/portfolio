@@ -111,7 +111,7 @@ export default function FluentContent({
           margin: clamp(72px, 12vh, 160px) auto 0;
         }
         .fluent-case-heading {
-          margin: 0 0 32px;
+          margin: 0 0 48px;
           color: ${INK_DARK};
         }
         .fluent-case-title {
