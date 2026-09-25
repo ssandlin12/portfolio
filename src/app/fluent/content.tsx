@@ -8,6 +8,7 @@ import {
   CaseProcess,
   type ProcessStep,
 } from "../_components/case-process";
+import { BackIcon, ExternalLinkIcon } from "../_components/fluent-icons";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -384,9 +385,7 @@ export default function FluentContent({
 
       <header className="fluent-page-header">
         <Link href="/" className="back-pill" aria-label="Back to home">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M10 4L5 8L10 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <BackIcon />
           Back
         </Link>
         <a
@@ -397,21 +396,7 @@ export default function FluentContent({
           aria-label={`Open ${linkLabel}`}
         >
           {linkLabel}
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-            <polyline points="15 3 21 3 21 9" />
-            <line x1="10" y1="14" x2="21" y2="3" />
-          </svg>
+          <ExternalLinkIcon />
         </a>
       </header>
 

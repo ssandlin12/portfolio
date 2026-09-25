@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { Figtree } from "next/font/google";
 import { useActionState, useEffect, type CSSProperties } from "react";
 import { submitCasePassword } from "../_actions/case-access";
+import { BackIcon } from "./fluent-icons";
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -159,9 +160,7 @@ export default function PasswordGate({ title }: Props) {
         }}
       >
         <Link href="/" className="back-pill" aria-label="Back to home" style={{ justifySelf: "start" }}>
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M10 4L5 8L10 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <BackIcon />
           Back
         </Link>
         <nav
