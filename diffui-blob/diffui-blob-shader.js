@@ -206,8 +206,8 @@ vec3 swirlPalette(vec3 p) {
                       + 0.06 * sin(q.y * 2.0 - q.x * 0.7 - t * 0.8);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 coolShadow = vec3(0.77, 0.76, 0.93);
-  vec3 coolLight  = vec3(0.92, 0.92, 0.98);
+  vec3 coolShadow = vec3(0.70, 0.69, 0.89);
+  vec3 coolLight  = vec3(0.87, 0.86, 0.96);
   return mix(coolShadow, coolLight, smoothstep(0.25, 0.75, field));
 }
 
@@ -591,8 +591,8 @@ vec3 swirlPalette(vec3 p) {
                       + 0.06 * sin(q.y * 2.0 - q.x * 0.7 - t * 0.8);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 coolShadow = vec3(0.77, 0.76, 0.93);
-  vec3 coolLight  = vec3(0.92, 0.92, 0.98);
+  vec3 coolShadow = vec3(0.70, 0.69, 0.89);
+  vec3 coolLight  = vec3(0.87, 0.86, 0.96);
   return mix(coolShadow, coolLight, smoothstep(0.25, 0.75, field));
 }
 
