@@ -402,19 +402,8 @@ export default function Home() {
           style={{
             position: "absolute",
             inset: 0,
-            opacity: 0.18,
-            filter: "blur(16px)",
-            transform: "translateY(calc(66% + 52px)) scaleX(0.94) scaleY(0.34)",
-            transformOrigin: "center",
-          }}
-        >
-          <Blob morph={morph} morphTarget={morphTarget} colorMode={0} />
-        </div>
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
             transform: "translateY(-36px)",
+            filter: "drop-shadow(0 72px 16px rgba(33, 43, 112, 0.20))",
           }}
         >
           <Blob morph={morph} morphTarget={morphTarget} />
