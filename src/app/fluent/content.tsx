@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Figtree } from "next/font/google";
-import { type CSSProperties } from "react";
 import {
   CaseProcess,
   type ProcessStep,
@@ -17,15 +16,6 @@ const figtree = Figtree({
 });
 
 const INK_DARK = "#292929";
-
-const navItem: CSSProperties = {
-  fontSize: 15,
-  letterSpacing: "0.01em",
-  fontWeight: 500,
-  color: "rgba(41,41,41,0.5)",
-  textDecoration: "none",
-  transition: "color 160ms ease-out",
-};
 
 const PROCESS: readonly ProcessStep[] = [
   {
@@ -73,7 +63,13 @@ function MediaPlaceholder({ label }: { label: string }) {
 
 export default function FluentContent() {
   return (
-    <main
+    <>
+      <div className="fluent-hero-video" aria-label="Microsoft Fluent case study video">
+        <video autoPlay loop muted playsInline preload="auto">
+          <source src="/fluent-hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <main
       className={`${figtree.variable} min-h-screen flex flex-col relative`}
       style={{
         fontFamily: "var(--font-figtree), system-ui, sans-serif",
@@ -86,7 +82,15 @@ export default function FluentContent() {
       }}
     >
       <style>{`
-        .nav-link:hover { color: ${INK_DARK} !important; }
+        .fluent-hero-video {
+          width: 100%;
+          line-height: 0;
+        }
+        .fluent-hero-video video {
+          display: block;
+          width: 100%;
+          height: auto;
+        }
         .back-pill {
           display: inline-flex;
           align-items: center;
@@ -279,24 +283,13 @@ export default function FluentContent() {
         }
       `}</style>
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          alignItems: "center",
-          columnGap: "clamp(20px, 4vw, 48px)",
-        }}
-      >
-        <Link href="/" className="back-pill" aria-label="Back to home" style={{ justifySelf: "start" }}>
+      <div>
+        <Link href="/" className="back-pill" aria-label="Back to home">
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M10 4L5 8L10 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
           Back
         </Link>
-        <nav className="flex" style={{ justifySelf: "end", columnGap: "clamp(20px, 4vw, 40px)" }}>
-          <a href="https://drive.google.com/file/d/1Vc50sGAOZPn380b65T648lka6LVHIrct/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="nav-link" style={navItem}>Resume</a>
-          <a href="https://www.linkedin.com/in/anna-sandlin/" target="_blank" rel="noopener noreferrer" className="nav-link" style={navItem}>LinkedIn</a>
-        </nav>
       </div>
 
       <article className="case-article">
@@ -435,6 +428,7 @@ export default function FluentContent() {
           <p className="case-next-body">Continue to the Microsoft Teams case study.</p>
         </Link>
       </article>
-    </main>
+      </main>
+    </>
   );
 }
