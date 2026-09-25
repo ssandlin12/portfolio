@@ -68,6 +68,12 @@ export default function FluentContent() {
         <video autoPlay loop muted playsInline preload="auto">
           <source src="/fluent-hero.mp4" type="video/mp4" />
         </video>
+        <Link href="/" className="back-pill fluent-hero-back" aria-label="Back to home">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 4L5 8L10 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Back
+        </Link>
       </div>
       <main
       className={`${figtree.variable} min-h-screen flex flex-col relative`}
@@ -83,6 +89,7 @@ export default function FluentContent() {
     >
       <style>{`
         .fluent-hero-video {
+          position: relative;
           width: 100%;
           line-height: 0;
         }
@@ -90,6 +97,12 @@ export default function FluentContent() {
           display: block;
           width: 100%;
           height: auto;
+        }
+        .fluent-hero-back {
+          position: absolute;
+          top: calc(clamp(24px, 6vh, 72px) - 24px);
+          left: clamp(20px, 6vw, 120px);
+          z-index: 1;
         }
         .back-pill {
           display: inline-flex;
@@ -282,15 +295,6 @@ export default function FluentContent() {
           .case-tag { font-size: 14px; }
         }
       `}</style>
-
-      <div>
-        <Link href="/" className="back-pill" aria-label="Back to home">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M10 4L5 8L10 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          Back
-        </Link>
-      </div>
 
       <article className="case-article">
         <div className="case-title-row">
