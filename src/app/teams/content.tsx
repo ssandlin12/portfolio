@@ -92,8 +92,11 @@ export default function TeamsContent() {
           columnGap: "clamp(20px, 4vw, 48px)",
         }}
       >
-        <Link href="/" aria-label="Anna Sandlin — Home" style={{ justifySelf: "start", lineHeight: 0 }}>
-          <img src="/anna-sandlin-logo.svg" alt="" width="32.2" height="32.2" />
+        <Link href="/" className="back-pill" aria-label="Back to home" style={{ justifySelf: "start" }}>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M10 4L5 8L10 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          Back
         </Link>
         <nav
           className="flex"
