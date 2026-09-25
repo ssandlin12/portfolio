@@ -109,7 +109,6 @@ export default function FluentContent() {
           position: relative;
           min-width: 0;
           width: calc(100% - var(--preview-overhang));
-          margin-left: var(--preview-overhang);
           line-height: 0;
         }
         .fluent-video-card video {
@@ -121,7 +120,7 @@ export default function FluentContent() {
         .fluent-preview-image {
           position: absolute;
           bottom: -36px;
-          left: calc(-1 * var(--preview-overhang));
+          right: calc(-1 * var(--preview-overhang));
           width: clamp(150px, 18vw, 230px);
           height: auto;
           border-radius: clamp(14px, 1.5vw, 24px);
