@@ -450,28 +450,11 @@ export default function FluentContent({
       </section>
 
       <article className="case-article">
-        <p className="case-intro">
-          Planning, brainstorming, structuring, building, delivering a complete
-          rebuild for one of Fluent&rsquo;s most used components: the Avatar
-          component.
-        </p>
-        <video
-          className="case-media-image"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-label="Fluent Avatar component documentation"
-        >
-          <source src="/case-studies/fluent/avatar-documentation.mp4" type="video/mp4" />
-        </video>
-        <section className="case-section">
+        <section>
           <p className="case-feature-kicker">The problem</p>
           <h2 className="case-feature-title">
-            “How do you structure a Figma component that gets
-            <br />
-            1.2 million uses per day?”
+            “Too much designers&rsquo; time wasted on matching Avatar stroke to
+            background surface.”
           </h2>
           <p className="case-feature-intro">
             The Fluent team reached out to me as one of the contributors to
@@ -500,6 +483,17 @@ export default function FluentContent({
             saving lots of designers&rsquo; time across the Microsoft work.
           </p>
         </section>
+        <video
+          className="case-media-image"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-label="Fluent Avatar component documentation"
+        >
+          <source src="/case-studies/fluent/avatar-documentation.mp4" type="video/mp4" />
+        </video>
 
         <CaseProcess
           id="fluent-process-title"
