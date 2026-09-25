@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 // Skipping the bundled custom-element wrapper — in React we own the
 // lifecycle, so we drive the raw renderer directly.
 import {
@@ -20,6 +20,7 @@ import { MEDIUM_SVG } from "./medium-svg";
 import { bakeSdfFromSvg } from "./sdf-bake";
 
 type BlobProps = {
+  canvasRef?: RefObject<HTMLCanvasElement | null>;
   /** Cheaper single-metaball shader vs. the heavier 5-metaball one. */
   simple?: boolean;
   /** 0 onyx · 1 BLUE · 2 DARK (vertical near-white→black fade). */
@@ -42,6 +43,7 @@ type BlobProps = {
 };
 
 export default function Blob({
+  canvasRef,
   simple = true,
   colorMode = 2,
   speed = 0.30,
@@ -54,7 +56,8 @@ export default function Blob({
   morph = 0,
   morphTarget = 0,
 }: BlobProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const internalCanvasRef = useRef<HTMLCanvasElement>(null);
+  const activeCanvasRef = canvasRef ?? internalCanvasRef;
   // Per-frame params live in a ref so prop changes don't re-init the
   // renderer (only `simple` / `energy` / `grain` would need that).
   const paramsRef = useRef({ fuzz, rim, smooth, rotateRad, colorMode, morphTarget });
@@ -75,7 +78,7 @@ export default function Blob({
   const angleAcc = useRef(0);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = activeCanvasRef.current;
     if (!canvas) return;
 
     // Renderer lives in a let so it can be rebuilt on webglcontextrestored
@@ -243,7 +246,7 @@ export default function Blob({
 
   return (
     <canvas
-      ref={canvasRef}
+      ref={activeCanvasRef}
       style={{ width: "100%", height: "100%", display: "block" }}
       aria-hidden
     />

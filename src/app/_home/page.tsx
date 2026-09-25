@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Figtree } from "next/font/google";
 import Link from "next/link";
 import Blob from "./blob";
@@ -66,6 +66,28 @@ export default function Home() {
   // snap (no smooth interpolation between two non-blob iso-surfaces).
   const [hoveredTile, setHoveredTile] = useState<number | null>(null);
   const [activeTile, setActiveTile] = useState<number | null>(null);
+  const blobCanvasRef = useRef<HTMLCanvasElement>(null);
+  const shadowCanvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    let frame = 0;
+    const copyBlobToShadow = () => {
+      const source = blobCanvasRef.current;
+      const shadow = shadowCanvasRef.current;
+      const context = shadow?.getContext("2d");
+      if (source && shadow && context) {
+        if (shadow.width !== source.width || shadow.height !== source.height) {
+          shadow.width = source.width;
+          shadow.height = source.height;
+        }
+        context.clearRect(0, 0, shadow.width, shadow.height);
+        context.drawImage(source, 0, 0);
+      }
+      frame = requestAnimationFrame(copyBlobToShadow);
+    };
+    frame = requestAnimationFrame(copyBlobToShadow);
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     if (hoveredTile === activeTile) return;
@@ -401,12 +423,35 @@ export default function Home() {
         <div
           style={{
             position: "absolute",
-            inset: 0,
-            transform: "translateY(-36px)",
-            filter: "drop-shadow(0 72px 16px rgba(33, 43, 112, 0.20))",
+            top: "calc(100% + 36px)",
+            left: 0,
+            width: "100%",
+            height: "100%",
+            opacity: 0.18,
+            filter: "brightness(0) blur(10px)",
+            transform: "perspective(720px) rotateX(72deg) scaleX(0.94)",
+            transformOrigin: "top center",
           }}
         >
-          <Blob morph={morph} morphTarget={morphTarget} />
+          <canvas
+            ref={shadowCanvasRef}
+            aria-hidden
+            style={{ width: "100%", height: "100%", display: "block" }}
+          />
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 1,
+            transform: "translateY(-36px)",
+          }}
+        >
+          <Blob
+            canvasRef={blobCanvasRef}
+            morph={morph}
+            morphTarget={morphTarget}
+          />
         </div>
       </div>
 
