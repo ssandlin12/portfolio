@@ -61,7 +61,7 @@ export default function TeamsContent() {
 
         .case-article {
           width: 100%;
-          max-width: 850px;
+          max-width: 900px;
           margin-inline: auto;
           margin-top: clamp(56px, calc(6vh + 32px), 120px);
           margin-bottom: 24px;

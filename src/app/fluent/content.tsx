@@ -82,9 +82,9 @@ export default function FluentContent() {
           justify-content: space-between;
         }
         .fluent-case-hero {
-          --preview-overhang: 53px;
+          --preview-overhang: 56px;
           width: 100%;
-          max-width: 850px;
+          max-width: 900px;
           margin: clamp(72px, 12vh, 160px) auto 0;
         }
         .fluent-case-heading {
@@ -100,7 +100,8 @@ export default function FluentContent() {
         }
         .fluent-case-subtitle {
           margin: 10px 0 0;
-          font-size: clamp(21px, 1.7vw, 30px);
+          color: rgba(41, 41, 41, 0.7);
+          font-size: clamp(19px, 1.5vw, 27px);
           font-weight: 300;
           line-height: 1.15;
           letter-spacing: -0.035em;
@@ -121,7 +122,7 @@ export default function FluentContent() {
           position: absolute;
           bottom: -36px;
           right: calc(-1 * var(--preview-overhang));
-          width: clamp(166px, 20vw, 255px);
+          width: clamp(176px, 21vw, 270px);
           height: auto;
           border-radius: clamp(14px, 1.5vw, 24px);
           box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
@@ -144,7 +145,7 @@ export default function FluentContent() {
         .back-pill:hover { background: #e8e8e8; }
         .case-article {
           width: 100%;
-          max-width: 850px;
+          max-width: 900px;
           margin: clamp(88px, calc(7vh + 48px), 150px) auto 100px;
         }
         .case-title-row {
@@ -316,7 +317,7 @@ export default function FluentContent() {
           .case-title-row { align-items: flex-start; flex-direction: column; }
           .case-tag { font-size: 14px; }
           .fluent-case-hero {
-            --preview-overhang: 27px;
+            --preview-overhang: 28px;
             margin-top: 64px;
           }
           .fluent-preview-image {
@@ -362,7 +363,7 @@ export default function FluentContent() {
       <section className="fluent-case-hero" aria-labelledby="fluent-case-title">
         <div className="fluent-case-heading">
           <h1 id="fluent-case-title" className="fluent-case-title">Microsoft Fluent</h1>
-          <p className="fluent-case-subtitle">&ldquo;Avatar&rdquo; Case Study</p>
+          <p className="fluent-case-subtitle">Case Study: Avatar component</p>
         </div>
         <div className="fluent-video-card" aria-label="Microsoft Fluent case study video">
           <video autoPlay loop muted playsInline preload="auto">
@@ -390,7 +391,7 @@ export default function FluentContent() {
           src="/case-studies/fluent/avatar-hero-final.svg"
           width={960}
           height={492}
-          sizes="(max-width: 890px) calc(100vw - 40px), 850px"
+          sizes="(max-width: 940px) calc(100vw - 40px), 900px"
           unoptimized
           alt="Fluent Avatar component shown across image, initials, icon, size, and presence variants"
         />
@@ -413,7 +414,7 @@ export default function FluentContent() {
             src="/case-studies/fluent/avatar-presence-comparison-v2.png"
             width={926}
             height={238}
-            sizes="(max-width: 890px) calc(100vw - 40px), 850px"
+            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
             alt="Microsoft Fluent Avatar component comparing success and error presence badge borders"
           />
           <p className="case-media-caption">
@@ -441,7 +442,7 @@ export default function FluentContent() {
             src="/case-studies/fluent/avatar-specification-v2.png"
             width={1682}
             height={1771}
-            sizes="(max-width: 890px) calc(100vw - 40px), 850px"
+            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
             alt="Microsoft Fluent Avatar specification showing sizes, presence badges, activity rings, and appearance variants"
           />
         </CaseProcess>
@@ -452,7 +453,7 @@ export default function FluentContent() {
             src="/case-studies/fluent/avatar-frame-119.svg"
             width={800}
             height={586}
-            sizes="(max-width: 890px) calc(100vw - 40px), 850px"
+            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
             unoptimized
             alt="Additional Microsoft Fluent Avatar component exploration"
           />
@@ -461,7 +462,7 @@ export default function FluentContent() {
             src="/case-studies/fluent/avatar-frame-122.svg"
             width={800}
             height={586}
-            sizes="(max-width: 890px) calc(100vw - 40px), 850px"
+            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
             unoptimized
             alt="Additional Microsoft Fluent Avatar component specification"
           />
