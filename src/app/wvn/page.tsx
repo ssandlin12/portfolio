@@ -60,59 +60,6 @@ const SECTIONS: Section[] = [
   },
 ];
 
-const PROCESS = [
-  {
-    number: "01",
-    eyebrow: "Discover",
-    heading: "Reframing the problem",
-    body:
-      "I began by auditing the site as both an editorial archive and a first-time visitor experience. Impression testing with people unfamiliar with WVN exposed the central disconnect: they understood the mission, but did not immediately realize there were films to watch. Conversations and usability sessions with current users confirmed that even motivated viewers had trouble finding the library.",
-    methods: ["Content audit", "Impression testing", "User interviews"],
-    takeaway:
-      "The opportunity was bigger than refreshing a nonprofit website. WVN needed to behave like a destination for watching films.",
-  },
-  {
-    number: "02",
-    eyebrow: "Define",
-    heading: "Understanding why people came",
-    body:
-      "I synthesized the research into lightweight personas, jobs to be done, and journey maps. The work separated three overlapping needs: viewers looking for a film, supporters learning about the mission, and filmmakers looking for a platform. Mapping their paths made it clear that the existing blog-first structure treated every audience the same and asked people to understand the organization before they could engage with its work.",
-    methods: ["Personas", "JTBD", "Journey mapping"],
-    takeaway:
-      "The primary job became: help me quickly discover a film that feels relevant, understand why it matters, and start watching.",
-  },
-  {
-    number: "03",
-    eyebrow: "Structure",
-    heading: "Making the film library the product",
-    body:
-      "I rebuilt the sitemap around discovery instead of organizational language. Films moved out from under “What We Do” and into a top-level viewing experience, while programs, impact, and ways to support WVN remained available without competing with the main task. I then translated that structure into task flows and low-fidelity wireframes for browsing, evaluating, and starting a film.",
-    methods: ["Sitemapping", "Task flows", "Wireframing"],
-    takeaway:
-      "Every route needed to create another useful way into the collection—not another dead end in the organization’s story.",
-  },
-  {
-    number: "04",
-    eyebrow: "Iterate",
-    heading: "Testing the shift to streaming",
-    body:
-      "Across multiple rounds, I tested navigation language, content hierarchy, film-card density, and the prominence of “Watch Now.” Early concepts still read like a redesigned publication, so I pushed the imagery forward, reduced explanatory copy, and introduced familiar streaming patterns. Follow-up usability testing with current users helped refine browsing cues and confirm that the library was now visible from the first screen.",
-    methods: ["Prototype testing", "Usability testing", "Visual iteration"],
-    takeaway:
-      "The strongest direction let the films explain the value of WVN before the interface explained the organization.",
-  },
-  {
-    number: "05",
-    eyebrow: "Unify",
-    heading: "Turning the direction into a system",
-    body:
-      "The final layer brought the experience and brand together. I developed a flexible visual system for film stills, covers, metadata, calls to action, and editorial content, then carried it across responsive page templates. The redesigned logo gave WVN a recognizable mark that could live equally well on the platform, campaign materials, and film programming.",
-    methods: ["UI system", "Responsive design", "Brand identity"],
-    takeaway:
-      "The result was not a streaming-style homepage applied to a blog, but a coherent platform designed around the collection.",
-  },
-] as const;
-
 function FallbackVideo({
   videoSrc,
   imageSrc,
@@ -611,41 +558,6 @@ export default function WvnCaseStudy() {
               </svg>
             </button>
           </ShimmerVideo>
-        </section>
-
-        <section className="process" aria-labelledby="process-title">
-          <p className="process-kicker">The process</p>
-          <h2 id="process-title" className="process-title">
-            From content archive to viewing experience
-          </h2>
-          <p className="process-intro">
-            The final direction emerged through layered research, information
-            architecture, prototyping, and testing. Each round moved the
-            experience further away from a blog and closer to a platform built
-            around film discovery.
-          </p>
-          <div className="process-list">
-            {PROCESS.map((step) => (
-              <article className="process-step" key={step.number}>
-                <div className="process-number" aria-hidden="true">
-                  {step.number}
-                </div>
-                <div>
-                  <p className="process-eyebrow">{step.eyebrow}</p>
-                  <h3 className="process-heading">{step.heading}</h3>
-                  <p className="process-body">{step.body}</p>
-                  <div className="process-methods" aria-label="Methods used">
-                    {step.methods.map((method) => (
-                      <span className="process-method" key={method}>
-                        {method}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="process-takeaway">{step.takeaway}</p>
-                </div>
-              </article>
-            ))}
-          </div>
         </section>
 
         <section className="case-section">
