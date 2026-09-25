@@ -363,7 +363,7 @@ export default function FluentContent() {
       <section className="fluent-case-hero" aria-labelledby="fluent-case-title">
         <div className="fluent-case-heading">
           <h1 id="fluent-case-title" className="fluent-case-title">Microsoft Fluent</h1>
-          <p className="fluent-case-subtitle">Case Study: Avatar component</p>
+          <p className="fluent-case-subtitle">How do you build a Figma component that gets 1.2 million internal uses per day?</p>
         </div>
         <div className="fluent-video-card" aria-label="Microsoft Fluent case study video">
           <video autoPlay loop muted playsInline preload="auto">
