@@ -46,10 +46,7 @@ const navItem: CSSProperties = {
 // Tiles without an href are "disabled" — greyed out and non-interactive.
 const tiles: Array<{ title: string; href?: string; comingSoon?: true }> = [
   { title: "Microsoft\nFluent", href: "/fluent" },
-  {
-    title: "Microsoft Teams",
-    href: "https://www.figma.com/proto/R6gM5bMmaOwrJYibX4wgso/Basic-Screens-Recap?node-id=1-24716&scaling=scale-down&content-scaling=fixed&t=tEoBBXMvRJGGgNxb-1",
-  },
+  { title: "Microsoft Teams", href: "/teams" },
   { title: "Women's Voices Now", href: "/wvn" },
   { title: "Fitably", href: "/fitably" },
   {

@@ -62,7 +62,19 @@ function MediaPlaceholder({ label }: { label: string }) {
   );
 }
 
-export default function FluentContent() {
+type CaseStudyProps = {
+  title?: string;
+  subtitle?: string;
+  linkHref?: string;
+  linkLabel?: string;
+};
+
+export default function FluentContent({
+  title = "Microsoft Fluent",
+  subtitle = "How do you build a Figma component that gets 1.2 million internal uses per day?",
+  linkHref = "https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web",
+  linkLabel = "Fluent 2 Web",
+}: CaseStudyProps) {
   const [videoReady, setVideoReady] = useState(false);
 
   return (
@@ -360,12 +372,12 @@ export default function FluentContent() {
         </Link>
         <a
           className="back-pill"
-          href="https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web"
+          href={linkHref}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Open Microsoft Fluent 2 Web in Figma Community"
+          aria-label={`Open ${linkLabel}`}
         >
-          Fluent 2 Web
+          {linkLabel}
           <svg
             width="14"
             height="14"
@@ -386,8 +398,8 @@ export default function FluentContent() {
 
       <section className="fluent-case-hero" aria-labelledby="fluent-case-title">
         <div className="fluent-case-heading">
-          <h1 id="fluent-case-title" className="fluent-case-title">Microsoft Fluent</h1>
-          <p className="fluent-case-subtitle">How do you build a Figma component that gets 1.2 million internal uses per day?</p>
+          <h1 id="fluent-case-title" className="fluent-case-title">{title}</h1>
+          <p className="fluent-case-subtitle">{subtitle}</p>
         </div>
         <div className={`fluent-video-card${videoReady ? " is-ready" : ""}`} aria-label="Microsoft Fluent case study video">
           <div className="fluent-video-skeleton" aria-hidden="true" />
