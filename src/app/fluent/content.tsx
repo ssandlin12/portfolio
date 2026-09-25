@@ -108,7 +108,7 @@ export default function FluentContent({
           --preview-overhang: 56px;
           width: 100%;
           max-width: 900px;
-          margin: clamp(72px, 12vh, 160px) auto 0;
+          margin: clamp(56px, calc(6vh + 32px), 120px) auto 0;
         }
         .fluent-case-heading {
           margin: 0 0 48px;
@@ -373,7 +373,7 @@ export default function FluentContent({
           .case-tag { font-size: 14px; }
           .fluent-case-hero {
             --preview-overhang: 28px;
-            margin-top: 64px;
+            margin-top: 56px;
           }
           .fluent-preview-image {
             bottom: -24px;
