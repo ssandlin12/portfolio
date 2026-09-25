@@ -75,7 +75,7 @@ type CaseStudyProps = {
 
 export default function FluentContent({
   title = "Microsoft Fluent",
-  subtitle = "How do you structure a Figma component that gets 1.2 million internal uses per day?",
+  subtitle = "“How do you structure a Figma component that gets 1.2 million internal uses per day?”",
   linkHref = "https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web",
   linkLabel = "Fluent 2 Web",
   videoSrc = "/fluent-hero.mp4",
@@ -443,9 +443,9 @@ export default function FluentContent({
         <section className="case-section">
           <p className="case-feature-kicker">The problem</p>
           <h2 className="case-feature-title">
-            How do you structure a Figma component that gets
+            “How do you structure a Figma component that gets
             <br />
-            1.2 million uses per day?
+            1.2 million uses per day?”
           </h2>
           <p className="case-feature-intro">
             The Fluent team reached out to me as one of the contributors to
