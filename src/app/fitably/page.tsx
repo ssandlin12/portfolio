@@ -120,6 +120,7 @@ export default function FitablyCaseStudy() {
     >
       <style>{`
         .nav-link:hover { color: ${INK_DARK} !important; }
+        .case-title-row .case-link-pill { display: none; }
 
         /* Pill-style back button — matches .case-link-pill (no shadow, ececec/e3e3e3). */
         .back-pill {
@@ -331,32 +332,14 @@ export default function FitablyCaseStudy() {
           </svg>
           Back
         </Link>
-        <nav
-          className="flex"
-          style={{
-            justifySelf: "end",
-            columnGap: "clamp(20px, 4vw, 40px)",
-          }}
-        >
-          <a
-            href="https://drive.google.com/file/d/1Vc50sGAOZPn380b65T648lka6LVHIrct/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-link"
-            style={navItem}
-          >
-            Resume
-          </a>
-          <a
-            href="https://www.linkedin.com/in/anna-sandlin/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="nav-link"
-            style={navItem}
-          >
-            LinkedIn
-          </a>
-        </nav>
+        <a href="https://fitably.com" target="_blank" rel="noopener noreferrer" className="back-pill" style={{ justifySelf: "end" }} aria-label="Visit fitably.com">
+          fitably.com
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1 2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+        </a>
       </div>
 
       <article className="case-article">
