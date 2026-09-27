@@ -192,7 +192,7 @@ vec3 calcNormal(vec3 p, vec3 c1, vec3 c2, vec3 c3, vec3 n1, vec3 n2) {
   ));
 }
 
-// Moving, low-saturation pastel field inspired by the supplied reference image.
+// Moving blue field inspired by the supplied reference image.
 // Its flow coordinates are independent of the SDF, so the color keeps
 // drifting across the surface while the blob's shape evolves.
 vec3 swirlPalette(vec3 p) {
@@ -208,8 +208,8 @@ vec3 swirlPalette(vec3 p) {
                       + 0.05 * sin(q.x * 1.4 + q.y * 0.8 + t);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 coolShadow = vec3(0.19, 0.26, 0.72);
-  vec3 coolLight  = vec3(0.89, 0.92, 0.99);
+  vec3 coolShadow = vec3(0.16, 0.23, 0.78);
+  vec3 coolLight  = vec3(0.86, 0.90, 1.00);
   return mix(coolShadow, coolLight, smoothstep(0.14, 0.86, field));
 }
 
@@ -595,8 +595,8 @@ vec3 swirlPalette(vec3 p) {
                       + 0.05 * sin(q.x * 1.4 + q.y * 0.8 + t);
   field = clamp(field, 0.0, 1.0);
 
-  vec3 coolShadow = vec3(0.19, 0.26, 0.72);
-  vec3 coolLight  = vec3(0.89, 0.92, 0.99);
+  vec3 coolShadow = vec3(0.16, 0.23, 0.78);
+  vec3 coolLight  = vec3(0.86, 0.90, 1.00);
   return mix(coolShadow, coolLight, smoothstep(0.14, 0.86, field));
 }
 
