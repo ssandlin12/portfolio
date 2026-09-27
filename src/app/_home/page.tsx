@@ -10,8 +10,8 @@ import Blob from "./blob";
 const TILE_MORPH_TARGET: Record<number, number> = {
   0: 0, // Microsoft Fluent → MS 4-square mark
   1: 1, // Microsoft Teams → Teams (SDF texture)
-  2: 3, // Women's Voices Now → "W" letterform (SDF texture)
-  3: 2, // Fitably → radial burst mark (SDF texture)
+  2: 2, // Athenahealth → radial burst mark (SDF texture)
+  3: 3, // Women's Voices Now → "W" letterform (SDF texture)
   4: 5, // Medium → Medium logo (SDF texture)
 };
 
@@ -47,8 +47,8 @@ const navItem: CSSProperties = {
 const tiles: Array<{ title: string; href?: string; comingSoon?: true }> = [
   { title: "Microsoft\nFluent", href: "/fluent" },
   { title: "Microsoft Teams", href: "/teams" },
+  { title: "Athenahealth", href: "/athenahealth" },
   { title: "Women's Voices Now", href: "/wvn" },
-  { title: "Fitably", href: "/fitably" },
   {
     title: "Medium",
     href: "https://medium.com/design-bootcamp/designing-amidst-the-acceleration-towards-ai-singularity-ea35a0429470",

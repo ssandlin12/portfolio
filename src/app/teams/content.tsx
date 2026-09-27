@@ -14,6 +14,7 @@ export default function TeamsContent() {
       previewWidth={1920}
       previewHeight={1152}
       descriptors={["Design systems", "Basic screens", "Templates"]}
+      study="teams"
     />
   );
 }

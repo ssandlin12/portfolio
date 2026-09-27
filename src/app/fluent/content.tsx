@@ -4,10 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Figtree } from "next/font/google";
 import { useState } from "react";
-import {
-  CaseProcess,
-  type ProcessStep,
-} from "../_components/case-process";
+import { PlainCaseStudy, type PlainCaseStudySection } from "../_components/plain-case-study";
 import { BackIcon, ExternalLinkIcon } from "../_components/fluent-icons";
 
 const figtree = Figtree({
@@ -19,49 +16,140 @@ const figtree = Figtree({
 
 const INK_DARK = "#292929";
 
-const PROCESS: readonly ProcessStep[] = [
+const FLUENT_STUDY: readonly PlainCaseStudySection[] = [
   {
-    number: "01",
-    eyebrow: "Discover",
-    heading: "Understanding the system",
-    body: "Add the project context, research, audits, and stakeholder inputs that shaped the Fluent design-library work.",
-    methods: ["System audit", "Stakeholder interviews", "Usage analysis"],
-    takeaway: "Replace this placeholder with the most important insight from discovery.",
+    title: "Overview",
+    paragraphs: [
+      "How do you reduce the time designers spend matching Avatar strokes to background surfaces?",
+      "The Avatar component included usage details, information, and multiple presence states. Fluent 2 Web and Teams designers asked for help resolving the component's presence badge border behavior.",
+    ],
+    placeholders: [{ label: "Placeholder image: Avatar component overview" }],
   },
   {
-    number: "02",
-    eyebrow: "Define",
-    heading: "Aligning on principles and priorities",
-    body: "Describe how the team defined the library strategy, established priorities, and aligned product teams around a shared direction.",
-    methods: ["Design principles", "Prioritization", "Roadmapping"],
-    takeaway: "Replace this placeholder with the decision that focused the work.",
+    title: "Context",
+    paragraphs: [
+      "The component needed to address masked borders and strokes without creating extra hidden layers or requiring designers to manually match a background color.",
+    ],
+    placeholders: [{ label: "Placeholder image: Avatar component and usage details" }],
   },
   {
-    number: "03",
-    eyebrow: "Build",
-    heading: "Evolving the design library",
-    body: "Document the component, pattern, token, governance, and contribution work that moved the design library forward.",
-    methods: ["Component design", "Prototyping", "Documentation"],
-    takeaway: "Replace this placeholder with the core system contribution.",
+    title: "Problem",
+    paragraphs: [
+      "The existing approach did not address the need for masked borders and strokes. Designers lost time changing stroke values when an Avatar or Presence Badge appeared on a non-white surface.",
+    ],
+    placeholders: [{ label: "Placeholder image: stroke behavior before and after" }],
   },
   {
-    number: "04",
-    eyebrow: "Scale",
-    heading: "Supporting adoption across teams",
-    body: "Explain how the library was validated, released, communicated, and supported across Microsoft product teams.",
-    methods: ["Usability testing", "Release planning", "Adoption support"],
-    takeaway: "Replace this placeholder with the clearest signal of adoption or impact.",
+    title: "Scope",
+    paragraphs: [
+      "I audited 91 variants across sizes, layouts, colors, properties, activity rings, and presence badges.",
+    ],
+    placeholders: [{ label: "Placeholder image: 91-variant audit" }],
+  },
+  {
+    title: "Exploration",
+    paragraphs: [
+      "Masking did not resize well and variants were too heavy. I explored precise shapes, Boolean properties, and component-bound properties instead of adding hidden layers.",
+    ],
+    placeholders: [{ label: "Placeholder image: masking and property exploration" }],
+  },
+  {
+    title: "Process",
+    paragraphs: [
+      "Based on the audit, I created shapes for the Presence Badge stroke, duplicated the treatment for the main shape and activity ring, and bound the new shapes to the relevant component properties.",
+      "The activity-ring shape included the Presence Badge cutout and was bound to the activity-ring property.",
+    ],
+    placeholders: [{ label: "Placeholder image: bound Presence Badge and Activity Ring properties" }],
+  },
+  {
+    title: "Testing",
+    paragraphs: [
+      "The component was stress-tested across breakpoints, variants, sizes, properties, multiple toggles, and size changes. It worked as expected.",
+    ],
+    placeholders: [{ label: "Placeholder video: switching Avatar variants and properties" }],
+  },
+  {
+    title: "Deliverable",
+    paragraphs: [
+      "The work was developed in a Fluent 2 Web branch, shared in the weekly Fluent sync, merged, and copied into Teams 2 Web for Teams-specific styling.",
+    ],
+    placeholders: [{ label: "Placeholder image: Fluent 2 Web branch and Teams 2 Web delivery" }],
+  },
+  {
+    title: "Result",
+    paragraphs: [
+      "The update saved countless hours across the Microsoft design organization.",
+    ],
+    placeholders: [{ label: "Placeholder image: key result" }],
+  },
+  {
+    title: "Final thoughts",
+    paragraphs: [
+      "The component needed many size breakpoints. Manual resizing remains an edge case, but the system benefits outweighed it, especially while the team was managing Figma memory constraints that made a variant-heavy approach impractical.",
+    ],
+    placeholders: [{ label: "Placeholder image: manual scaling example" }],
   },
 ];
 
-function MediaPlaceholder({ label }: { label: string }) {
-  return (
-    <div className="case-media-placeholder" role="img" aria-label={`${label} media placeholder`}>
-      <span>{label}</span>
-      <small>Project media</small>
-    </div>
-  );
-}
+const TEAMS_STUDY: readonly PlainCaseStudySection[] = [
+  {
+    title: "Overview",
+    paragraphs: [
+      "How do you build an easy-to-update atom-to-template pipeline for Teams screens?",
+      "The Basic Screens pipeline connects Teams 2 Web with a Basic Screens file.",
+    ],
+    placeholders: [{ label: "Placeholder video: Teams Basic Screens pipeline" }, { label: "Placeholder image: Teams 2 Web preview" }],
+  },
+  {
+    title: "Context",
+    paragraphs: [
+      "The Basic Screens file was a collection of frames and screenshots that needed to be recreated as a maintainable system.",
+    ],
+    placeholders: [{ label: "Placeholder image: original Basic Screens file" }],
+  },
+  {
+    title: "Problem",
+    paragraphs: [
+      "The screens were difficult to scale and keep current while relying on non-components. The work was described as building a Godzilla component.",
+    ],
+  },
+  {
+    title: "Scope",
+    paragraphs: [
+      "The initial system covered light, dark, and high-contrast modes across four breakpoints, with reflow work planned to scale to nine. Multiple screens required confirmation and approval while allowing as much organic contribution as possible.",
+    ],
+    placeholders: [{ label: "Placeholder image: responsive screen and breakpoint scope" }],
+  },
+  {
+    title: "Process",
+    paragraphs: [
+      "I conducted focus groups and one-to-one research sessions with designers, created a first solution, and tested it with one feature team. The shell lived in Teams 2 Web while the canvas lived in each designer's file.",
+      "After several iterations, the team reached designer and product alignment at version five. The solution was moved into the main file, then introduced through an announcement video and team-by-team seminars on Figma variables.",
+      "The rollout also promoted the new Shell 2.0.0 component and light-to-dark mode toggling.",
+    ],
+    placeholders: [{ label: "Placeholder image: solution iterations and designer feedback" }, { label: "Placeholder video: announcement and training" }],
+  },
+  {
+    title: "Deliverable",
+    paragraphs: [
+      "The delivered pipeline supported reusable screens and organic contribution from product teams.",
+    ],
+    placeholders: [{ label: "Placeholder image: Basic Screens deliverable" }],
+  },
+  {
+    title: "Result",
+    paragraphs: [
+      "The solution was adopted by other product teams and became one of the most popular shell patterns.",
+    ],
+    placeholders: [{ label: "Placeholder image: adoption result" }],
+  },
+  {
+    title: "Final thoughts",
+    paragraphs: [
+      "The process evolved through testing and iteration. Adoption improved when the implementation was paired with clear communication, practical training, and a path for teams to contribute.",
+    ],
+  },
+];
 
 type CaseStudyProps = {
   title?: string;
@@ -74,6 +162,7 @@ type CaseStudyProps = {
   previewHeight?: number;
   caseType?: "full" | "micro";
   descriptors?: readonly string[];
+  study?: "fluent" | "teams";
 };
 
 export default function FluentContent({
@@ -87,6 +176,7 @@ export default function FluentContent({
   previewHeight = 1152,
   caseType = "full",
   descriptors = ["Component architecture", "Documentation", "System design"],
+  study = "fluent",
 }: CaseStudyProps) {
   const [videoReady, setVideoReady] = useState(false);
 
@@ -450,109 +540,7 @@ export default function FluentContent({
       </section>
 
       <article className="case-article">
-        <section>
-          <p className="case-feature-kicker">The problem</p>
-          <h2 className="case-feature-title">
-            “Too much designers&rsquo; time wasted on matching Avatar stroke to
-            background surface.”
-          </h2>
-          <p className="case-feature-intro">
-            The Fluent team reached out to me as one of the contributors to
-            the main Fluent library in order to help solve an issue with the
-            Avatar component, which was getting consistent feedback that it
-            needed a presence badge border solution. It had been built with
-            the stroke visible around the Avatar image and Presence Badge.
-          </p>
-          <Image
-            className="case-media-image"
-            src="/case-studies/fluent/avatar-presence-comparison-v2.png"
-            width={926}
-            height={238}
-            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
-            alt="Microsoft Fluent Avatar component comparing success and error presence badge borders"
-          />
-          <p className="case-media-caption">
-            Left: Stroke not visible on white background. Right: Stroke visible
-            on a non-white background.
-          </p>
-          <p className="case-post-media-copy">
-            This was fine on white backgrounds, but for any non-white
-            backgrounds, designers had to constantly change all of those
-            stroke variables to match the background color. As a component that
-            consistently got 1.2+ million uses a day, this would equate to
-            saving lots of designers&rsquo; time across the Microsoft work.
-          </p>
-        </section>
-        <video
-          className="case-media-image"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          aria-label="Fluent Avatar component documentation"
-        >
-          <source src="/case-studies/fluent/avatar-documentation.mp4" type="video/mp4" />
-        </video>
-
-        <CaseProcess
-          id="fluent-process-title"
-          kicker="The scope"
-          title="Auditing 91 variants for the existing component"
-          intro="With thirteen sizes, three layouts, and three colors, as well as two properties, this required reviewing multiple variant-specific distinctions. I had to go into the spec documentation in order to see all of the sizes for activity ring stroke width, presence badge size, and presence badge stroke width."
-          steps={PROCESS}
-        >
-          <Image
-            className="process-media-image"
-            src="/case-studies/fluent/avatar-specification-v2.png"
-            width={1682}
-            height={1771}
-            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
-            alt="Microsoft Fluent Avatar specification showing sizes, presence badges, activity rings, and appearance variants"
-          />
-        </CaseProcess>
-
-        <section className="case-bottom-media" aria-label="Additional Avatar component work">
-          <Image
-            className="case-media-image"
-            src="/case-studies/fluent/avatar-frame-119.svg"
-            width={800}
-            height={586}
-            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
-            unoptimized
-            alt="Additional Microsoft Fluent Avatar component exploration"
-          />
-          <Image
-            className="case-media-image"
-            src="/case-studies/fluent/avatar-frame-122.svg"
-            width={800}
-            height={586}
-            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
-            unoptimized
-            alt="Additional Microsoft Fluent Avatar component specification"
-          />
-        </section>
-
-        <section className="case-section">
-          <h2 className="case-section-heading">After</h2>
-          <p className="case-section-body">
-            Describe the evolved library, the experience it enabled, and what changed for product teams.
-          </p>
-          <MediaPlaceholder label="After" />
-        </section>
-
-        <section className="case-section">
-          <h2 className="case-section-heading">Outcome</h2>
-          <p className="case-section-body">
-            Add measurable outcomes, adoption signals, organizational impact, and the next direction for the library.
-          </p>
-        </section>
-
-        <Link href="/teams" className="case-next">
-          <p className="case-next-label">Next</p>
-          <h3 className="case-next-title">Microsoft Teams</h3>
-          <p className="case-next-body">Continue to the Microsoft Teams case study.</p>
-        </Link>
+        <PlainCaseStudy sections={study === "teams" ? TEAMS_STUDY : FLUENT_STUDY} />
       </article>
     </main>
   );
