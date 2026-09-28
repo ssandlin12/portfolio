@@ -27,35 +27,6 @@ function MediaPlaceholder({ label }: { label: string }) {
 
 const FLUENT_STUDY: readonly PlainCaseStudySection[] = [
   {
-    title: "Overview",
-    paragraphs: [
-      "How do you reduce the time designers spend matching Avatar strokes to background surfaces?",
-      "The Avatar component included usage details, information, and multiple presence states. Fluent 2 Web and Teams designers asked for help resolving the component's presence badge border behavior.",
-    ],
-    placeholders: [{ label: "Placeholder image: Avatar component overview" }],
-  },
-  {
-    title: "Context",
-    paragraphs: [
-      "The component needed to address masked borders and strokes without creating extra hidden layers or requiring designers to manually match a background color.",
-    ],
-    placeholders: [{ label: "Placeholder image: Avatar component and usage details" }],
-  },
-  {
-    title: "Problem",
-    paragraphs: [
-      "The existing approach did not address the need for masked borders and strokes. Designers lost time changing stroke values when an Avatar or Presence Badge appeared on a non-white surface.",
-    ],
-    placeholders: [{ label: "Placeholder image: stroke behavior before and after" }],
-  },
-  {
-    title: "Scope",
-    paragraphs: [
-      "I audited 91 variants across sizes, layouts, colors, properties, activity rings, and presence badges.",
-    ],
-    placeholders: [{ label: "Placeholder image: 91-variant audit" }],
-  },
-  {
     title: "Exploration",
     paragraphs: [
       "Masking did not resize well and variants were too heavy. I explored precise shapes, Boolean properties, and component-bound properties instead of adding hidden layers.",
@@ -195,13 +166,18 @@ export default function FluentContent({
           body: "Avatar represents people and groups through images, initials, or icons. Presence badges and activity indicators add status at a glance, while neutral, brand, and shared-color treatments let it work across Microsoft products and surfaces. The component scales across sizes and supports Avatar Groups for multi-person experiences.",
         },
         context: {
-          heading: "A fixed white stroke did not adapt to every background surface.",
+          heading: "The default white stroke did not adapt to every background surface.",
           body: "The Avatar image and Presence Badge each used a fixed white stroke. It blended into white backgrounds but remained visible on color, tint, and image surfaces, creating inconsistent edges.",
         },
         problem: {
-          heading: "Manual stroke matching was wasting designers’ time.",
-          intro: "On non-white backgrounds, designers had to manually update the Avatar and Presence Badge stroke values to match the surrounding surface. At more than 1.2 million daily uses, removing that work could save significant time across Microsoft.",
+          heading: "Manual stroke & background matching was wasting designers’ time.",
+          intro: "I met with the core Fluent team to discuss this issue after several Teams designers surfaced the concern. The team had heard similar feedback but as this was especially relevant to Teams design work with the Avatar being heavily used in core Teams experiences, I had an added sense of urgency to make this update.",
           detail: null,
+        },
+        scope: {
+          overline: "Preparation",
+          heading: "Conducted a full audit of the Avatar's 91 variants",
+          body: "The component combined 13 sizes, three layouts, three color treatments, and two properties. I audited each variation and reviewed its activity-ring and presence-badge specifications, including sizing and stroke widths.",
         },
       }
     : {
@@ -217,6 +193,11 @@ export default function FluentContent({
           heading: "Too much designers’ time was being wasted on matching the Avatar stroke to the background surface.",
           intro: "The Fluent team reached out to me as one of the contributors to the main Fluent library in order to help solve an issue with the Avatar component, which was getting consistent feedback that it needed a presence badge border solution. It had been built with the stroke visible around the Avatar image and Presence Badge.",
           detail: "This was fine on white backgrounds, but for any non-white backgrounds, designers had to constantly change all of those stroke variables to match the background color. As a component that consistently got 1.2+ million uses a day, this would equate to saving lots of designers’ time across the Microsoft work.",
+        },
+        scope: {
+          overline: "The scope",
+          heading: "Auditing 91 variants for the existing component",
+          body: "With thirteen sizes, three layouts, and three colors, as well as two properties, this required reviewing multiple variant-specific distinctions. I had to go into the spec documentation to review activity ring stroke width, presence badge size, and presence badge stroke width.",
         },
       };
 
@@ -597,7 +578,9 @@ export default function FluentContent({
       </section>
 
       <article className="case-article">
-        <section>
+        {study === "fluent" && (
+          <>
+            <section>
           <p className="case-feature-kicker">Overview</p>
           <h2 className="case-feature-title">{featureCopy.overview.heading}</h2>
           <p className="case-feature-intro">{featureCopy.overview.body}</p>
@@ -652,17 +635,11 @@ export default function FluentContent({
         </section>
 
         <section className="case-process-summary" aria-labelledby="fluent-process-title">
-          <p className="case-feature-kicker">The scope</p>
+          <p className="case-feature-kicker">{featureCopy.scope.overline}</p>
           <h2 id="fluent-process-title" className="case-feature-title">
-            Auditing 91 variants for the existing component
+            {featureCopy.scope.heading}
           </h2>
-          <p className="case-feature-intro">
-            With thirteen sizes, three layouts, and three colors, as well as
-            two properties, this required reviewing multiple variant-specific
-            distinctions. I had to go into the spec documentation to review
-            activity ring stroke width, presence badge size, and presence
-            badge stroke width.
-          </p>
+          <p className="case-feature-intro">{featureCopy.scope.body}</p>
           <video
             className="process-media-image"
             autoPlay
@@ -676,26 +653,35 @@ export default function FluentContent({
           </video>
         </section>
 
-        <section className="case-bottom-media" aria-label="Additional Avatar component work">
-          <Image
-            className="case-media-image"
-            src="/case-studies/fluent/avatar-frame-119.svg"
-            width={800}
-            height={586}
-            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
-            unoptimized
-            alt="Additional Microsoft Fluent Avatar component exploration"
-          />
-          <Image
-            className="case-media-image"
-            src="/case-studies/fluent/avatar-frame-122.svg"
-            width={800}
-            height={586}
-            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
-            unoptimized
-            alt="Additional Microsoft Fluent Avatar component specification"
-          />
-        </section>
+        {study === "fluent" && (
+          <section className="case-process-summary" aria-labelledby="fluent-solution-title">
+            <p className="case-feature-kicker">Solution</p>
+            <h2 id="fluent-solution-title" className="case-feature-title">
+              Binding Boolean subtract operations to component properties
+            </h2>
+            <p className="case-feature-intro">
+              Rather than relying on a fixed white stroke, I created two Boolean
+              component properties that subtract border shapes from the Avatar
+              layers. Binding those operations to the relevant properties
+              preserved Avatar border effects across backgrounds without asking
+              designers to match a stroke to the surface.
+            </p>
+            <video
+              className="process-media-image"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="Boolean subtract operations bound to Fluent Avatar component properties"
+            >
+              <source src="/case-studies/fluent/avatar-boolean-properties.mp4" type="video/mp4" />
+            </video>
+          </section>
+        )}
+
+          </>
+        )}
 
         <PlainCaseStudy sections={study === "teams" ? TEAMS_STUDY : FLUENT_STUDY} />
 
@@ -704,7 +690,21 @@ export default function FluentContent({
           <p className="case-section-body">
             Describe the evolved library, the experience it enabled, and what changed for product teams.
           </p>
-          <MediaPlaceholder label="After" />
+          {study === "teams" ? (
+            <video
+              className="case-media-image"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              aria-label="Microsoft Teams at Build"
+            >
+              <source src="/case-studies/teams/teams-at-build.mp4" type="video/mp4" />
+            </video>
+          ) : (
+            <MediaPlaceholder label="After" />
+          )}
         </section>
 
         <section className="case-section">
