@@ -10,7 +10,7 @@ import Blob from "./blob";
 const TILE_MORPH_TARGET: Record<number, number> = {
   0: 0, // Microsoft Fluent → MS 4-square mark
   1: 1, // Microsoft Teams → Teams (SDF texture)
-  2: 2, // Athenahealth → radial burst mark (SDF texture)
+  2: 2, // Athenahealth → leaf mark (SDF texture)
   3: 3, // Women's Voices Now → "W" letterform (SDF texture)
   4: 5, // Medium → Medium logo (SDF texture)
 };
@@ -44,10 +44,10 @@ const navItem: CSSProperties = {
 // Tiles in the bottom toggle bar. `href` makes the tile clickable
 // (internal routes use next/link, external URLs open in a new tab).
 // Tiles without an href are "disabled" — greyed out and non-interactive.
-const tiles: Array<{ title: string; href?: string; comingSoon?: true }> = [
+const tiles: Array<{ title: string; href?: string; inProgress?: true }> = [
   { title: "Microsoft\nFluent", href: "/fluent" },
   { title: "Microsoft Teams", href: "/teams" },
-  { title: "Athenahealth", href: "/athenahealth" },
+  { title: "Athenahealth", inProgress: true },
   { title: "Women's Voices Now", href: "/wvn" },
   {
     title: "Medium",
@@ -191,13 +191,13 @@ export default function Home() {
         .work-bar-item[data-external="true"]:hover .work-bar-item-ext {
           opacity: 1;
         }
-        /* "Coming soon" tiles: disabled (greyed, no link), but on hover the
-           label crossfades from the case-study name to "Coming soon". */
-        .work-bar-item[data-coming-soon="true"] .work-bar-item-text,
-        .work-bar-item[data-coming-soon="true"] .work-bar-item-soon {
+        /* In-progress tiles remain non-interactive, but on hover they reveal
+           their current status without changing the rest of the bar's layout. */
+        .work-bar-item[data-in-progress="true"] .work-bar-item-text,
+        .work-bar-item[data-in-progress="true"] .work-bar-item-status {
           transition: opacity 160ms ease-out;
         }
-        .work-bar-item[data-coming-soon="true"] .work-bar-item-soon {
+        .work-bar-item[data-in-progress="true"] .work-bar-item-status {
           position: absolute;
           inset: 0;
           display: inline-flex;
@@ -206,10 +206,10 @@ export default function Home() {
           opacity: 0;
           pointer-events: none;
         }
-        .work-bar-item[data-coming-soon="true"]:hover .work-bar-item-text {
+        .work-bar-item[data-in-progress="true"]:hover .work-bar-item-text {
           opacity: 0;
         }
-        .work-bar-item[data-coming-soon="true"]:hover .work-bar-item-soon {
+        .work-bar-item[data-in-progress="true"]:hover .work-bar-item-status {
           opacity: 1;
         }
         .work-bar-item[data-active="true"] {
@@ -239,6 +239,15 @@ export default function Home() {
         .work-bar-item[data-active="false"]:hover {
           background-color: transparent;
           color: rgba(41, 41, 41, 0.3);
+        }
+        .work-bar-item[data-in-progress="true"] {
+          color: rgba(41, 41, 41, 0.38);
+          cursor: default;
+        }
+        .work-bar-item[data-in-progress="true"]:hover {
+          background-color: rgba(41, 41, 41, 0.08);
+          box-shadow: none;
+          color: rgba(41, 41, 41, 0.38);
         }
         /* Small "Case Studies" caption above the bar. Inherits the
            wrapper's pointer-events: none so it never blocks clicks. */
@@ -508,15 +517,15 @@ export default function Home() {
                   key={tile.title}
                   className="work-bar-item"
                   data-active={dataActive}
-                  data-coming-soon={tile.comingSoon ? "true" : undefined}
+                  data-in-progress={tile.inProgress ? "true" : undefined}
                   onMouseEnter={onEnter}
                   onMouseLeave={onLeave}
                 >
-                  {tile.comingSoon ? (
+                  {tile.inProgress ? (
                     <>
                       <span className="work-bar-item-text">{display}</span>
-                      <span className="work-bar-item-soon" aria-hidden>
-                        Coming soon
+                      <span className="work-bar-item-status" aria-hidden>
+                        In progress
                       </span>
                     </>
                   ) : (

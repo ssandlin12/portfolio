@@ -14,7 +14,7 @@ import {
   setBlobBcSdfTexture,
 } from "../../../diffui-blob/diffui-blob-shader.js";
 import { TEAMS_SVG } from "./teams-svg";
-import { FITABLY_SVG } from "./fitably-svg";
+import { ATHENAHEALTH_SVG } from "./athenahealth-svg";
 import { WVN_SVG } from "./wvn-svg";
 import { MEDIUM_SVG } from "./medium-svg";
 import { bakeSdfFromSvg } from "./sdf-bake";
@@ -137,7 +137,7 @@ export default function Blob({
           // eslint-disable-next-line no-console
           console.error("[blob] Teams SDF bake failed:", err);
         });
-      bakeSdfFromSvg(FITABLY_SVG, 256)
+      bakeSdfFromSvg(ATHENAHEALTH_SVG, 256)
         .then(({ data, size, sdfRange }) => {
           if (cancelled || !renderer) return;
           // worldHalf 0.6325 = 0.575 * 1.10, i.e. 10% bigger than the MS/Teams
@@ -146,12 +146,12 @@ export default function Blob({
         })
         .catch((err) => {
           // eslint-disable-next-line no-console
-          console.error("[blob] Fitably SDF bake failed:", err);
+          console.error("[blob] Athenahealth SDF bake failed:", err);
         });
       bakeSdfFromSvg(WVN_SVG, 256)
         .then(({ data, size, sdfRange }) => {
           if (cancelled || !renderer) return;
-          // worldHalf 0.6325 = 0.575 * 1.10 — see Fitably above.
+          // worldHalf 0.6325 = 0.575 * 1.10 — see Athenahealth above.
           setBlobWvnSdfTexture(renderer, data, size, sdfRange, 0.6325);
         })
         .catch((err) => {

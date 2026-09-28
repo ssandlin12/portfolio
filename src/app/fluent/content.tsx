@@ -26,49 +26,6 @@ function MediaPlaceholder({ label }: { label: string }) {
 }
 
 const FLUENT_STUDY: readonly PlainCaseStudySection[] = [
-  {
-    title: "Exploration",
-    paragraphs: [
-      "Masking did not resize well and variants were too heavy. I explored precise shapes, Boolean properties, and component-bound properties instead of adding hidden layers.",
-    ],
-    placeholders: [{ label: "Placeholder image: masking and property exploration" }],
-  },
-  {
-    title: "Process",
-    paragraphs: [
-      "Based on the audit, I created shapes for the Presence Badge stroke, duplicated the treatment for the main shape and activity ring, and bound the new shapes to the relevant component properties.",
-      "The activity-ring shape included the Presence Badge cutout and was bound to the activity-ring property.",
-    ],
-    placeholders: [{ label: "Placeholder image: bound Presence Badge and Activity Ring properties" }],
-  },
-  {
-    title: "Testing",
-    paragraphs: [
-      "The component was stress-tested across breakpoints, variants, sizes, properties, multiple toggles, and size changes. It worked as expected.",
-    ],
-    placeholders: [{ label: "Placeholder video: switching Avatar variants and properties" }],
-  },
-  {
-    title: "Deliverable",
-    paragraphs: [
-      "The work was developed in a Fluent 2 Web branch, shared in the weekly Fluent sync, merged, and copied into Teams 2 Web for Teams-specific styling.",
-    ],
-    placeholders: [{ label: "Placeholder image: Fluent 2 Web branch and Teams 2 Web delivery" }],
-  },
-  {
-    title: "Result",
-    paragraphs: [
-      "The update saved countless hours across the Microsoft design organization.",
-    ],
-    placeholders: [{ label: "Placeholder image: key result" }],
-  },
-  {
-    title: "Final thoughts",
-    paragraphs: [
-      "The component needed many size breakpoints. Manual resizing remains an edge case, but the system benefits outweighed it, especially while the team was managing Figma memory constraints that made a variant-heavy approach impractical.",
-    ],
-    placeholders: [{ label: "Placeholder image: manual scaling example" }],
-  },
 ];
 
 const TEAMS_STUDY: readonly PlainCaseStudySection[] = [
@@ -403,7 +360,7 @@ export default function FluentContent({
           letter-spacing: -0.02em;
         }
         .case-feature-intro {
-          max-width: 680px;
+          max-width: none;
           margin: 12px 0 0;
           color: rgba(41, 41, 41, 0.7);
           font-size: 17px;
@@ -653,66 +610,156 @@ export default function FluentContent({
           </video>
         </section>
 
-        {study === "fluent" && (
-          <section className="case-process-summary" aria-labelledby="fluent-solution-title">
-            <p className="case-feature-kicker">Solution</p>
-            <h2 id="fluent-solution-title" className="case-feature-title">
-              Binding Boolean subtract operations to component properties
-            </h2>
-            <p className="case-feature-intro">
-              Rather than relying on a fixed white stroke, I created two Boolean
-              component properties that subtract border shapes from the Avatar
-              layers. Binding those operations to the relevant properties
-              preserved Avatar border effects across backgrounds without asking
-              designers to match a stroke to the surface.
-            </p>
-            <video
-              className="process-media-image"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              aria-label="Boolean subtract operations bound to Fluent Avatar component properties"
-            >
-              <source src="/case-studies/fluent/avatar-boolean-properties.mp4" type="video/mp4" />
-            </video>
-          </section>
-        )}
+        <section className="case-process-summary" aria-labelledby="fluent-exploration-title">
+          <p className="case-feature-kicker">Exploration</p>
+          <h2 id="fluent-exploration-title" className="case-feature-title">
+            Finding a scalable border approach
+          </h2>
+          <p className="case-feature-intro">
+            Masking did not resize reliably, and a variant-heavy solution would
+            have made the component unnecessarily complex. I explored precise
+            shapes, Boolean properties, and component-bound properties instead
+            of adding hidden layers.
+          </p>
+          <video
+            className="process-media-image"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label="Fluent Avatar border exploration"
+          >
+            <source src="/case-studies/fluent/avatar-exploration.mp4" type="video/mp4" />
+          </video>
+        </section>
+
+        <section className="case-process-summary" aria-labelledby="fluent-implementation-title">
+          <p className="case-feature-kicker">Process</p>
+          <h2 id="fluent-implementation-title" className="case-feature-title">
+            Building border treatments into component properties
+          </h2>
+          <p className="case-feature-intro">
+            Based on the audit, I created a Presence Badge stroke shape and
+            applied the same treatment to the main Avatar and activity ring.
+            Each shape was bound to its relevant component property; the
+            activity-ring treatment also included a Presence Badge cutout.
+          </p>
+          <video
+            className="process-media-image"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label="Boolean subtract operations bound to Fluent Avatar component properties"
+          >
+            <source src="/case-studies/fluent/avatar-boolean-properties.mp4" type="video/mp4" />
+          </video>
+        </section>
+
+        <section className="case-process-summary" aria-labelledby="fluent-solution-title">
+          <p className="case-feature-kicker">Solution</p>
+          <h2 id="fluent-solution-title" className="case-feature-title">
+            Binding Boolean subtract operations to component properties
+          </h2>
+          <p className="case-feature-intro">
+            Rather than relying on a fixed white stroke, I created two Boolean
+            component properties that subtract border shapes from the Avatar
+            layers. Binding those operations to the relevant properties
+            preserved Avatar border effects across backgrounds without asking
+            designers to match a stroke to the surface.
+          </p>
+          <video
+            className="process-media-image"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label="Testing Fluent Avatar variants and properties"
+          >
+            <source src="/case-studies/fluent/avatar-testing.mp4" type="video/mp4" />
+          </video>
+        </section>
+
+        <section className="case-process-summary" aria-labelledby="fluent-testing-title">
+          <p className="case-feature-kicker">Testing</p>
+          <h2 id="fluent-testing-title" className="case-feature-title">
+            Stress-testing every Avatar configuration
+          </h2>
+          <p className="case-feature-intro">
+            I tested the component across breakpoints, variants, sizes,
+            properties, repeated toggles, and size changes to confirm the new
+            behavior remained stable in every configuration.
+          </p>
+          <MediaPlaceholder label="Switching Avatar variants and properties" />
+        </section>
 
           </>
         )}
 
         <PlainCaseStudy sections={study === "teams" ? TEAMS_STUDY : FLUENT_STUDY} />
 
-        <section className="case-section">
-          <h2 className="case-section-heading">After</h2>
-          <p className="case-section-body">
-            Describe the evolved library, the experience it enabled, and what changed for product teams.
-          </p>
-          {study === "teams" ? (
-            <video
-              className="case-media-image"
-              autoPlay
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              aria-label="Microsoft Teams at Build"
-            >
-              <source src="/case-studies/teams/teams-at-build.mp4" type="video/mp4" />
-            </video>
-          ) : (
-            <MediaPlaceholder label="After" />
-          )}
-        </section>
+        {study === "fluent" ? (
+          <>
+            <section className="case-process-summary" aria-labelledby="fluent-delivery-title">
+              <p className="case-feature-kicker">Delivery</p>
+              <h2 id="fluent-delivery-title" className="case-feature-title">
+                Shipping the adaptive Avatar treatment
+              </h2>
+              <p className="case-feature-intro">
+                The work was developed in a Fluent 2 Web branch, shared with
+                the core Fluent team, merged into the main library, and copied
+                into Teams 2 Web for Teams-specific styling.
+              </p>
+              <MediaPlaceholder label="Fluent and Teams delivery" />
+            </section>
 
-        <section className="case-section">
-          <h2 className="case-section-heading">Outcome</h2>
-          <p className="case-section-body">
-            Add measurable outcomes, adoption signals, organizational impact, and the next direction for the library.
-          </p>
-        </section>
+            <section className="case-process-summary" aria-labelledby="fluent-outcome-title">
+              <p className="case-feature-kicker">Outcome</p>
+              <h2 id="fluent-outcome-title" className="case-feature-title">
+                Estimated $53 million saved across the organization
+              </h2>
+              <p className="case-feature-intro">
+                We know that this component gets 1.2 million uses per day.
+                Let&apos;s assume that with component and template duplicates only
+                1/10 of those cases required a stroke-to-background match.
+                Let&apos;s also estimate that this matching might take a designer
+                about 30 seconds each. Considering that the average designer
+                salary at Microsoft is $227,843, this single update potentially
+                saved Microsoft $53 million per year.
+              </p>
+            </section>
+          </>
+        ) : (
+          <>
+            <section className="case-section">
+              <h2 className="case-section-heading">After</h2>
+              <p className="case-section-body">
+                Describe the evolved library, the experience it enabled, and what changed for product teams.
+              </p>
+              <video
+                className="case-media-image"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label="Microsoft Teams at Build"
+              >
+                <source src="/case-studies/teams/teams-at-build.mp4" type="video/mp4" />
+              </video>
+            </section>
+
+            <section className="case-section">
+              <h2 className="case-section-heading">Outcome</h2>
+              <p className="case-section-body">
+                Add measurable outcomes, adoption signals, organizational impact, and the next direction for the library.
+              </p>
+            </section>
+          </>
+        )}
 
         <Link href="/teams" className="case-next">
           <p className="case-next-label">Next</p>

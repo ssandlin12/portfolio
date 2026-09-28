@@ -339,12 +339,12 @@ uniform float u_energy;      // wave amplitude scale
 uniform float u_smooth;      // unused
 uniform vec2  u_aspect;      // unused
 uniform int   u_colorMode;
-uniform int   u_morphTarget; // 0 = MS 4-square mark, 1 = Teams, 2 = Fitably, 3 = WVN, 4 = Diffui, 5 = Bootcamp BC
+uniform int   u_morphTarget; // 0 = MS 4-square mark, 1 = Teams, 2 = Athenahealth, 3 = WVN, 4 = Diffui, 5 = Bootcamp BC
 uniform sampler2D u_sdfTex;  // baked SDF for the Teams morph target
 uniform float u_sdfRange;    // pixel range encoded across the byte; world dist = (sample - 0.5) * 2 * sdfRange / sdfTexSize
 uniform float u_sdfTexSize;  // texture dimension in px (square)
 uniform float u_sdfWorldHalf;// half-extent of the world region the texture covers
-uniform sampler2D u_fitablySdfTex;   // baked SDF for the Fitably morph target
+uniform sampler2D u_fitablySdfTex;   // baked SDF for the Athenahealth morph target
 uniform float u_fitablySdfRange;     // see u_sdfRange
 uniform float u_fitablySdfTexSize;   // see u_sdfTexSize
 uniform float u_fitablySdfWorldHalf; // see u_sdfWorldHalf
@@ -383,7 +383,7 @@ float msMark(vec3 wp) {
   return length(max(w, 0.0)) + min(max(w.x, w.y), 0.0);
 }
 
-// SDF of the Fitably radial-burst mark — sampled from a baked SDF texture.
+// SDF of the Athenahealth leaf mark — sampled from a baked SDF texture.
 // Same shape and math as teamsMark, just bound to a separate sampler /
 // uniform block so each morph target can have its own texture.
 float fitablyMark(vec3 wp) {
@@ -907,7 +907,7 @@ export function setBlobSdfTexture(renderer, data, size, sdfRange, worldHalf) {
   renderer.sdfWorldHalf = worldHalf;
 }
 
-// Upload a baked SDF texture for the Fitably morph target.
+// Upload a baked SDF texture for the Athenahealth morph target.
 export function setBlobFitablySdfTexture(renderer, data, size, sdfRange, worldHalf) {
   if (!renderer || !renderer.gl) return;
   uploadSdf(renderer, "fitablySdfTexture", data, size);
