@@ -122,6 +122,13 @@ export default function Home() {
       }}
     >
       <style>{`
+        /* Keep the blob and its shadow at the same scale across desktop
+           window widths. Only the phone layout uses the smaller canvas. */
+        .home-blob {
+          width: 380px;
+          max-width: 100%;
+          flex-shrink: 0;
+        }
         /* Glassmorphic case-study toggle bar — fixed at bottom-center of
            the viewport, with one button per case study. */
         .work-bar-wrapper {
@@ -254,6 +261,9 @@ export default function Home() {
            full-width sheet, with a vertical pill stack inside. Tablet
            and up keep the centered horizontal pill bar. */
         @media (max-width: 600px) {
+          .home-blob {
+            width: clamp(260px, 28vw, 380px);
+          }
           .work-bar-wrapper {
             bottom: 0;
             left: 0;
@@ -408,9 +418,8 @@ export default function Home() {
       {/* Blob — inline, centered under the hero. */}
       <div
         aria-hidden
-        className="pointer-events-none"
+        className="home-blob pointer-events-none"
         style={{
-          width: "clamp(260px, 28vw, 380px)",
           aspectRatio: "1 / 1",
           marginInline: "auto",
           marginTop: "calc(clamp(16px, 3vh, 32px) - 8px)",
