@@ -188,6 +188,37 @@ export default function FluentContent({
   study = "fluent",
 }: CaseStudyProps) {
   const [videoReady, setVideoReady] = useState(false);
+  const featureCopy = study === "fluent"
+    ? {
+        overview: {
+          heading: "Avatar is one of Microsoft’s most widely used Fluent components.",
+          body: "Avatar represents people and groups through images, initials, or icons. Presence badges and activity indicators add status at a glance, while neutral, brand, and shared-color treatments let it work across Microsoft products and surfaces. The component scales across sizes and supports Avatar Groups for multi-person experiences.",
+        },
+        context: {
+          heading: "A fixed white stroke did not adapt to every background surface.",
+          body: "The Avatar image and Presence Badge each used a fixed white stroke. It blended into white backgrounds but remained visible on color, tint, and image surfaces, creating inconsistent edges.",
+        },
+        problem: {
+          heading: "Manual stroke matching was wasting designers’ time.",
+          intro: "On non-white backgrounds, designers had to manually update the Avatar and Presence Badge stroke values to match the surrounding surface. At more than 1.2 million daily uses, removing that work could save significant time across Microsoft.",
+          detail: null,
+        },
+      }
+    : {
+        overview: {
+          heading: "The Fluent Avatar component is one of the most highly used components across Microsoft.",
+          body: "Avatar represents a person or group with an image, initials, or an icon. Presence badges and activity indicators add context at a glance, while neutral, brand, and shared-color treatments let the component work across product surfaces. It scales through a wide range of sizes and can be combined into Avatar Groups when a conversation or collaboration space needs to represent many people.",
+        },
+        context: {
+          heading: "The Fluent Avatar component had a fixed white stroke in two areas that was visible on a wide range of background surfaces.",
+          body: "The stroke appeared around the Avatar image and the Presence Badge. It disappeared into white surfaces, but remained visible on colored, tinted, and image-based backgrounds, creating an inconsistent edge treatment across the component.",
+        },
+        problem: {
+          heading: "Too much designers’ time was being wasted on matching the Avatar stroke to the background surface.",
+          intro: "The Fluent team reached out to me as one of the contributors to the main Fluent library in order to help solve an issue with the Avatar component, which was getting consistent feedback that it needed a presence badge border solution. It had been built with the stroke visible around the Avatar image and Presence Badge.",
+          detail: "This was fine on white backgrounds, but for any non-white backgrounds, designers had to constantly change all of those stroke variables to match the background color. As a component that consistently got 1.2+ million uses a day, this would equate to saving lots of designers’ time across the Microsoft work.",
+        },
+      };
 
   return (
     <main
@@ -440,6 +471,21 @@ export default function FluentContent({
           line-height: 1.45;
           text-align: center;
         }
+        .case-problem-media {
+          aspect-ratio: 16 / 9;
+          margin-top: 28px;
+          overflow: hidden;
+          border: 1px solid #e1e1e1;
+          border-radius: 14px;
+          box-sizing: border-box;
+        }
+        .case-problem-media-image {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transform: scale(1.045);
+        }
         .case-post-media-copy {
           margin: 28px 0 0;
           color: rgba(41, 41, 41, 0.7);
@@ -552,19 +598,9 @@ export default function FluentContent({
 
       <article className="case-article">
         <section>
-          <p className="case-feature-kicker">The overview</p>
-          <h2 className="case-feature-title">
-            The Fluent Avatar component is one of the most highly used
-            components across Microsoft.
-          </h2>
-          <p className="case-feature-intro">
-            Avatar represents a person or group with an image, initials, or an
-            icon. Presence badges and activity indicators add context at a
-            glance, while neutral, brand, and shared-color treatments let the
-            component work across product surfaces. It scales through a wide
-            range of sizes and can be combined into Avatar Groups when a
-            conversation or collaboration space needs to represent many people.
-          </p>
+          <p className="case-feature-kicker">Overview</p>
+          <h2 className="case-feature-title">{featureCopy.overview.heading}</h2>
+          <p className="case-feature-intro">{featureCopy.overview.body}</p>
         </section>
 
         <video
@@ -580,17 +616,9 @@ export default function FluentContent({
         </video>
 
         <section className="case-problem-section">
-          <p className="case-feature-kicker">The context</p>
-          <h2 className="case-feature-title">
-            The Fluent Avatar component had a fixed white stroke in two areas
-            that was visible on a wide range of background surfaces.
-          </h2>
-          <p className="case-feature-intro">
-            The stroke appeared around the Avatar image and the Presence
-            Badge. It disappeared into white surfaces, but remained visible on
-            colored, tinted, and image-based backgrounds, creating an
-            inconsistent edge treatment across the component.
-          </p>
+          <p className="case-feature-kicker">Context</p>
+          <h2 className="case-feature-title">{featureCopy.context.heading}</h2>
+          <p className="case-feature-intro">{featureCopy.context.body}</p>
           <video
             className="case-media-image"
             autoPlay
@@ -605,25 +633,22 @@ export default function FluentContent({
         </section>
 
         <section className="case-problem-section">
-          <p className="case-feature-kicker">The problem</p>
-          <h2 className="case-feature-title">
-            “Too much designers&rsquo; time was being wasted on matching the Avatar
-            stroke to the background surface.”
-          </h2>
-          <p className="case-feature-intro">
-            The Fluent team reached out to me as one of the contributors to
-            the main Fluent library in order to help solve an issue with the
-            Avatar component, which was getting consistent feedback that it
-            needed a presence badge border solution. It had been built with
-            the stroke visible around the Avatar image and Presence Badge.
-          </p>
-          <p className="case-post-media-copy">
-            This was fine on white backgrounds, but for any non-white
-            backgrounds, designers had to constantly change all of those
-            stroke variables to match the background color. As a component that
-            consistently got 1.2+ million uses a day, this would equate to
-            saving lots of designers&rsquo; time across the Microsoft work.
-          </p>
+          <p className="case-feature-kicker">Problem</p>
+          <h2 className="case-feature-title">{featureCopy.problem.heading}</h2>
+          <p className="case-feature-intro">{featureCopy.problem.intro}</p>
+          {featureCopy.problem.detail && (
+            <p className="case-post-media-copy">{featureCopy.problem.detail}</p>
+          )}
+          <div className="case-problem-media">
+            <Image
+              className="case-problem-media-image"
+              src="/case-studies/fluent/avatar-problem-meeting-v2.png"
+              width={1800}
+              height={1028}
+              sizes="(max-width: 940px) calc(100vw - 40px), 900px"
+              alt="Microsoft Teams meeting showing Avatar presence states"
+            />
+          </div>
         </section>
 
         <section className="case-process-summary" aria-labelledby="fluent-process-title">
