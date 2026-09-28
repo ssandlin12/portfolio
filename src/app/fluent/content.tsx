@@ -61,10 +61,23 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     placeholder: "Responsive screen and breakpoint scope",
   },
   {
+    overline: "Research",
+    title: "Designing a system that stays current over time",
+    body: "I ran one-to-one and focus-group sessions with designers to understand what a long-term Basic Screens solution needed to support. The conversations surfaced the practical constraints of building screens, evolving feature work, and keeping shared foundations relevant as product teams move quickly.",
+    placeholder: "Designer research and focus groups",
+  },
+  {
+    overline: "Insight",
+    title: "Lasting systems depend on adoption and contribution",
+    body: "A screen library can only stay up to date when teams choose to use it and can contribute to it naturally. The solution needed to make shared building blocks easy to adopt, while giving designers a clear, lightweight path to extend the system without making it harder to maintain.",
+    placeholder: "Adoption and contribution model",
+  },
+  {
     overline: "Process",
     title: "Testing a shared shell-and-canvas model",
     body: "I ran focus groups and one-to-one sessions, developed an initial solution, and tested it with a feature team. The shell lived in Teams 2 Web, while each designer retained a canvas in their own file; repeated iterations brought product and design alignment before launch.",
-    placeholder: "Solution iterations and designer feedback",
+    videoSrc: "/case-studies/teams/teams-process.mp4",
+    videoLabel: "Teams Basic Screens process",
   },
   {
     overline: "Deliverable",
