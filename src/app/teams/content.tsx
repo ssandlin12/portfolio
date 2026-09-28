@@ -10,9 +10,12 @@ export default function TeamsContent() {
       linkHref="https://www.microsoft.com/en-us/microsoft-teams/group-chat-software"
       linkLabel="Microsoft Teams"
       videoSrc="/teams-hero.mp4"
-      previewSrc="/teams-preview.png"
+      previewSrc="/case-studies/teams/teams-web-desktop-cover.png"
       previewWidth={1920}
-      previewHeight={1152}
+      previewHeight={1080}
+      secondaryPreviewSrc="/case-studies/teams/teams-basic-screens-cover.png"
+      secondaryPreviewWidth={3840}
+      secondaryPreviewHeight={2160}
       descriptors={["Design systems", "Basic screens", "Templates"]}
       study="teams"
     />

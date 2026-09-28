@@ -81,8 +81,8 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   },
   {
     overline: "Pre-Ignite",
-    title: "Deliverables released in time for Microsoft’s Ignite deadline",
-    body: "Here’s one of the many screens released as part of the initial request. As one of the newest Teams features at the time, compact chat view was meticulously prepared with every detail considered for consistency, including timestamps, names and list-item matching, chat-thread consistency, Chat badge numbers, and more.",
+    title: "Meticulously prepared in time for Microsoft’s Ignite deadline",
+    body: "Here’s one of the many screens released as part of the initial request. As one of the newest Teams features at the time, the “Compact Chat” screen was compiled with extreme attention to detail for both craft and consistency sake, including timestamps, names and list-item matching, chat-thread consistency, Chat badge numbers, and more.",
     imageSrc: "/case-studies/teams/impact-pre-ignite.png",
     imageAlt: "Microsoft Teams chat screen",
   },
@@ -109,6 +109,9 @@ type CaseStudyProps = {
   previewSrc?: string;
   previewWidth?: number;
   previewHeight?: number;
+  secondaryPreviewSrc?: string;
+  secondaryPreviewWidth?: number;
+  secondaryPreviewHeight?: number;
   caseType?: "full" | "micro";
   descriptors?: readonly string[];
   study?: "fluent" | "teams";
@@ -123,6 +126,9 @@ export default function FluentContent({
   previewSrc = "/fluent-web-ui-kit.png",
   previewWidth = 2048,
   previewHeight = 1152,
+  secondaryPreviewSrc,
+  secondaryPreviewWidth = 2048,
+  secondaryPreviewHeight = 1152,
   caseType = "full",
   descriptors = ["Component architecture", "Documentation", "System design"],
   study = "fluent",
@@ -266,6 +272,19 @@ export default function FluentContent({
           border-radius: clamp(14px, 1.5vw, 24px);
           box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
           z-index: 4;
+        }
+        .fluent-preview-row {
+          position: absolute;
+          right: calc(-1 * var(--preview-overhang));
+          bottom: -36px;
+          z-index: 4;
+          display: flex;
+          align-items: flex-end;
+          gap: clamp(14px, 1.8vw, 22px);
+        }
+        .fluent-preview-row .fluent-preview-image {
+          position: static;
+          width: clamp(140px, 16vw, 210px);
         }
         .back-pill {
           display: inline-flex;
@@ -528,6 +547,13 @@ export default function FluentContent({
             bottom: -24px;
             width: min(48vw, 190px);
           }
+          .fluent-preview-row {
+            bottom: -24px;
+            gap: 12px;
+          }
+          .fluent-preview-row .fluent-preview-image {
+            width: min(35vw, 160px);
+          }
         }
       `}</style>
 
@@ -562,14 +588,35 @@ export default function FluentContent({
           <video autoPlay loop muted playsInline preload="auto" onLoadedData={() => setVideoReady(true)}>
             <source src={videoSrc} type="video/mp4" />
           </video>
-          <Image
-            className="fluent-preview-image"
-            src={previewSrc}
-            width={previewWidth}
-            height={previewHeight}
-            sizes="(max-width: 560px) 56vw, 22vw"
-            alt="Web UI Kit preview"
-          />
+          {secondaryPreviewSrc ? (
+            <div className="fluent-preview-row" aria-label="Case study previews">
+              <Image
+                className="fluent-preview-image"
+                src={previewSrc}
+                width={previewWidth}
+                height={previewHeight}
+                sizes="(max-width: 560px) 35vw, 16vw"
+                alt="Teams Web and Desktop cover"
+              />
+              <Image
+                className="fluent-preview-image"
+                src={secondaryPreviewSrc}
+                width={secondaryPreviewWidth}
+                height={secondaryPreviewHeight}
+                sizes="(max-width: 560px) 35vw, 16vw"
+                alt="Teams Basic Screens cover"
+              />
+            </div>
+          ) : (
+            <Image
+              className="fluent-preview-image"
+              src={previewSrc}
+              width={previewWidth}
+              height={previewHeight}
+              sizes="(max-width: 560px) 56vw, 22vw"
+              alt="Web UI Kit preview"
+            />
+          )}
         </div>
       </section>
 
