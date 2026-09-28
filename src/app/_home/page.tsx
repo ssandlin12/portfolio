@@ -125,9 +125,10 @@ export default function Home() {
         /* Keep the blob and its shadow at the same scale across desktop
            window widths. Only the phone layout uses the smaller canvas. */
         .home-blob {
-          width: 380px;
+          width: 353px;
           max-width: 100%;
           flex-shrink: 0;
+          margin-top: calc(clamp(16px, 3vh, 32px) - 8px);
         }
         /* Glassmorphic case-study toggle bar — fixed at bottom-center of
            the viewport, with one button per case study. */
@@ -257,12 +258,14 @@ export default function Home() {
         .work-bar-divider {
           display: none;
         }
-        /* Phone-width: dock the bar flush to the bottom edge as a
-           full-width sheet, with a vertical pill stack inside. Tablet
-           and up keep the centered horizontal pill bar. */
-        @media (max-width: 600px) {
+        /* Once the horizontal bar reaches its natural width, dock it as a
+           full-width sheet with the mobile pill stack so no items clip. */
+        @media (max-width: 760px) {
           .home-blob {
-            width: clamp(260px, 28vw, 380px);
+            /* Narrow windows still need room for a tall composition. Use
+               whichever dimension provides more space, then cap it at the
+               desktop size so the hero never overwhelms the navigation. */
+            width: clamp(242px, max(26vw, 27vh), 353px);
           }
           .work-bar-wrapper {
             bottom: 0;
@@ -296,6 +299,22 @@ export default function Home() {
             height: 1px;
             background-color: rgba(41, 41, 41, 0.05);
             margin: 0 4px 2px;
+          }
+        }
+        /* Portrait/tablet windows have the same stacked case-study tray as
+           phones, but enough vertical space for a larger, lower hero. */
+        @media (min-width: 601px) and (max-width: 760px) {
+          .home-blob {
+            width: clamp(320px, max(44vw, 40vh), 353px);
+          }
+          .home-blob .blob-shadow {
+            top: calc(100% - 196px);
+          }
+        }
+        /* Preserve the compact composition the phone layout already uses. */
+        @media (max-width: 600px) {
+          .home-blob {
+            width: 242px;
           }
         }
         .nav-link:hover {
@@ -422,11 +441,11 @@ export default function Home() {
         style={{
           aspectRatio: "1 / 1",
           marginInline: "auto",
-          marginTop: "calc(clamp(16px, 3vh, 32px) - 8px)",
           position: "relative",
         }}
       >
         <div
+          className="blob-shadow"
           style={{
             position: "absolute",
             top: "calc(100% - 136px)",

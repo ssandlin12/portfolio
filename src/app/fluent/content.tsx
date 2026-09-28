@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Figtree } from "next/font/google";
 import { useState } from "react";
-import { CaseProcess, type ProcessStep } from "../_components/case-process";
 import { PlainCaseStudy, type PlainCaseStudySection } from "../_components/plain-case-study";
 import { BackIcon, ExternalLinkIcon } from "../_components/fluent-icons";
 
@@ -16,41 +15,6 @@ const figtree = Figtree({
 });
 
 const INK_DARK = "#292929";
-
-const PROCESS: readonly ProcessStep[] = [
-  {
-    number: "01",
-    eyebrow: "Discover",
-    heading: "Understanding the system",
-    body: "Add the project context, research, audits, and stakeholder inputs that shaped the Fluent design-library work.",
-    methods: ["System audit", "Stakeholder interviews", "Usage analysis"],
-    takeaway: "Replace this placeholder with the most important insight from discovery.",
-  },
-  {
-    number: "02",
-    eyebrow: "Define",
-    heading: "Aligning on principles and priorities",
-    body: "Describe how the team defined the library strategy, established priorities, and aligned product teams around a shared direction.",
-    methods: ["Design principles", "Prioritization", "Roadmapping"],
-    takeaway: "Replace this placeholder with the decision that focused the work.",
-  },
-  {
-    number: "03",
-    eyebrow: "Build",
-    heading: "Evolving the design library",
-    body: "Document the component, pattern, token, governance, and contribution work that moved the design library forward.",
-    methods: ["Component design", "Prototyping", "Documentation"],
-    takeaway: "Replace this placeholder with the core system contribution.",
-  },
-  {
-    number: "04",
-    eyebrow: "Scale",
-    heading: "Supporting adoption across teams",
-    body: "Explain how the library was validated, released, communicated, and supported across Microsoft product teams.",
-    methods: ["Usability testing", "Release planning", "Adoption support"],
-    takeaway: "Replace this placeholder with the clearest signal of adoption or impact.",
-  },
-];
 
 function MediaPlaceholder({ label }: { label: string }) {
   return (
@@ -482,6 +446,7 @@ export default function FluentContent({
           font-size: 17px;
           line-height: 1.55;
         }
+        .case-problem-section { margin-top: 56px; }
         .process-media-image {
           display: block;
           width: 100%;
@@ -496,6 +461,7 @@ export default function FluentContent({
           gap: 28px;
           margin-top: 72px;
         }
+        .case-process-summary { margin-top: 72px; }
         .case-bottom-media .case-media-image {
           margin-top: 0;
         }
@@ -586,38 +552,21 @@ export default function FluentContent({
 
       <article className="case-article">
         <section>
-          <p className="case-feature-kicker">The problem</p>
+          <p className="case-feature-kicker">The overview</p>
           <h2 className="case-feature-title">
-            “Too much designers&rsquo; time wasted on matching Avatar stroke to
-            background surface.”
+            The Fluent Avatar component is one of the most highly used
+            components across Microsoft.
           </h2>
           <p className="case-feature-intro">
-            The Fluent team reached out to me as one of the contributors to
-            the main Fluent library in order to help solve an issue with the
-            Avatar component, which was getting consistent feedback that it
-            needed a presence badge border solution. It had been built with
-            the stroke visible around the Avatar image and Presence Badge.
-          </p>
-          <Image
-            className="case-media-image"
-            src="/case-studies/fluent/avatar-presence-comparison-v2.png"
-            width={926}
-            height={238}
-            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
-            alt="Microsoft Fluent Avatar component comparing success and error presence badge borders"
-          />
-          <p className="case-media-caption">
-            Left: Stroke not visible on white background. Right: Stroke visible
-            on a non-white background.
-          </p>
-          <p className="case-post-media-copy">
-            This was fine on white backgrounds, but for any non-white
-            backgrounds, designers had to constantly change all of those
-            stroke variables to match the background color. As a component that
-            consistently got 1.2+ million uses a day, this would equate to
-            saving lots of designers&rsquo; time across the Microsoft work.
+            Avatar represents a person or group with an image, initials, or an
+            icon. Presence badges and activity indicators add context at a
+            glance, while neutral, brand, and shared-color treatments let the
+            component work across product surfaces. It scales through a wide
+            range of sizes and can be combined into Avatar Groups when a
+            conversation or collaboration space needs to represent many people.
           </p>
         </section>
+
         <video
           className="case-media-image"
           autoPlay
@@ -630,22 +579,77 @@ export default function FluentContent({
           <source src="/case-studies/fluent/avatar-documentation.mp4" type="video/mp4" />
         </video>
 
-        <CaseProcess
-          id="fluent-process-title"
-          kicker="The scope"
-          title="Auditing 91 variants for the existing component"
-          intro="With thirteen sizes, three layouts, and three colors, as well as two properties, this required reviewing multiple variant-specific distinctions. I had to go into the spec documentation in order to see all of the sizes for activity ring stroke width, presence badge size, and presence badge stroke width."
-          steps={PROCESS}
-        >
-          <Image
+        <section className="case-problem-section">
+          <p className="case-feature-kicker">The context</p>
+          <h2 className="case-feature-title">
+            The Fluent Avatar component had a fixed white stroke in two areas
+            that was visible on a wide range of background surfaces.
+          </h2>
+          <p className="case-feature-intro">
+            The stroke appeared around the Avatar image and the Presence
+            Badge. It disappeared into white surfaces, but remained visible on
+            colored, tinted, and image-based backgrounds, creating an
+            inconsistent edge treatment across the component.
+          </p>
+          <video
+            className="case-media-image"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label="Microsoft Fluent Avatar presence badge border demonstration"
+          >
+            <source src="/case-studies/fluent/avatar-presence-comparison.mp4" type="video/mp4" />
+          </video>
+        </section>
+
+        <section className="case-problem-section">
+          <p className="case-feature-kicker">The problem</p>
+          <h2 className="case-feature-title">
+            “Too much designers&rsquo; time was being wasted on matching the Avatar
+            stroke to the background surface.”
+          </h2>
+          <p className="case-feature-intro">
+            The Fluent team reached out to me as one of the contributors to
+            the main Fluent library in order to help solve an issue with the
+            Avatar component, which was getting consistent feedback that it
+            needed a presence badge border solution. It had been built with
+            the stroke visible around the Avatar image and Presence Badge.
+          </p>
+          <p className="case-post-media-copy">
+            This was fine on white backgrounds, but for any non-white
+            backgrounds, designers had to constantly change all of those
+            stroke variables to match the background color. As a component that
+            consistently got 1.2+ million uses a day, this would equate to
+            saving lots of designers&rsquo; time across the Microsoft work.
+          </p>
+        </section>
+
+        <section className="case-process-summary" aria-labelledby="fluent-process-title">
+          <p className="case-feature-kicker">The scope</p>
+          <h2 id="fluent-process-title" className="case-feature-title">
+            Auditing 91 variants for the existing component
+          </h2>
+          <p className="case-feature-intro">
+            With thirteen sizes, three layouts, and three colors, as well as
+            two properties, this required reviewing multiple variant-specific
+            distinctions. I had to go into the spec documentation to review
+            activity ring stroke width, presence badge size, and presence
+            badge stroke width.
+          </p>
+          <video
             className="process-media-image"
-            src="/case-studies/fluent/avatar-specification-v2.png"
-            width={1682}
-            height={1771}
-            sizes="(max-width: 940px) calc(100vw - 40px), 900px"
-            alt="Microsoft Fluent Avatar specification showing sizes, presence badges, activity rings, and appearance variants"
-          />
-        </CaseProcess>
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label="Microsoft Fluent Avatar component variants"
+          >
+            <source src="/case-studies/fluent/avatar-scope-variants.mp4" type="video/mp4" />
+          </video>
+        </section>
 
         <section className="case-bottom-media" aria-label="Additional Avatar component work">
           <Image
@@ -668,6 +672,8 @@ export default function FluentContent({
           />
         </section>
 
+        <PlainCaseStudy sections={study === "teams" ? TEAMS_STUDY : FLUENT_STUDY} />
+
         <section className="case-section">
           <h2 className="case-section-heading">After</h2>
           <p className="case-section-body">
@@ -688,8 +694,6 @@ export default function FluentContent({
           <h3 className="case-next-title">Microsoft Teams</h3>
           <p className="case-next-body">Continue to the Microsoft Teams case study.</p>
         </Link>
-
-        <PlainCaseStudy sections={study === "teams" ? TEAMS_STUDY : FLUENT_STUDY} />
       </article>
     </main>
   );
