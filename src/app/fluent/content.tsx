@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Figtree } from "next/font/google";
 import { useState } from "react";
-import { PlainCaseStudy, type PlainCaseStudySection } from "../_components/plain-case-study";
 import { BackIcon, ExternalLinkIcon } from "../_components/fluent-icons";
 
 const figtree = Figtree({
@@ -25,66 +24,79 @@ function MediaPlaceholder({ label }: { label: string }) {
   );
 }
 
-const FLUENT_STUDY: readonly PlainCaseStudySection[] = [
-];
+type TeamsCaseStudySection = {
+  overline: string;
+  title: string;
+  body: string;
+  placeholder?: string;
+  imageSrc?: string;
+  imageAlt?: string;
+  videoSrc?: string;
+  videoLabel?: string;
+};
 
-const TEAMS_STUDY: readonly PlainCaseStudySection[] = [
+const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   {
-    title: "Overview",
-    paragraphs: [
-      "How do you build an easy-to-update atom-to-template pipeline for Teams screens?",
-      "The Basic Screens pipeline connects Teams 2 Web with a Basic Screens file.",
-    ],
-    placeholders: [{ label: "Placeholder video: Teams Basic Screens pipeline" }, { label: "Placeholder image: Teams 2 Web preview" }],
+    overline: "Overview",
+    title: "Building an atom-to-template pipeline for Teams screens",
+    body: "The Basic Screens pipeline connected Teams 2 Web with a Basic Screens file, turning a collection of screens into a system that designers could update, reuse, and extend.",
+    placeholder: "Teams Basic Screens pipeline",
   },
   {
-    title: "Context",
-    paragraphs: [
-      "The Basic Screens file was a collection of frames and screenshots that needed to be recreated as a maintainable system.",
-    ],
-    placeholders: [{ label: "Placeholder image: original Basic Screens file" }],
+    overline: "Context",
+    title: "Moving beyond a collection of static screens",
+    body: "Basic Screens began as a collection of frames and screenshots. To become a lasting design resource, it needed to be rebuilt as a maintainable system rather than a set of one-off artifacts.",
+    placeholder: "Original Basic Screens file",
   },
   {
-    title: "Problem",
-    paragraphs: [
-      "The screens were difficult to scale and keep current while relying on non-components. The work was described as building a Godzilla component.",
-    ],
+    overline: "Problem",
+    title: "A screen library that could not keep pace with product change",
+    body: "The existing screens relied on non-components, making them difficult to scale and keep current. The challenge was to avoid creating a single oversized component while still supporting the range of Teams experiences.",
+    placeholder: "Screen library before the rebuild",
   },
   {
-    title: "Scope",
-    paragraphs: [
-      "The initial system covered light, dark, and high-contrast modes across four breakpoints, with reflow work planned to scale to nine. Multiple screens required confirmation and approval while allowing as much organic contribution as possible.",
-    ],
-    placeholders: [{ label: "Placeholder image: responsive screen and breakpoint scope" }],
+    overline: "Scope",
+    title: "Supporting Teams across themes and breakpoints",
+    body: "The initial system covered light, dark, and high-contrast modes across four breakpoints, with reflow work planned to scale to nine. It also needed a clear review process while leaving room for product teams to contribute.",
+    placeholder: "Responsive screen and breakpoint scope",
   },
   {
-    title: "Process",
-    paragraphs: [
-      "I conducted focus groups and one-to-one research sessions with designers, created a first solution, and tested it with one feature team. The shell lived in Teams 2 Web while the canvas lived in each designer's file.",
-      "After several iterations, the team reached designer and product alignment at version five. The solution was moved into the main file, then introduced through an announcement video and team-by-team seminars on Figma variables.",
-      "The rollout also promoted the new Shell 2.0.0 component and light-to-dark mode toggling.",
-    ],
-    placeholders: [{ label: "Placeholder image: solution iterations and designer feedback" }, { label: "Placeholder video: announcement and training" }],
+    overline: "Process",
+    title: "Testing a shared shell-and-canvas model",
+    body: "I ran focus groups and one-to-one sessions, developed an initial solution, and tested it with a feature team. The shell lived in Teams 2 Web, while each designer retained a canvas in their own file; repeated iterations brought product and design alignment before launch.",
+    placeholder: "Solution iterations and designer feedback",
   },
   {
-    title: "Deliverable",
-    paragraphs: [
-      "The delivered pipeline supported reusable screens and organic contribution from product teams.",
-    ],
-    placeholders: [{ label: "Placeholder image: Basic Screens deliverable" }],
+    overline: "Deliverable",
+    title: "A reusable foundation for Teams screen design",
+    body: "The delivered pipeline made it possible to assemble reusable screens from shared parts while giving product teams a practical path to make and contribute updates.",
+    videoSrc: "/case-studies/teams/teams-deliverable.mp4",
+    videoLabel: "Basic Screens deliverable",
   },
   {
-    title: "Result",
-    paragraphs: [
-      "The solution was adopted by other product teams and became one of the most popular shell patterns.",
-    ],
-    placeholders: [{ label: "Placeholder image: adoption result" }],
+    overline: "Result",
+    title: "A pattern adopted beyond the initial team",
+    body: "The solution was adopted by other product teams and became one of the most widely used shell patterns, making it easier to create consistent Teams experiences across the organization.",
+    placeholder: "Adoption across product teams",
   },
   {
-    title: "Final thoughts",
-    paragraphs: [
-      "The process evolved through testing and iteration. Adoption improved when the implementation was paired with clear communication, practical training, and a path for teams to contribute.",
-    ],
+    overline: "Pre-Ignite",
+    title: "Deliverables released in time for Microsoft’s Ignite deadline",
+    body: "Here’s one of the many screens released as part of the initial request. As one of the newest Teams features at the time, compact chat view was meticulously prepared with every detail considered for consistency, including timestamps, names and list-item matching, chat-thread consistency, Chat badge numbers, and more.",
+    imageSrc: "/case-studies/teams/impact-pre-ignite.png",
+    imageAlt: "Microsoft Teams chat screen",
+  },
+  {
+    overline: "Ignite",
+    title: "Showcased at Ignite conference keynote speech",
+    body: "As seen in the video below, the background Teams screens are the same ones in the Basic Screens library. This pipeline and its resultant screens became the go-to for Microsoft’s two annual conferences, Build and Ignite. More importantly, it became an incredible day-to-day time-saving solution, with Shell as the most popular component and the Basic Screens library as a popular starting point for daily design work, presentations, marketing deliverables, and more.",
+    videoSrc: "/case-studies/teams/teams-ignite.mp4",
+    videoLabel: "Microsoft Teams at Ignite",
+  },
+  {
+    overline: "Outcome",
+    title: "A new standard for Basic Screens across Microsoft products",
+    body: "The pipeline created a sustainable way to build, maintain, and evolve Teams screens, reducing repeated work and helping more teams begin from a common system. It was later used as a model for other Basic Screens libraries across Microsoft products like SharePoint, Planner, and more. The time saved through this solution also likely results in an incredible return on investment.",
   },
 ];
 
@@ -160,7 +172,7 @@ export default function FluentContent({
 
   return (
     <main
-      className={`${figtree.variable} min-h-screen flex flex-col relative`}
+      className={`${figtree.variable} case-study--${study} min-h-screen flex flex-col relative`}
       style={{
         fontFamily: "var(--font-figtree), system-ui, sans-serif",
         color: INK_DARK,
@@ -402,6 +414,16 @@ export default function FluentContent({
           border-radius: 14px;
           box-sizing: border-box;
         }
+        .teams-case-media-image {
+          display: block;
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          margin: 28px auto 0;
+          border: 1px solid #e1e1e1;
+          border-radius: 14px;
+          box-sizing: border-box;
+          object-fit: cover;
+        }
         .case-media-caption {
           margin: 10px 0 0;
           color: rgba(41, 41, 41, 0.55);
@@ -477,6 +499,23 @@ export default function FluentContent({
           color: rgba(41, 41, 41, 0.7);
           font-size: 16px;
           line-height: 1.5;
+        }
+        .case-study--fluent .case-media-placeholder,
+        .case-study--fluent .case-media-image,
+        .case-study--fluent .case-problem-media,
+        .case-study--fluent .process-media-image,
+        .case-study--teams .case-media-placeholder,
+        .case-study--teams .case-media-image,
+        .case-study--teams .teams-case-media-image,
+        .case-study--teams .case-problem-media,
+        .case-study--teams .process-media-image {
+          margin-top: 48px;
+        }
+        .case-study--fluent .case-problem-section,
+        .case-study--fluent .case-process-summary,
+        .case-study--teams .case-problem-section,
+        .case-study--teams .case-process-summary {
+          margin-top: 96px;
         }
         @media (max-width: 560px) {
           .case-title-row { align-items: flex-start; flex-direction: column; }
@@ -637,13 +676,15 @@ export default function FluentContent({
         <section className="case-process-summary" aria-labelledby="fluent-implementation-title">
           <p className="case-feature-kicker">Process</p>
           <h2 id="fluent-implementation-title" className="case-feature-title">
-            Building border treatments into component properties
+            Experimentation with isolating boolean operation layers
           </h2>
           <p className="case-feature-intro">
-            Based on the audit, I created a Presence Badge stroke shape and
-            applied the same treatment to the main Avatar and activity ring.
-            Each shape was bound to its relevant component property; the
-            activity-ring treatment also included a Presence Badge cutout.
+            Knowing that masking would produce unreliable results at scale and
+            variants would be too heavy, I began some tests to isolate boolean
+            operation layers and combine that with component properties within
+            components. Part of the process involved feasibility but another
+            part involved periods of stress testing along the way to ensure
+            this method would scale.
           </p>
           <video
             className="process-media-image"
@@ -693,13 +734,59 @@ export default function FluentContent({
             properties, repeated toggles, and size changes to confirm the new
             behavior remained stable in every configuration.
           </p>
-          <MediaPlaceholder label="Switching Avatar variants and properties" />
+          <video
+            className="process-media-image"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            aria-label="Switching Avatar variants and properties"
+          >
+            <source src="/case-studies/fluent/avatar-testing-final.mp4" type="video/mp4" />
+          </video>
         </section>
 
           </>
         )}
 
-        <PlainCaseStudy sections={study === "teams" ? TEAMS_STUDY : FLUENT_STUDY} />
+        {study === "teams" && TEAMS_CASE_STUDY.map((section, index) => {
+          const id = `teams-${section.overline.toLowerCase()}-title`;
+          return (
+            <section
+              key={section.overline}
+              className={index === 0 ? "case-feature-section" : "case-process-summary"}
+              aria-labelledby={id}
+            >
+              <p className="case-feature-kicker">{section.overline}</p>
+              <h2 id={id} className="case-feature-title">{section.title}</h2>
+              <p className="case-feature-intro">{section.body}</p>
+              {section.videoSrc ? (
+                <video
+                  className="process-media-image"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  aria-label={section.videoLabel}
+                >
+                  <source src={section.videoSrc} type="video/mp4" />
+                </video>
+              ) : section.imageSrc ? (
+                <Image
+                  className="teams-case-media-image"
+                  src={section.imageSrc}
+                  alt={section.imageAlt ?? ""}
+                  width={1920}
+                  height={1080}
+                />
+              ) : section.placeholder ? (
+                <MediaPlaceholder label={section.placeholder} />
+              ) : null}
+            </section>
+          );
+        })}
 
         {study === "fluent" ? (
           <>
@@ -713,7 +800,17 @@ export default function FluentContent({
                 the core Fluent team, merged into the main library, and copied
                 into Teams 2 Web for Teams-specific styling.
               </p>
-              <MediaPlaceholder label="Fluent and Teams delivery" />
+              <video
+                className="process-media-image"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label="Fluent Avatar delivery"
+              >
+                <source src="/case-studies/fluent/avatar-delivery.mp4" type="video/mp4" />
+              </video>
             </section>
 
             <section className="case-process-summary" aria-labelledby="fluent-outcome-title">
@@ -732,34 +829,7 @@ export default function FluentContent({
               </p>
             </section>
           </>
-        ) : (
-          <>
-            <section className="case-section">
-              <h2 className="case-section-heading">After</h2>
-              <p className="case-section-body">
-                Describe the evolved library, the experience it enabled, and what changed for product teams.
-              </p>
-              <video
-                className="case-media-image"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                aria-label="Microsoft Teams at Build"
-              >
-                <source src="/case-studies/teams/teams-at-build.mp4" type="video/mp4" />
-              </video>
-            </section>
-
-            <section className="case-section">
-              <h2 className="case-section-heading">Outcome</h2>
-              <p className="case-section-body">
-                Add measurable outcomes, adoption signals, organizational impact, and the next direction for the library.
-              </p>
-            </section>
-          </>
-        )}
+        ) : null}
 
         <Link href="/teams" className="case-next">
           <p className="case-next-label">Next</p>
