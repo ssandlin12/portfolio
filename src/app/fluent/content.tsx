@@ -813,14 +813,14 @@ export default function FluentContent({
         <section className="case-process-summary" aria-labelledby="fluent-testing-title">
           <p className="case-feature-kicker">Testing</p>
           <h2 id="fluent-testing-title" className="case-feature-title">
-            Stress-tested property & variant swapping with Teams designers
+            Stress-tested this solution across all sizes & variants
           </h2>
           <p className="case-feature-intro">
             Although I had individually tested the updated Avatar component
             solution across breakpoints, variants, sizes, properties, repeated
-            toggles, and size changes, I set up a couple of async chats with
+            toggles, and size changes, I set up a couple of async reviews with
             Teams designers to get their feedback before submitting it to the
-            Fluent team for review. The main feedback was a request for
+            Fluent team for merging. The main feedback was a request for
             Teams-specific scenarios, so I explored how to make those work
             seamlessly as well.
           </p>
@@ -908,31 +908,6 @@ export default function FluentContent({
               </video>
             </section>
 
-            <section className="case-process-summary" aria-labelledby="fluent-documentation-title">
-              <p className="case-feature-kicker">Documentation</p>
-              <h2 id="fluent-documentation-title" className="case-feature-title">
-                Updated Fluent documentation, metadata, and changelogs
-              </h2>
-              <p className="case-feature-intro">
-                I updated the changelog and the design-system documentation in
-                our Teams Figma file, then ensured that component links,
-                descriptions, and variables were resolved. I also updated Avatar
-                as a subcomponent throughout Fluent 2 Web so the implementation
-                and its documentation stayed aligned.
-              </p>
-              <video
-                className="process-media-image"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                aria-label="Fluent documentation updates"
-              >
-                <source src="/case-studies/fluent/avatar-documentation-updates.mp4" type="video/mp4" />
-              </video>
-            </section>
-
             <section className="case-process-summary" aria-labelledby="fluent-implementation-title">
               <p className="case-feature-kicker">Implementation</p>
               <h2 id="fluent-implementation-title" className="case-feature-title">
@@ -956,6 +931,31 @@ export default function FluentContent({
                 aria-label="Avatar implementation in Teams 2 Web"
               >
                 <source src="/case-studies/fluent/avatar-teams-implementation.mp4" type="video/mp4" />
+              </video>
+            </section>
+
+            <section className="case-process-summary" aria-labelledby="fluent-documentation-title">
+              <p className="case-feature-kicker">Documentation</p>
+              <h2 id="fluent-documentation-title" className="case-feature-title">
+                Updated Fluent documentation, metadata, and changelogs
+              </h2>
+              <p className="case-feature-intro">
+                I updated the changelog and the design-system documentation in
+                our Teams Figma file, then ensured that component links,
+                descriptions, and variables were resolved. I also updated Avatar
+                as a subcomponent throughout Fluent 2 Web so the implementation
+                and its documentation stayed aligned.
+              </p>
+              <video
+                className="process-media-image"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label="Fluent documentation updates"
+              >
+                <source src="/case-studies/fluent/avatar-documentation-updates.mp4" type="video/mp4" />
               </video>
             </section>
 
