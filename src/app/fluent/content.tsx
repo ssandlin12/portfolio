@@ -38,27 +38,29 @@ type TeamsCaseStudySection = {
 const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   {
     overline: "Overview",
-    title: "Building an atom-to-template pipeline for Teams screens",
-    body: "The Basic Screens pipeline connected Teams 2 Web with a Basic Screens file, turning a collection of screens into a system that designers could update, reuse, and extend.",
+    title: "Basic Screens are a foundational element of Teams design work",
+    body: "As one of the most highly requested resources for the Teams design systems team, Basic Screens represent an entire range of designer needs. From day-to-day design work to presentations to deliverables for marketing and conferences, they’re often urgently needed and require extreme coordination to deliver.",
     placeholder: "Teams Basic Screens pipeline",
   },
   {
     overline: "Context",
-    title: "Moving beyond a collection of static screens",
-    body: "Basic Screens began as a collection of frames and screenshots. To become a lasting design resource, it needed to be rebuilt as a maintainable system rather than a set of one-off artifacts.",
-    placeholder: "Original Basic Screens file",
+    title: "Starting with static frames and detached, local components",
+    body: "As this area of work hadn’t yet been addressed since the Sketch-to-Figma transition, Basic Screens started out as a set of frames with mostly detached, local, or non-existent components and hard-coded hex values. To scale, we needed to audit the screens, componentize the contents, and connect styles and variables.",
+    videoSrc: "/case-studies/teams/teams-context.mp4",
+    videoLabel: "Teams Basic Screens before the redesign",
   },
   {
     overline: "Problem",
-    title: "A screen library that could not keep pace with product change",
-    body: "The existing screens relied on non-components, making them difficult to scale and keep current. The challenge was to avoid creating a single oversized component while still supporting the range of Teams experiences.",
+    title: "Without organic adoption by designers, this would inevitably fail",
+    body: "For the most up-to-date contributions from different feature teams, aggregating into a set of shared Basic Screens, we needed organic contribution. The entire Teams design organization would have to be all-in on this solution. Otherwise, blockers would delay screen approvals, constantly wrangling updates would exhaust our limited bandwidth, and we’d be unprepared during the pre-Ignite and Build rush periods.",
     placeholder: "Screen library before the rebuild",
   },
   {
     overline: "Scope",
-    title: "Supporting Teams across themes and breakpoints",
-    body: "The initial system covered light, dark, and high-contrast modes across four breakpoints, with reflow work planned to scale to nine. It also needed a clear review process while leaving room for product teams to contribute.",
-    placeholder: "Responsive screen and breakpoint scope",
+    title: "9 reflow breakpoints, 4 appearance themes, and 2 platforms",
+    body: "Although we initially started with three themes—light, dark, and high contrast—as the work overlapped with the New Teams and responsive reflow efforts, we had to factor in new themes: Mica light, Mica dark, neutral, and high contrast. For this to scale, we needed a system that could allow for effortless toggling between themes and pixel-perfect responsiveness when swapping breakpoints.",
+    videoSrc: "/case-studies/teams/teams-scope.mp4",
+    videoLabel: "Teams breakpoints and theme variations",
   },
   {
     overline: "Research",
@@ -132,7 +134,7 @@ type CaseStudyProps = {
 
 export default function FluentContent({
   title = "Microsoft Fluent",
-  subtitle = "“How do you structure Figma components that get 1 million internal uses per day?”",
+  subtitle = "“How do you structure Figma components that get 1.2 million internal uses per day?”",
   linkHref = "https://www.figma.com/community/file/836828295772957889/microsoft-fluent-2-web",
   linkLabel = "Fluent 2 Web",
   videoSrc = "/fluent-hero.mp4",
@@ -256,6 +258,7 @@ export default function FluentContent({
           background: linear-gradient(105deg, #e6e6e6 20%, #f4f4f4 42%, #e6e6e6 64%);
           background-size: 220% 100%;
           animation: fluent-video-shimmer 1.6s linear infinite;
+          transition: opacity 180ms ease-out;
         }
         @keyframes fluent-video-shimmer {
           from { background-position: 100% 0; }
@@ -275,6 +278,9 @@ export default function FluentContent({
         }
         .fluent-video-card.is-ready video {
           opacity: 1;
+        }
+        .fluent-video-card.is-ready .fluent-video-skeleton {
+          opacity: 0;
         }
         .fluent-preview-image {
           position: absolute;
@@ -514,6 +520,15 @@ export default function FluentContent({
           transition: background-color 160ms ease-out;
         }
         .case-next:hover { background: #e8e8e8; }
+        .case-next--disabled {
+          background: #f6f6f6;
+          color: rgba(41, 41, 41, 0.42);
+          cursor: not-allowed;
+        }
+        .case-next--disabled:hover { background: #f6f6f6; }
+        .case-next--disabled .case-next-label,
+        .case-next--disabled .case-next-title,
+        .case-next--disabled .case-next-body { color: inherit; }
         .case-next-label {
           margin: 0;
           color: rgba(41, 41, 41, 0.5);
@@ -598,7 +613,15 @@ export default function FluentContent({
         </div>
         <div className={`fluent-video-card${videoReady ? " is-ready" : ""}`} aria-label="Microsoft Fluent case study video">
           <div className="fluent-video-skeleton" aria-hidden="true" />
-          <video autoPlay loop muted playsInline preload="auto" onLoadedData={() => setVideoReady(true)}>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            onLoadedMetadata={() => setVideoReady(true)}
+            onCanPlay={() => setVideoReady(true)}
+          >
             <source src={videoSrc} type="video/mp4" />
           </video>
           {secondaryPreviewSrc ? (
@@ -667,7 +690,7 @@ export default function FluentContent({
             preload="metadata"
             aria-label="Microsoft Fluent Avatar presence badge border demonstration"
           >
-            <source src="/case-studies/fluent/avatar-presence-comparison.mp4" type="video/mp4" />
+            <source src="/case-studies/fluent/avatar-context.mp4" type="video/mp4" />
           </video>
         </section>
 
@@ -712,13 +735,16 @@ export default function FluentContent({
         <section className="case-process-summary" aria-labelledby="fluent-exploration-title">
           <p className="case-feature-kicker">Exploration</p>
           <h2 id="fluent-exploration-title" className="case-feature-title">
-            Finding a scalable border approach
+            Examined masking, variants, and component properties
           </h2>
           <p className="case-feature-intro">
-            Masking did not resize reliably, and a variant-heavy solution would
-            have made the component unnecessarily complex. I explored precise
-            shapes, Boolean properties, and component-bound properties instead
-            of adding hidden layers.
+            Masking often creates issues with resizing and clipping, making it
+            a less scalable solution for the organization. Variants could
+            technically solve the issue, but adding all the additional variants
+            would result in an unnecessarily complex and heavy component. Even
+            component properties could only solve part of the issue: they could
+            block layers when switched on, but with a requirement for transparent
+            borders, blocking was not applicable.
           </p>
           <video
             className="process-media-image"
@@ -736,7 +762,7 @@ export default function FluentContent({
         <section className="case-process-summary" aria-labelledby="fluent-implementation-title">
           <p className="case-feature-kicker">Process</p>
           <h2 id="fluent-implementation-title" className="case-feature-title">
-            Experimentation with isolating boolean operation layers
+            Experimented with isolating boolean operation layers
           </h2>
           <p className="case-feature-intro">
             Knowing that masking would produce unreliable results at scale and
@@ -762,7 +788,7 @@ export default function FluentContent({
         <section className="case-process-summary" aria-labelledby="fluent-solution-title">
           <p className="case-feature-kicker">Solution</p>
           <h2 id="fluent-solution-title" className="case-feature-title">
-            Binding Boolean subtract operations to component properties
+            Bound Boolean subtract operations to component properties
           </h2>
           <p className="case-feature-intro">
             Rather than relying on a fixed white stroke, I created two Boolean
@@ -787,12 +813,16 @@ export default function FluentContent({
         <section className="case-process-summary" aria-labelledby="fluent-testing-title">
           <p className="case-feature-kicker">Testing</p>
           <h2 id="fluent-testing-title" className="case-feature-title">
-            Stress-testing every Avatar configuration
+            Stress-tested property & variant swapping with Teams designers
           </h2>
           <p className="case-feature-intro">
-            I tested the component across breakpoints, variants, sizes,
-            properties, repeated toggles, and size changes to confirm the new
-            behavior remained stable in every configuration.
+            Although I had individually tested the updated Avatar component
+            solution across breakpoints, variants, sizes, properties, repeated
+            toggles, and size changes, I set up a couple of async chats with
+            Teams designers to get their feedback before submitting it to the
+            Fluent team for review. The main feedback was a request for
+            Teams-specific scenarios, so I explored how to make those work
+            seamlessly as well.
           </p>
           <video
             className="process-media-image"
@@ -803,7 +833,7 @@ export default function FluentContent({
             preload="metadata"
             aria-label="Switching Avatar variants and properties"
           >
-            <source src="/case-studies/fluent/avatar-testing-final.mp4" type="video/mp4" />
+            <source src="/case-studies/fluent/avatar-testing-feedback.mp4" type="video/mp4" />
           </video>
         </section>
 
@@ -836,11 +866,14 @@ export default function FluentContent({
               ) : section.imageSrc ? (
                 <Image
                   className="teams-case-media-image"
-                  src={section.imageSrc}
-                  alt={section.imageAlt ?? ""}
-                  width={1920}
-                  height={1080}
-                />
+                src={section.imageSrc}
+                alt={section.imageAlt ?? ""}
+                width={1920}
+                height={1080}
+                sizes="(max-width: 940px) calc(100vw - 40px), 900px"
+                quality={section.imageSrc.endsWith("/teams-context.png") ? 100 : 75}
+                unoptimized={section.imageSrc.endsWith("/teams-context.png")}
+              />
               ) : section.placeholder ? (
                 <MediaPlaceholder label={section.placeholder} />
               ) : null}
@@ -851,14 +884,16 @@ export default function FluentContent({
         {study === "fluent" ? (
           <>
             <section className="case-process-summary" aria-labelledby="fluent-delivery-title">
-              <p className="case-feature-kicker">Delivery</p>
+              <p className="case-feature-kicker">Deliverable</p>
               <h2 id="fluent-delivery-title" className="case-feature-title">
-                Shipping the adaptive Avatar treatment
+                Merged the branch into Fluent 2 Web and publishing across the org
               </h2>
               <p className="case-feature-intro">
-                The work was developed in a Fluent 2 Web branch, shared with
-                the core Fluent team, merged into the main library, and copied
-                into Teams 2 Web for Teams-specific styling.
+                After syncing with the Fluent core team multiple times throughout
+                this process during their weekly sync and ensuring that this
+                component was thoroughly stress-tested, I coordinated with the
+                main library admin to merge the branch, deprecate the previous
+                Avatar, and publish the Fluent 2 Web update.
               </p>
               <video
                 className="process-media-image"
@@ -873,10 +908,61 @@ export default function FluentContent({
               </video>
             </section>
 
+            <section className="case-process-summary" aria-labelledby="fluent-documentation-title">
+              <p className="case-feature-kicker">Documentation</p>
+              <h2 id="fluent-documentation-title" className="case-feature-title">
+                Updated Fluent documentation, metadata, and changelogs
+              </h2>
+              <p className="case-feature-intro">
+                I updated the changelog and the design-system documentation in
+                our Teams Figma file, then ensured that component links,
+                descriptions, and variables were resolved. I also updated Avatar
+                as a subcomponent throughout Fluent 2 Web so the implementation
+                and its documentation stayed aligned.
+              </p>
+              <video
+                className="process-media-image"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label="Fluent documentation updates"
+              >
+                <source src="/case-studies/fluent/avatar-documentation-updates.mp4" type="video/mp4" />
+              </video>
+            </section>
+
+            <section className="case-process-summary" aria-labelledby="fluent-implementation-title">
+              <p className="case-feature-kicker">Implementation</p>
+              <h2 id="fluent-implementation-title" className="case-feature-title">
+                Migrated the new Avatar component into Teams 2 Web with custom variants
+              </h2>
+              <p className="case-feature-intro">
+                After publishing the component from Fluent 2 Web and updating
+                its documentation, the next step was bringing it into Teams 2
+                Web. I styled it with Teams product-specific variables, added
+                variants for Teams scenarios such as third-party apps and
+                agents or bots, and updated every Teams component that used
+                Avatar as a subcomponent.
+              </p>
+              <video
+                className="process-media-image"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label="Avatar implementation in Teams 2 Web"
+              >
+                <source src="/case-studies/fluent/avatar-teams-implementation.mp4" type="video/mp4" />
+              </video>
+            </section>
+
             <section className="case-process-summary" aria-labelledby="fluent-outcome-title">
               <p className="case-feature-kicker">Outcome</p>
               <h2 id="fluent-outcome-title" className="case-feature-title">
-                Estimated $53 million saved across the organization
+                Saved an estimated $53 million for Microsoft
               </h2>
               <p className="case-feature-intro">
                 We know that this component gets 1.2 million uses per day.
@@ -891,11 +977,19 @@ export default function FluentContent({
           </>
         ) : null}
 
-        <Link href="/teams" className="case-next">
-          <p className="case-next-label">Next</p>
-          <h3 className="case-next-title">Microsoft Teams</h3>
-          <p className="case-next-body">Continue to the Microsoft Teams case study.</p>
-        </Link>
+        {study === "teams" ? (
+          <div className="case-next case-next--disabled" aria-disabled="true">
+            <p className="case-next-label">Next</p>
+            <h3 className="case-next-title">Athenahealth (In progress)</h3>
+            <p className="case-next-body">Continue to the Athenahealth case study</p>
+          </div>
+        ) : (
+          <Link href="/teams" className="case-next">
+            <p className="case-next-label">Next</p>
+            <h3 className="case-next-title">Microsoft Teams</h3>
+            <p className="case-next-body">Continue to the Microsoft Teams case study.</p>
+          </Link>
+        )}
       </article>
     </main>
   );
