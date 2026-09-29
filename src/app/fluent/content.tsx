@@ -45,10 +45,10 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   },
   {
     overline: "Problem",
-    title: "Our existing Teams screens were disconnected from our design system",
+    title: "Existing Teams screens were disconnected from our design system",
     body: "As this area of work hadn’t yet been addressed since the Sketch-to-Figma transition, Basic Screens started out as a set of frames with mostly detached, local, or non-existent components and hard-coded hex values. To scale, we needed to audit the screens, componentize the contents, and connect styles and variables. However, before moving straight into that flow, we need to align with designers through some initial conversations.",
-    videoSrc: "/case-studies/teams/teams-context.mp4",
-    videoLabel: "Teams Basic Screens before the redesign",
+    imageSrc: "/case-studies/teams/teams-problem-screens.png",
+    imageAlt: "Existing Teams Basic Screens across themes and screen types",
   },
   {
     overline: "Scope",
