@@ -301,10 +301,12 @@ export default function FluentContent({
           align-items: flex-end;
           gap: clamp(14px, 1.8vw, 22px);
         }
-        .fluent-preview-row .fluent-preview-image {
-          position: static;
-          width: clamp(176px, 21vw, 270px);
-        }
+.fluent-preview-row .fluent-preview-image {
+  position: static;
+  width: clamp(176px, 21vw, 270px);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
         .back-pill {
           display: inline-flex;
           align-items: center;
@@ -941,10 +943,11 @@ export default function FluentContent({
               </h2>
               <p className="case-feature-intro">
                 I updated the changelog and the design-system documentation in
-                our Teams Figma file, then ensured that component links,
-                descriptions, and variables were resolved. I also updated Avatar
-                as a subcomponent throughout Fluent 2 Web so the implementation
-                and its documentation stayed aligned.
+                both the Fluent UI Kit and our Teams 2 Web library, then ensured
+                that component links, descriptions, and variables were resolved.
+                I also updated Avatar as a subcomponent throughout Fluent 2 Web
+                and Teams 2 Web so the implementation and its documentation
+                stayed aligned.
               </p>
               <video
                 className="process-media-image"

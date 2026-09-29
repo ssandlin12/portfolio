@@ -10,5 +10,11 @@ export default async function FluentPage() {
   if (!(await hasCaseAccess())) {
     return <PasswordGate title="Microsoft Fluent" />;
   }
-  return <FluentContent />;
+  return (
+    <FluentContent
+      secondaryPreviewSrc="/case-studies/teams/teams-web-desktop-cover.png"
+      secondaryPreviewWidth={1920}
+      secondaryPreviewHeight={1080}
+    />
+  );
 }
