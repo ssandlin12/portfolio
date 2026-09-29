@@ -297,7 +297,7 @@ export default function FluentContent({
         }
         .fluent-preview-row .fluent-preview-image {
           position: static;
-          width: clamp(140px, 16vw, 210px);
+          width: clamp(176px, 21vw, 270px);
         }
         .back-pill {
           display: inline-flex;

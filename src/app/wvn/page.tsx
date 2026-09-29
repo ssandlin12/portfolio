@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Figtree } from "next/font/google";
 import { useEffect, useState, type CSSProperties } from "react";
 import { ShimmerVideo } from "../_components/shimmer";
@@ -25,23 +26,26 @@ const navItem: CSSProperties = {
 };
 
 type Section = {
-  heading: string;
+  overline: string;
+  title: string;
   body: string;
-  videoSrc: string;
-  imageSrc: string;
-  alt: string;
+  videoSrc?: string;
+  imageSrc?: string;
+  alt?: string;
   // Tinted background under the wrap — useful when a screenshot has a
   // dark footer that should bleed into the surrounding area instead of
   // ending on a thin white strip.
   bg?: "dark";
   /** "width / height" of the video — feeds the shimmer wrap's aspect-ratio
       so the box reserves its final size before any pixels load. */
-  aspectRatio: string;
+  aspectRatio?: string;
+  placeholder?: string;
 };
 
 const SECTIONS: Section[] = [
   {
-    heading: "Before",
+    overline: "Problem",
+    title: "A massive film library hidden within blog-style navigation",
     body:
       "Despite having a rich library of short and feature films made by women filmmakers, the entry point to the film library was buried under “What We Do” in the blog’s navigation menu.",
     videoSrc: "/case-studies/wvn/01.mp4",
@@ -51,13 +55,22 @@ const SECTIONS: Section[] = [
     aspectRatio: "1920 / 998",
   },
   {
-    heading: "After",
+    overline: "Solution",
+    title: "A streaming experience built for discovery",
     body:
       "I delivered a redesigned homepage that positioned WVN as a modern streaming platform with multiple “Watch Now” entry points and with the film stills and covers as the focus. Additionally, the logo redesign that I delivered has now become an iconic part of the WVN brand.",
     videoSrc: "/case-studies/wvn/02.mp4",
     imageSrc: "/case-studies/wvn/02.png",
     alt: "Women's Voices Now — after",
     aspectRatio: "1920 / 1332",
+  },
+  {
+    overline: "Outcome",
+    title: "50 million viewers, 3 Emmy nominations, and 1 Emmy win.",
+    body:
+      "Women’s Voices Now has reached more than 50 million viewers across its film library, including 14 million viewers in 2025 alone, with three Emmy nominations and one Emmy win. They continue to grow in viewership and films submitted through their yearly Women’s Voices Now Film Festival.",
+    videoSrc: "/case-studies/wvn/wvn-outcome.mp4",
+    alt: "Women’s Voices Now audience outcome",
   },
 ];
 
@@ -158,11 +171,10 @@ export default function WvnCaseStudy() {
         .case-article {
           width: 100%;
           max-width: 900px;
-          margin-inline: auto;
-          margin-top: 72px;
-          margin-bottom: 100px;
+          margin: clamp(88px, calc(7vh + 48px), 150px) auto 100px;
         }
         .case-hero {
+          --preview-overhang: 56px;
           width: 100%;
           max-width: 900px;
           margin: clamp(56px, calc(6vh + 32px), 120px) auto 0;
@@ -209,14 +221,71 @@ export default function WvnCaseStudy() {
           background: #e8e8e8;
         }
         .case-intro {
-          font-size: 18px;
-          line-height: 1.5;
+          font-size: clamp(19px, 1.5vw, 27px);
+          font-weight: 300;
+          line-height: 1.15;
+          letter-spacing: -0.035em;
           color: rgba(41, 41, 41, 0.7);
           text-align: left;
-          margin: 20px 0 0;
+          margin: 10px 0 0;
         }
-        .case-section {
+        .wvn-hero-media {
+          position: relative;
+          width: calc(100% - var(--preview-overhang));
+          aspect-ratio: 16 / 9;
           margin-top: 48px;
+          line-height: 0;
+          overflow: visible;
+          background:
+            radial-gradient(circle at 25% 20%, rgba(98, 100, 167, 0.13), transparent 40%),
+            linear-gradient(145deg, #fafafa, #f1f1f1);
+        }
+        .wvn-hero-media video {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          display: block;
+          object-fit: cover;
+          border: 1px solid rgba(41, 41, 41, 0.14);
+          border-radius: clamp(18px, 2vw, 34px);
+          box-sizing: border-box;
+        }
+        .wvn-hero-preview {
+          position: absolute;
+          right: calc(-1 * var(--preview-overhang));
+          bottom: -36px;
+          width: clamp(176px, 21vw, 270px);
+          aspect-ratio: 16 / 9;
+          border-radius: clamp(14px, 1.5vw, 24px);
+          border: 1px solid #e1e1e1;
+          box-sizing: border-box;
+          box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
+          object-fit: cover;
+        }
+        .case-feature-section { margin-top: 0; }
+        .case-process-summary { margin-top: 96px; }
+        .case-feature-kicker {
+          margin: 0 0 8px;
+          color: rgba(41, 41, 41, 0.45);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.4;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+        .case-feature-title {
+          margin: 0;
+          font-size: 28px;
+          font-weight: 300;
+          line-height: 1.25;
+          letter-spacing: -0.02em;
+        }
+        .case-feature-intro {
+          margin: 12px 0 0;
+          color: rgba(41, 41, 41, 0.7);
+          font-size: 17px;
+          line-height: 1.55;
         }
         .case-media-wrap {
           width: 100%;
@@ -225,7 +294,7 @@ export default function WvnCaseStudy() {
           border-radius: 14px;
           border: 1px solid #e1e1e1;
           box-sizing: border-box;
-          margin-top: 28px;
+          margin-top: 48px;
         }
         .case-media-wrap[data-bg="dark"] {
           background-color: #2A2B30;
@@ -235,17 +304,38 @@ export default function WvnCaseStudy() {
           width: 100%;
           height: auto;
         }
-        .case-section-heading {
-          font-size: 20px;
-          font-weight: 400;
-          color: ${INK_DARK};
-          margin: 0 0 4px;
+        .wvn-media-placeholder {
+          display: flex;
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          margin-top: 48px;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          gap: 6px;
+          box-sizing: border-box;
+          border: 1px solid #e1e1e1;
+          border-radius: 14px;
+          background:
+            radial-gradient(circle at 25% 20%, rgba(98, 100, 167, 0.13), transparent 40%),
+            linear-gradient(145deg, #fafafa, #f1f1f1);
+          color: rgba(41, 41, 41, 0.58);
         }
-        .case-section-body {
-          font-size: 17px;
-          line-height: 1.5;
-          color: rgba(41, 41, 41, 0.7);
-          margin: 0;
+        .wvn-media-placeholder span { font-size: 20px; }
+        .wvn-media-placeholder small {
+          font-size: 13px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          opacity: 0.58;
+        }
+        .wvn-outcome-video {
+          display: block;
+          width: 100%;
+          height: auto;
+          margin-top: 48px;
+          border: 1px solid #e1e1e1;
+          border-radius: 14px;
+          box-sizing: border-box;
         }
         .process {
           margin-top: 72px;
@@ -357,6 +447,11 @@ export default function WvnCaseStudy() {
           .process-step {
             grid-template-columns: 1fr;
             gap: 18px;
+          }
+          .case-hero { --preview-overhang: 28px; }
+          .wvn-hero-preview {
+            bottom: -24px;
+            width: min(48vw, 190px);
           }
         }
 
@@ -539,55 +634,72 @@ export default function WvnCaseStudy() {
           <span className="case-study-pill case-study-pill--descriptor">Film discovery</span>
           <span className="case-study-pill case-study-pill--descriptor">Visual identity</span>
         </div>
-        <ShimmerVideo
-          videoSrc={SECTIONS[0].videoSrc}
-          imageSrc={SECTIONS[0].imageSrc}
-          alt={SECTIONS[0].alt}
-          aspectRatio={SECTIONS[0].aspectRatio}
-          bgVariant={SECTIONS[0].bg}
-        />
+        <div className="wvn-hero-media" aria-label="Women’s Voices Now case study video">
+          <video autoPlay loop muted playsInline preload="metadata">
+            <source src="/case-studies/wvn/wvn-hero.mp4" type="video/mp4" />
+          </video>
+          <Image
+            className="wvn-hero-preview"
+            src="/case-studies/wvn/wvn-design-toolkit-preview.png"
+            width={3840}
+            height={2160}
+            sizes="(max-width: 560px) 48vw, 22vw"
+            alt="Women’s Voices Now design toolkit preview"
+          />
+        </div>
       </section>
 
       <article className="case-article">
-
-        <section className="case-section">
-          <div className="case-section-heading">{SECTIONS[0].heading}</div>
-          <p className="case-section-body">{SECTIONS[0].body}</p>
-        </section>
-
-        <section className="case-section">
-          <div className="case-section-heading">{SECTIONS[1].heading}</div>
-          <p className="case-section-body">{SECTIONS[1].body}</p>
-          <ShimmerVideo
-            videoSrc={SECTIONS[1].videoSrc}
-            imageSrc={SECTIONS[1].imageSrc}
-            alt={SECTIONS[1].alt}
-            aspectRatio={SECTIONS[1].aspectRatio}
+        {SECTIONS.map((section, index) => (
+          <section
+            key={section.overline}
+            className={index === 0 ? "case-feature-section" : "case-process-summary"}
           >
-            <button
-              type="button"
-              className="case-expand-btn"
-              aria-label="Expand After"
-              onClick={() => setExpanded(1)}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 3 21 3 21 9" />
-                <polyline points="9 21 3 21 3 15" />
-                <line x1="21" y1="3" x2="14" y2="10" />
-                <line x1="3" y1="21" x2="10" y2="14" />
-              </svg>
-            </button>
-          </ShimmerVideo>
-        </section>
-
-        <section className="case-section">
-          <div className="case-section-heading">Outcome</div>
-          <p className="case-section-body">
-            Women&rsquo;s Voices Now has to date reached over 50 million
-            viewers across their film library, including 14 million viewers
-            in 2025 alone, with 3 Emmy nominations and 1 Emmy win.
-          </p>
-        </section>
+            <p className="case-feature-kicker">{section.overline}</p>
+            <h2 className="case-feature-title">{section.title}</h2>
+            <p className="case-feature-intro">{section.body}</p>
+            {section.videoSrc && section.imageSrc && section.alt && section.aspectRatio ? (
+              <ShimmerVideo
+                videoSrc={section.videoSrc}
+                imageSrc={section.imageSrc}
+                alt={section.alt}
+                aspectRatio={section.aspectRatio}
+                bgVariant={section.bg}
+              >
+                <button
+                  type="button"
+                  className="case-expand-btn"
+                  aria-label={`Expand ${section.overline}`}
+                  onClick={() => setExpanded(index)}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 3 21 3 21 9" />
+                    <polyline points="9 21 3 21 3 15" />
+                    <line x1="21" y1="3" x2="14" y2="10" />
+                    <line x1="3" y1="21" x2="10" y2="14" />
+                  </svg>
+                </button>
+              </ShimmerVideo>
+            ) : section.videoSrc ? (
+              <video
+                className="wvn-outcome-video"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="metadata"
+                aria-label={section.alt}
+              >
+                <source src={section.videoSrc} type="video/mp4" />
+              </video>
+            ) : section.placeholder ? (
+              <div className="wvn-media-placeholder" role="img" aria-label={`${section.placeholder} media placeholder`}>
+                <span>{section.placeholder}</span>
+                <small>Project media</small>
+              </div>
+            ) : null}
+          </section>
+        ))}
 
       </article>
 
@@ -603,9 +715,9 @@ export default function WvnCaseStudy() {
             onClick={(e) => e.stopPropagation()}
           >
             <FallbackVideo
-              videoSrc={SECTIONS[expanded].videoSrc}
-              imageSrc={SECTIONS[expanded].imageSrc}
-              alt={SECTIONS[expanded].alt}
+              videoSrc={SECTIONS[expanded].videoSrc!}
+              imageSrc={SECTIONS[expanded].imageSrc!}
+              alt={SECTIONS[expanded].alt!}
             />
             <button
               type="button"
