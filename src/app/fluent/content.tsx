@@ -52,28 +52,28 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   },
   {
     overline: "Scope",
-    title: "Documented 9 reflow breakpoints, 4 appearance themes, and core components",
+    title: "Documented 9 reflow breakpoints, 4 appearance themes, and core Shell components",
     body: "For this effort, the scope was in hundreds of thousands of layers. Each screen, if componentized, could easily be 50–100k Figma layers that would have to be constantly updated. Not only did we have to meet that need, the scope actually expanded as the work overlapped with the New Teams and responsive reflow efforts, resulting in us having to account for 9 breakpoints, 4 themes, and 2 platforms (Windows & Mac). For this to scale, we needed a system that could allow for effortless toggling between themes and pixel-perfect responsiveness when swapping breakpoints.",
     videoSrc: "/case-studies/teams/teams-scope.mp4",
     videoLabel: "Teams breakpoints and theme variations",
   },
   {
     overline: "Research",
-    title: "Planned focus group and 1:1 research sessions with Teams designers",
+    title: "Organized focus group and 1:1 research sessions with Teams designers",
     body: "For the research element of this, I wanted to really understand what a long-term Basic Screens solution needed to support. The conversations surfaced the practical constraints of building screens, evolving feature work, and keeping shared foundations relevant as product teams move quickly. With a product as dynamically evolving as Teams, whatever solution we reached had to be something that enabled teams to move faster, not block them from progress.",
     imageSrc: "/case-studies/teams/teams-research.png",
     imageAlt: "FigJam research board for Teams designer sessions",
   },
   {
     overline: "Insight",
-    title: "Prioritize designer contribution to avoid constant misalignment",
+    title: "Realized organic Basic Screen contribution requires organic Shell adoption",
     body: "Our initial conversations with Teams designers resulted in a clear insight: for the most up-to-date contribution from different feature teams, aggregating into a set of shared Basic Screens, we needed organic adoption. The entire Teams design organization would have to be all-in on this solution. Otherwise, blockers would delay screen approvals, constantly wrangling updates would exhaust our limited bandwidth, and we’d be overwhelmed during the pre-Ignite and Build rush periods.",
     imageSrc: "/case-studies/teams/teams-problem-v2.png",
     imageAlt: "Broken links to disconnected Teams screen files",
   },
   {
     overline: "Planning",
-    title: "Shell & Canvas model for clear ownership and contribution guidance",
+    title: "Aligned on Shell & Canvas model for clear ownership & contribution guidance",
     body: "Throughout all the focus group and 1:1 sessions, one thing became clear: delegation and contribution would be crucial to maintaining any long term solution. As the design systems team, we needed to delegate screen contribution to core experience owners while maintaining ownership of Shell components themselves in the library. That resulted in a clear solution: a model where we owned the Shell framework and feature teams owned the Canvas that sat inside it.",
     videoSrc: "/case-studies/teams/teams-process.mp4",
     videoLabel: "Teams Basic Screens process",
@@ -122,7 +122,7 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   },
   {
     overline: "Deliverable",
-    title: "Fully-componentized library of theme-swappable Basic Screens",
+    title: "Delivered a fully-componentized library of theme-swappable Basic Screens",
     body: "The result of our work culminated finally in a Basic Screens library which, by implementing component properties and variables, we were able to utilize for Ignite without worries about Figma memory issues and library breakage. Deep-diving into the capabilities of Figma had allowed us to finally have a lasting solution and by working hand-in-hand with feature teams, we had both adoption and contribution.",
     videoSrc: "/case-studies/teams/teams-deliverable.mp4",
     videoLabel: "Basic Screens deliverable",
@@ -914,7 +914,7 @@ export default function FluentContent({
             <section className="case-process-summary" aria-labelledby="fluent-delivery-title">
               <p className="case-feature-kicker">Deliverable</p>
               <h2 id="fluent-delivery-title" className="case-feature-title">
-                Merged the branch into Fluent 2 Web and publishing across the org
+                Merged the branch into Fluent 2 Web and published across the org
               </h2>
               <p className="case-feature-intro">
                 After syncing with the Fluent core team multiple times throughout
