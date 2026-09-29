@@ -44,15 +44,15 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   },
   {
     overline: "Context",
-    title: "Starting with static frames and detached, local components",
-    body: "As this area of work hadn’t yet been addressed since the Sketch-to-Figma transition, Basic Screens started out as a set of frames with mostly detached, local, or non-existent components and hard-coded hex values. To scale, we needed to audit the screens, componentize the contents, and connect styles and variables.",
+    title: "Started with our existing Teams screens built from detached components",
+    body: "As this area of work hadn’t yet been addressed since the Sketch-to-Figma transition, Basic Screens started out as a set of frames with mostly detached, local, or non-existent components and hard-coded hex values. To scale, we needed to audit the screens, componentize the contents, and connect styles and variables. However, before moving straight into that flow, we need to align with designers through some initial conversations.",
     videoSrc: "/case-studies/teams/teams-context.mp4",
     videoLabel: "Teams Basic Screens before the redesign",
   },
   {
     overline: "Problem",
-    title: "Without organic adoption by designers, this would inevitably fail",
-    body: "For the most up-to-date contributions from different feature teams, aggregating into a set of shared Basic Screens, we needed organic contribution. The entire Teams design organization would have to be all-in on this solution. Otherwise, blockers would delay screen approvals, constantly wrangling updates would exhaust our limited bandwidth, and we’d be unprepared during the pre-Ignite and Build rush periods.",
+    title: "Without designer buy-in, our screens would always be out-of-date",
+    body: "Our initial conversations with Teams designers resulted in a clear insight: for the most up-to-date contribution from different feature teams, aggregating into a set of shared Basic Screens, we needed organic adoption. The entire Teams design organization would have to be all-in on this solution. Otherwise, blockers would delay screen approvals, constantly wrangling updates would exhaust our limited bandwidth, and we’d be overwhelmed during the pre-Ignite and Build rush periods.",
     placeholder: "Screen library before the rebuild",
   },
   {
