@@ -991,16 +991,16 @@ export default function FluentContent({
             <section className="case-process-summary" aria-labelledby="fluent-outcome-title">
               <p className="case-feature-kicker">Outcome</p>
               <h2 id="fluent-outcome-title" className="case-feature-title">
-                Saved an estimated $53 million for Microsoft
+                Gave time back to designers across Microsoft org
               </h2>
               <p className="case-feature-intro">
-                We know that this component gets 1.2 million uses per day.
-                Let&apos;s assume that with component and template duplicates only
-                1/10 of those cases required a stroke-to-background match.
-                Let&apos;s also estimate that this matching might take a designer
-                about 30 seconds each. Considering that the average designer
-                salary at Microsoft is $227,843, this single update potentially
-                saved Microsoft $53 million per year.
+                The updated Avatar adapts to different backgrounds without
+                requiring designers to manually match border colors. Published
+                in Fluent 2 Web and integrated into Teams 2 Web, the solution
+                preserves presence and activity indicators across sizes and
+                surface treatments. Updating dependent components and
+                documentation extended the improvement beyond individual Avatars
+                to the shared components and templates built on them.
               </p>
             </section>
           </>
