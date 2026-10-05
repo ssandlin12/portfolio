@@ -444,6 +444,35 @@ export default function FluentContent({
           font-size: 17px;
           line-height: 1.55;
         }
+        .case-role-section {
+          display: grid;
+          gap: 12px;
+          margin: 0 0 72px;
+          padding: clamp(24px, 3vw, 32px);
+          border: 1px solid #e1e1e1;
+          border-radius: 14px;
+          box-sizing: border-box;
+        }
+        .case-role-section .case-feature-kicker {
+          margin-bottom: 0;
+        }
+        .case-role-body {
+          margin: 0;
+          color: rgba(41, 41, 41, 0.7);
+          font-size: 17px;
+          line-height: 1.55;
+        }
+        .case-role-collaborators {
+          display: grid;
+          gap: 2px;
+          margin-top: 8px;
+        }
+        .case-role-collaborators p {
+          margin: 0;
+        }
+        .case-role-collaborators .case-feature-kicker {
+          margin-bottom: 10px;
+        }
         .case-media-placeholder {
           display: flex;
           aspect-ratio: 16 / 9;
@@ -685,6 +714,30 @@ export default function FluentContent({
       </section>
 
       <article className="case-article">
+        <section className="case-role-section" aria-label="Project role">
+          <p className="case-feature-kicker">Role</p>
+          <p className="case-role-body">Project Owner</p>
+          <div className="case-role-collaborators">
+            <p className="case-feature-kicker">Collaborators</p>
+            <p className="case-role-body">Leadership: Teams DS Design Manager</p>
+            {study === "fluent" ? (
+              <>
+                <p className="case-role-body">Fluent Core: 3 Designers</p>
+                <p className="case-role-body">Testing: 3 Designers</p>
+                <p className="case-role-body">Documentation: Fluent Designer</p>
+              </>
+            ) : (
+              <>
+                <p className="case-role-body">Planning: 5 Design Managers, Teams DS Designer</p>
+                <p className="case-role-body">Testing: 1 Design Manager + 10 Designers</p>
+                <p className="case-role-body">Seminars: 6 Design Managers + 41 Designers</p>
+                <p className="case-role-body">Library Reviewers/Approvers: 2 Managers + 8 Designers</p>
+                <p className="case-role-body">Documentation: Teams DS Designer</p>
+              </>
+            )}
+          </div>
+        </section>
+
         {study === "fluent" && (
           <>
             <section>
