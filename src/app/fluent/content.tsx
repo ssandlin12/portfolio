@@ -456,6 +456,9 @@ export default function FluentContent({
         .case-role-section .case-feature-kicker {
           margin-bottom: 0;
         }
+        .case-role-timeline {
+          margin-top: 8px !important;
+        }
         .case-role-body {
           margin: 0;
           color: rgba(41, 41, 41, 0.7);
@@ -717,6 +720,8 @@ export default function FluentContent({
         <section className="case-role-section" aria-label="Project role">
           <p className="case-feature-kicker">Role</p>
           <p className="case-role-body">Project Owner</p>
+          <p className="case-feature-kicker case-role-timeline">Timeline</p>
+          <p className="case-role-body">{study === "fluent" ? "4 Weeks" : "14 Months"}</p>
           <div className="case-role-collaborators">
             <p className="case-feature-kicker">Collaborators</p>
             <p className="case-role-body">Leadership: Teams DS Design Manager</p>

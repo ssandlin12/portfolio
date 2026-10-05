@@ -287,6 +287,38 @@ export default function WvnCaseStudy() {
           font-size: 17px;
           line-height: 1.55;
         }
+        .case-role-section {
+          display: grid;
+          gap: 12px;
+          margin: 0 0 72px;
+          padding: clamp(24px, 3vw, 32px);
+          border: 1px solid #e1e1e1;
+          border-radius: 14px;
+          box-sizing: border-box;
+        }
+        .case-role-section .case-feature-kicker {
+          margin-bottom: 0;
+        }
+        .case-role-timeline {
+          margin-top: 8px !important;
+        }
+        .case-role-body {
+          margin: 0;
+          color: rgba(41, 41, 41, 0.7);
+          font-size: 17px;
+          line-height: 1.55;
+        }
+        .case-role-collaborators {
+          display: grid;
+          gap: 2px;
+          margin-top: 8px;
+        }
+        .case-role-collaborators p {
+          margin: 0;
+        }
+        .case-role-collaborators .case-feature-kicker {
+          margin-bottom: 10px;
+        }
         .case-media-wrap {
           width: 100%;
           position: relative;
@@ -650,6 +682,20 @@ export default function WvnCaseStudy() {
       </section>
 
       <article className="case-article">
+        <section className="case-role-section" aria-label="Project role">
+          <p className="case-feature-kicker">Role</p>
+          <p className="case-role-body">Design Owner</p>
+          <p className="case-feature-kicker case-role-timeline">Timeline</p>
+          <p className="case-role-body">8 Months</p>
+          <div className="case-role-collaborators">
+            <p className="case-feature-kicker">Collaborators</p>
+            <p className="case-role-body">Leadership: Director</p>
+            <p className="case-role-body">Collaborators: Head of Marketing, Marketing Assistant</p>
+            <p className="case-role-body">Testing: 4 Current Users + 7 Random Testers</p>
+            <p className="case-role-body">Engineering: 2 Engineers</p>
+          </div>
+        </section>
+
         {SECTIONS.map((section, index) => (
           <section
             key={section.overline}
