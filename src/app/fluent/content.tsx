@@ -721,7 +721,7 @@ export default function FluentContent({
           <p className="case-feature-kicker">Role</p>
           <p className="case-role-body">Project Owner</p>
           <p className="case-feature-kicker case-role-timeline">Timeline</p>
-          <p className="case-role-body">{study === "fluent" ? "4 Weeks" : "14 Months"}</p>
+          <p className="case-role-body">{study === "fluent" ? "4 Weeks" : "2 Years"}</p>
           <div className="case-role-collaborators">
             <p className="case-feature-kicker">Collaborators</p>
             <p className="case-role-body">Leadership: Teams DS Design Manager</p>
