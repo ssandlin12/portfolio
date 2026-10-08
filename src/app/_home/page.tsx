@@ -436,11 +436,11 @@ export default function Home() {
           color: "rgba(41,41,41,0.5)",
         }}
       >
-        Hi, I&rsquo;m <span style={{ color: INK_DARK }}>Anna Sandlin</span>. I manage
+        Hi, I&apos;m <span style={{ color: INK_DARK }}>Anna Sandlin</span>. I helped build
         <br />
-        the design library for the world&rsquo;s largest
+        the Fluent design system and managed
         <br />
-        enterprise app, <span style={{ color: INK_DARK }}>Microsoft Teams</span>.
+        the design toolkit for <span style={{ color: INK_DARK }}>Microsoft Teams</span>.
       </h1>
 
       {/* Blob — inline, centered under the hero. */}
