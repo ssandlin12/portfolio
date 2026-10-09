@@ -919,7 +919,7 @@ export default function FluentContent({
             preload="metadata"
             aria-label="Switching Avatar variants and properties"
           >
-            <source src="/case-studies/fluent/avatar-testing-feedback.mp4" type="video/mp4" />
+            <source src="/case-studies/fluent/avatar-testing-feedback-v2.mp4" type="video/mp4" />
           </video>
         </section>
 
