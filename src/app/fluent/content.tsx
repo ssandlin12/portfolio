@@ -87,7 +87,7 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   },
   {
     overline: "Setbacks",
-    title: "Released too quickly and overwhelmed Figma's memory limits",
+    title: "Released initial Shell 2.0.0 too quickly and overwhelmed Figma's memory limits",
     body: "Despite all the iteration that resulted in a solution which finally resonated with Teams designers, one thing we didn't expect was that it would resonate too much. Designers started to use our new Shell component everywhere and that led to files breaking as they exceeded Figma's 2GB browser-based memory limits. Due to these issues, we had to rebuild our Shell from the ground up with component properties and variables, right as variables were being released at Config 2023.",
     imageSrc: "/case-studies/teams/teams-setbacks-memory-usage.png",
     imageAlt: "Figma memory usage at 92% with an almost out of memory warning",
