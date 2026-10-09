@@ -424,7 +424,7 @@ export default function Home() {
       <h1
         style={{
           fontFamily: "var(--font-figtree), system-ui, sans-serif",
-          fontSize: 34,
+          fontSize: 32,
           lineHeight: 1.2,
           letterSpacing: "-0.02em",
           fontWeight: 300,

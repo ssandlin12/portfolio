@@ -157,10 +157,10 @@ export default function WvnCaseStudy() {
         .case-study-pill {
           display: inline-flex;
           align-items: center;
-          height: 36px;
+          height: 32px;
           padding: 0 16px;
           border-radius: 999px;
-          font-size: 15px;
+          font-size: 14px;
           font-weight: 400;
           line-height: 1;
           white-space: nowrap;
@@ -170,18 +170,18 @@ export default function WvnCaseStudy() {
 
         .case-article {
           width: 100%;
-          max-width: 900px;
+          max-width: 800px;
           margin: clamp(88px, calc(7vh + 48px), 150px) auto 100px;
         }
         .case-hero {
           --preview-overhang: 56px;
           width: 100%;
-          max-width: 900px;
+          max-width: 800px;
           margin: clamp(56px, calc(6vh + 32px), 120px) auto 0;
         }
         .case-hero-heading { margin-bottom: 48px; }
         .case-hero-title {
-          font-size: 34px;
+          font-size: 32px;
           line-height: 1.2;
           letter-spacing: -0.02em;
           font-weight: 300;
@@ -221,7 +221,7 @@ export default function WvnCaseStudy() {
           background: #e8e8e8;
         }
         .case-intro {
-          font-size: clamp(19px, 1.5vw, 27px);
+          font-size: 20px;
           font-weight: 300;
           line-height: 1.15;
           letter-spacing: -0.035em;
@@ -255,7 +255,7 @@ export default function WvnCaseStudy() {
           position: absolute;
           right: calc(-1 * var(--preview-overhang));
           bottom: -36px;
-          width: clamp(176px, 21vw, 270px);
+          width: clamp(140.8px, 16.8vw, 216px);
           aspect-ratio: 16 / 9;
           border-radius: clamp(14px, 1.5vw, 24px);
           border: 1px solid #e1e1e1;
@@ -264,28 +264,28 @@ export default function WvnCaseStudy() {
           object-fit: cover;
         }
         .case-feature-section { margin-top: 0; }
-        .case-process-summary { margin-top: 96px; }
+        .case-process-summary { margin-top: 72px; }
         .case-feature-kicker {
           margin: 0 0 8px;
           color: rgba(41, 41, 41, 0.45);
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 500;
-          line-height: 1.4;
+          line-height: 18px;
           letter-spacing: 0.08em;
           text-transform: uppercase;
         }
         .case-feature-title {
           margin: 0;
-          font-size: 28px;
+          font-size: 24px;
           font-weight: 300;
-          line-height: 1.25;
+          line-height: 30px;
           letter-spacing: -0.02em;
         }
         .case-feature-intro {
           margin: 12px 0 0;
           color: rgba(41, 41, 41, 0.7);
-          font-size: 17px;
-          line-height: 1.55;
+          font-size: 16px;
+          line-height: 24px;
         }
         .case-role-section {
           display: grid;
@@ -305,8 +305,8 @@ export default function WvnCaseStudy() {
         .case-role-body {
           margin: 0;
           color: rgba(41, 41, 41, 0.7);
-          font-size: 17px;
-          line-height: 1.55;
+          font-size: 16px;
+          line-height: 24px;
         }
         .case-role-collaborators {
           display: grid;
@@ -375,8 +375,8 @@ export default function WvnCaseStudy() {
           border-top: 1px solid #e1e1e1;
         }
         .process-kicker {
-          font-size: 14px;
-          line-height: 1.4;
+          font-size: 12px;
+          line-height: 18px;
           font-weight: 500;
           letter-spacing: 0.08em;
           text-transform: uppercase;
@@ -384,15 +384,15 @@ export default function WvnCaseStudy() {
           margin: 0 0 8px;
         }
         .process-title {
-          font-size: 28px;
-          line-height: 1.25;
+          font-size: 24px;
+          line-height: 30px;
           letter-spacing: -0.02em;
           font-weight: 300;
           margin: 0;
         }
         .process-intro {
-          font-size: 17px;
-          line-height: 1.55;
+          font-size: 16px;
+          line-height: 24px;
           color: rgba(41, 41, 41, 0.7);
           margin: 12px 0 0;
           max-width: 680px;
@@ -483,7 +483,7 @@ export default function WvnCaseStudy() {
           .case-hero { --preview-overhang: 28px; }
           .wvn-hero-preview {
             bottom: -24px;
-            width: min(48vw, 190px);
+            width: min(38.4vw, 152px);
           }
         }
 

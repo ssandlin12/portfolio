@@ -239,7 +239,7 @@ export default function FluentContent({
         .fluent-case-hero {
           --preview-overhang: 56px;
           width: 100%;
-          max-width: 900px;
+          max-width: 800px;
           margin: clamp(56px, calc(6vh + 32px), 120px) auto 0;
         }
         .fluent-case-heading {
@@ -248,7 +248,7 @@ export default function FluentContent({
         }
         .fluent-case-title {
           margin: 0;
-          font-size: clamp(30px, 2.4vw, 42px);
+          font-size: 32px;
           font-weight: 300;
           line-height: 1.08;
           letter-spacing: -0.045em;
@@ -256,7 +256,7 @@ export default function FluentContent({
         .fluent-case-subtitle {
           margin: 10px 0 0;
           color: rgba(41, 41, 41, 0.7);
-          font-size: clamp(19px, 1.5vw, 27px);
+          font-size: 20px;
           font-weight: 300;
           line-height: 1.15;
           letter-spacing: -0.035em;
@@ -312,7 +312,7 @@ export default function FluentContent({
           position: absolute;
           bottom: -36px;
           right: calc(-1 * var(--preview-overhang));
-          width: clamp(176px, 21vw, 270px);
+          width: clamp(140.8px, 16.8vw, 216px);
           height: auto;
           border-radius: clamp(14px, 1.5vw, 24px);
           box-shadow: 0 18px 40px rgba(28, 37, 76, 0.18);
@@ -329,7 +329,7 @@ export default function FluentContent({
         }
 .fluent-preview-row .fluent-preview-image {
   position: static;
-  width: clamp(176px, 21vw, 270px);
+  width: clamp(140.8px, 16.8vw, 216px);
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
@@ -358,10 +358,10 @@ export default function FluentContent({
         .case-study-pill {
           display: inline-flex;
           align-items: center;
-          height: 36px;
+          height: 32px;
           padding: 0 16px;
           border-radius: 999px;
-          font-size: 15px;
+          font-size: 14px;
           font-weight: 400;
           line-height: 1;
           white-space: nowrap;
@@ -371,7 +371,7 @@ export default function FluentContent({
         .case-study-pill--descriptor { border: 1px solid ${INK_DARK}; background: #fff; color: ${INK_DARK}; box-sizing: border-box; }
         .case-article {
           width: 100%;
-          max-width: 900px;
+          max-width: 800px;
           margin: clamp(88px, calc(7vh + 48px), 150px) auto 100px;
         }
         .case-title-row {
@@ -418,31 +418,31 @@ export default function FluentContent({
         .case-section-body {
           margin: 0;
           color: rgba(41, 41, 41, 0.7);
-          font-size: 17px;
-          line-height: 1.5;
+          font-size: 16px;
+          line-height: 24px;
         }
         .case-feature-kicker {
           margin: 0 0 8px;
           color: rgba(41, 41, 41, 0.45);
-          font-size: 14px;
+          font-size: 12px;
           font-weight: 500;
-          line-height: 1.4;
+          line-height: 18px;
           letter-spacing: 0.08em;
           text-transform: uppercase;
         }
         .case-feature-title {
           margin: 0;
-          font-size: 28px;
+          font-size: 24px;
           font-weight: 300;
-          line-height: 1.25;
+          line-height: 30px;
           letter-spacing: -0.02em;
         }
         .case-feature-intro {
           max-width: none;
           margin: 12px 0 0;
           color: rgba(41, 41, 41, 0.7);
-          font-size: 17px;
-          line-height: 1.55;
+          font-size: 16px;
+          line-height: 24px;
         }
         .case-role-section {
           display: grid;
@@ -462,8 +462,8 @@ export default function FluentContent({
         .case-role-body {
           margin: 0;
           color: rgba(41, 41, 41, 0.7);
-          font-size: 17px;
-          line-height: 1.55;
+          font-size: 16px;
+          line-height: 24px;
         }
         .case-role-collaborators {
           display: grid;
@@ -547,8 +547,8 @@ export default function FluentContent({
         .case-post-media-copy {
           margin: 28px 0 0;
           color: rgba(41, 41, 41, 0.7);
-          font-size: 17px;
-          line-height: 1.55;
+          font-size: 16px;
+          line-height: 24px;
         }
         .case-problem-section { margin-top: 56px; }
         .process-media-image {
@@ -622,7 +622,7 @@ export default function FluentContent({
         .case-study--fluent .case-process-summary,
         .case-study--teams .case-problem-section,
         .case-study--teams .case-process-summary {
-          margin-top: 96px;
+          margin-top: 72px;
         }
         @media (max-width: 560px) {
           .case-title-row { align-items: flex-start; flex-direction: column; }
@@ -633,14 +633,14 @@ export default function FluentContent({
           }
           .fluent-preview-image {
             bottom: -24px;
-            width: min(48vw, 190px);
+            width: min(38.4vw, 152px);
           }
           .fluent-preview-row {
             bottom: -24px;
             gap: 12px;
           }
           .fluent-preview-row .fluent-preview-image {
-            width: min(35vw, 160px);
+            width: min(28vw, 128px);
           }
         }
       `}</style>
