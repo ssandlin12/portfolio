@@ -82,15 +82,15 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     overline: "Iteration",
     title: "Iterated on Shell v1 - v5 with lots of designer feedback",
     body: "Designer feedback drove five iterations of Shell. The biggest question was how to support teams who needed to detach and move fast without leaving the library or older work behind. We refined the Canvas and Placeholder model, component properties, versioning, and responsive behavior so the library stayed lightweight while designers could swap, resize, and contribute with less friction.",
-    imageSrc: "/case-studies/teams/teams-iteration-feedback.png",
+    imageSrc: "/case-studies/teams/teams-iteration-feedback-v2.png",
     imageAlt: "Shell iteration feedback notes",
   },
   {
     overline: "Setbacks",
     title: "Released too quickly and overwhelmed Figma's memory limits",
     body: "Despite all the iteration that resulted in a solution which finally resonated with Teams designers, one thing we didn't expect was that it would resonate too much. Designers started to use our new Shell component everywhere and that led to files breaking as they exceeded Figma's 2GB browser-based memory limits. Due to these issues, we had to rebuild our Shell from the ground up with component properties and variables, right as variables were being released at Config 2023.",
-    imageSrc: "/case-studies/teams/teams-setbacks.png",
-    imageAlt: "Figma browser memory limit warning",
+    imageSrc: "/case-studies/teams/teams-setbacks-memory-usage.png",
+    imageAlt: "Figma memory usage at 92% with an almost out of memory warning",
   },
   {
     overline: "Re-release",
