@@ -128,7 +128,7 @@ export default function Home() {
           width: 353px;
           max-width: 100%;
           flex-shrink: 0;
-          margin-top: calc(clamp(16px, 3vh, 32px) - 8px);
+          margin-top: calc(clamp(16px, 3vh, 32px) + 8px);
         }
         /* Glassmorphic case-study toggle bar — fixed at bottom-center of
            the viewport, with one button per case study. */
