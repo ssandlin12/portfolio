@@ -52,7 +52,7 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   },
   {
     overline: "Scope",
-    title: "Documented 9 reflow breakpoints, 4 appearance themes, and core Shell components",
+    title: "Audited 9 reflow breakpoints, 4 appearance themes, and core Shell components",
     body: "For this effort, the scope was in hundreds of thousands of layers. Each screen, if componentized, could easily be 50–100k Figma layers that would have to be constantly updated. Not only did we have to meet that need, the scope actually expanded as the work overlapped with the New Teams and responsive reflow efforts, resulting in us having to account for 9 breakpoints, 4 themes, and 2 platforms (Windows & Mac). For this to scale, we needed a system that could allow for effortless toggling between themes and pixel-perfect responsiveness when swapping breakpoints.",
     videoSrc: "/case-studies/teams/teams-scope.mp4",
     videoLabel: "Teams breakpoints and theme variations",
@@ -65,18 +65,18 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     imageAlt: "FigJam research board for Teams designer sessions",
   },
   {
-    overline: "Insight",
-    title: "Realized organic Basic Screen contribution requires organic Shell adoption",
-    body: "Our initial conversations with Teams designers resulted in a clear insight: for the most up-to-date contribution from different feature teams, aggregating into a set of shared Basic Screens, we needed organic adoption. The entire Teams design organization would have to be all-in on this solution. Otherwise, blockers would delay screen approvals, constantly wrangling updates would exhaust our limited bandwidth, and we’d be overwhelmed during the pre-Ignite and Build rush periods.",
-    imageSrc: "/case-studies/teams/teams-problem-v2.png",
-    imageAlt: "Broken links to disconnected Teams screen files",
-  },
-  {
-    overline: "Planning",
+    overline: "Consensus",
     title: "Aligned on Shell & Canvas model for clear ownership & contribution guidance",
     body: "Throughout all the focus group and 1:1 sessions, one thing became clear: delegation and contribution would be crucial to maintaining any long term solution. As the design systems team, we needed to delegate screen contribution to core experience owners while maintaining ownership of Shell components themselves in the library. That resulted in a clear solution: a model where we owned the Shell framework and feature teams owned the Canvas that sat inside it.",
     videoSrc: "/case-studies/teams/teams-process.mp4",
     videoLabel: "Teams Basic Screens process",
+  },
+  {
+    overline: "Insight",
+    title: "Realized organic Basic Screen contribution requires organic Shell adoption",
+    body: "Our initial conversations with Teams designers resulted in a clear insight: for the most up-to-date contribution from different feature teams, aggregating into a set of shared Basic Screens, we needed organic adoption. The entire Teams design organization would have to be all-in on this solution. Otherwise, blockers would delay screen approvals, constantly wrangling updates would exhaust our limited bandwidth, and we’d be overwhelmed during the pre-Ignite and Build rush periods.",
+    imageSrc: "/case-studies/teams/teams-insight-organic-contribution.png",
+    imageAlt: "Example of organic contribution combining a feature team's Canvas with the design systems team's Shell",
   },
   {
     overline: "Iteration",
