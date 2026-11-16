@@ -747,6 +747,11 @@ export default function WvnCaseStudy() {
           </section>
         ))}
 
+        <Link href="/other" className="case-next">
+          <p className="case-next-label">Next</p>
+          <h3 className="case-next-title">Other Projects</h3>
+          <p className="case-next-body">Continue to Other Projects.</p>
+        </Link>
       </article>
 
       {expanded !== null && (
