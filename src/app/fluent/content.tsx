@@ -29,8 +29,10 @@ type TeamsCaseStudySection = {
   title: string;
   body: string;
   placeholder?: string;
+  badgeTone?: "automation" | "crypto" | "apps" | "tabletop";
   imageSrc?: string;
   imageAlt?: string;
+  followup?: { body: string; imageSrc: string; imageAlt: string; width?: number; height?: number };
   videoSrc?: string;
   videoLabel?: string;
 };
@@ -141,6 +143,59 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   },
 ];
 
+const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
+  {
+    overline: "Crypto & NFT's",
+    badgeTone: "crypto",
+    title: '"Grog" NFT Collection',
+    body: "During the peak of NFT trading, I used Figma to create an NFT collection with 1000 collectibles.",
+    videoSrc: "/case-studies/other/grog-collection.mp4",
+    videoLabel: "Grog NFT collection demonstration",
+    followup: {
+      body: "When NFT's resume their previous trading volume, my goal is to create a utility of tying these to a singular digital ID for various websites/apps.",
+      imageSrc: "/case-studies/other/grog-collection-digital-id.png",
+      imageAlt: "Grog collection of 1000 NFT characters alongside a mobile digital ID concept",
+    },
+  },
+  {
+    overline: "Video Games",
+    badgeTone: "apps",
+    title: '"Stashed" Video Game',
+    body: "During the summer of 2025 I joined a tech bootcamp to learn Video Game Development using Unity. My final project was a game where you're a sentient mustache.",
+    videoSrc: "/case-studies/other/stashed.mp4",
+    videoLabel: "Stashed app demonstration",
+    followup: {
+      body: "The character sprites include different hair colors, movement directions, and versions with and without the mustache. Organizing them in Figma helped keep track of the variations needed for the game.",
+      imageSrc: "/case-studies/other/stashed-character-sprites.png",
+      imageAlt: "Stashed character sprites organized in Figma, showing movement directions and versions with and without mustaches",
+      width: 2768,
+      height: 1602,
+    },
+  },
+  {
+    overline: "Board & Card Games",
+    badgeTone: "tabletop",
+    title: '"Merman Romeo" Card Game',
+    body: "A card game concept exploring playful characters, illustration, and card combinations. More project details to come.",
+    imageSrc: "/case-studies/other/merman-romeo-cover.png",
+    imageAlt: "Merman Romeo card game cover with an illustrated blue character",
+    followup: {
+      body: "A look at the card designs, characters, and gameplay elements. More about the design process to come.",
+      imageSrc: "/case-studies/other/merman-romeo-cards.png",
+      imageAlt: "Merman Romeo action cards, character combinations, and illustrated character cards",
+      width: 2886,
+      height: 1486,
+    },
+  },
+  {
+    overline: "AI & Automation",
+    badgeTone: "automation",
+    title: "Project overview",
+    body: "Project summary to come.",
+    placeholder: "AI & Automation",
+  },
+];
+
 type CaseStudyProps = {
   title?: string;
   subtitle?: string;
@@ -155,7 +210,7 @@ type CaseStudyProps = {
   secondaryPreviewHeight?: number;
   caseType?: "full" | "micro";
   descriptors?: readonly string[];
-  study?: "fluent" | "teams";
+  study?: "fluent" | "teams" | "other";
 };
 
 export default function FluentContent({
@@ -246,6 +301,8 @@ export default function FluentContent({
           margin: 0 0 48px;
           color: ${INK_DARK};
         }
+        .case-study--other .fluent-case-heading { margin-bottom: 0; }
+        .case-study--other .case-article { margin-top: 72px; }
         .fluent-case-title {
           margin: 0;
           font-size: 32px;
@@ -367,6 +424,11 @@ export default function FluentContent({
           white-space: nowrap;
         }
         .case-study-pill--full { background: ${INK_DARK}; color: #fff; }
+        .case-section-badge { margin: 0 0 16px; }
+        .case-section-badge--automation { background: #d43760; color: #fff; }
+        .case-section-badge--crypto { background: #2563eb; color: #fff; }
+        .case-section-badge--apps { background: #15803d; color: #fff; }
+        .case-section-badge--tabletop { background: #000; color: #fff; }
         .case-study-pill--micro { background: #f1f1f1; color: ${INK_DARK}; }
         .case-study-pill--descriptor { border: 1px solid ${INK_DARK}; background: #fff; color: ${INK_DARK}; box-sizing: border-box; }
         .case-article {
@@ -522,6 +584,10 @@ export default function FluentContent({
           box-sizing: border-box;
           object-fit: cover;
         }
+        .case-study--other .teams-case-media-image {
+          aspect-ratio: auto;
+          height: auto;
+        }
         .case-media-caption {
           margin: 10px 0 0;
           color: rgba(41, 41, 41, 0.55);
@@ -621,7 +687,8 @@ export default function FluentContent({
         .case-study--fluent .case-problem-section,
         .case-study--fluent .case-process-summary,
         .case-study--teams .case-problem-section,
-        .case-study--teams .case-process-summary {
+        .case-study--teams .case-process-summary,
+        .case-study--other .case-process-summary {
           margin-top: 72px;
         }
         @media (max-width: 560px) {
@@ -650,7 +717,7 @@ export default function FluentContent({
           <BackIcon />
           Back
         </Link>
-        <a
+        {linkLabel && <a
           className="back-pill"
           href={linkHref}
           target="_blank"
@@ -659,19 +726,19 @@ export default function FluentContent({
         >
           {linkLabel}
           <ExternalLinkIcon />
-        </a>
+        </a>}
       </header>
 
       <section className="fluent-case-hero" aria-labelledby="fluent-case-title">
         <div className="fluent-case-heading">
           <h1 id="fluent-case-title" className="fluent-case-title">{title}</h1>
           <p className="fluent-case-subtitle">{subtitle}</p>
-          <div className="case-study-pills" aria-label="Case study topics">
+          {study !== "other" && <div className="case-study-pills" aria-label="Case study topics">
             <span className={`case-study-pill case-study-pill--${caseType}`}>{caseType === "full" ? "Full case study" : "Micro case study"}</span>
             {descriptors.map((descriptor) => <span className="case-study-pill case-study-pill--descriptor" key={descriptor}>{descriptor}</span>)}
-          </div>
+          </div>}
         </div>
-        <div className={`fluent-video-card${videoReady ? " is-ready" : ""}`} aria-label="Microsoft Fluent case study video">
+        {study !== "other" && <div className={`fluent-video-card${videoReady ? " is-ready" : ""}`} aria-label={`${title} case study video`}>
           <div className="fluent-video-skeleton" aria-hidden="true" />
           <video
             autoPlay
@@ -713,11 +780,11 @@ export default function FluentContent({
               alt="Web UI Kit preview"
             />
           )}
-        </div>
+        </div>}
       </section>
 
       <article className="case-article">
-        <section className="case-role-section" aria-label="Project role">
+        {study !== "other" && <section className="case-role-section" aria-label="Project role">
           <p className="case-feature-kicker">Role</p>
           <p className="case-role-body">Project Owner</p>
           <p className="case-feature-kicker case-role-timeline">Timeline</p>
@@ -741,7 +808,7 @@ export default function FluentContent({
               </>
             )}
           </div>
-        </section>
+        </section>}
 
         {study === "fluent" && (
           <>
@@ -926,15 +993,15 @@ export default function FluentContent({
           </>
         )}
 
-        {study === "teams" && TEAMS_CASE_STUDY.map((section, index) => {
-          const id = `teams-${section.overline.toLowerCase()}-title`;
+        {study !== "fluent" && (study === "other" ? OTHER_CASE_STUDY : TEAMS_CASE_STUDY).map((section, index) => {
+          const id = `${study}-${(section.overline || section.title).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}-title`;
           return (
             <section
-              key={section.overline}
+              key={section.overline || section.title}
               className={index === 0 ? "case-feature-section" : "case-process-summary"}
               aria-labelledby={id}
             >
-              <p className="case-feature-kicker">{section.overline}</p>
+              {section.overline && <p className={study === "other" ? `case-study-pill case-study-pill--full case-section-badge case-section-badge--${section.badgeTone}` : "case-feature-kicker"}>{section.overline}</p>}
               <h2 id={id} className="case-feature-title">{section.title}</h2>
               <p className="case-feature-intro">{section.body}</p>
               {section.videoSrc ? (
@@ -958,11 +1025,25 @@ export default function FluentContent({
                 height={1080}
                 sizes="(max-width: 940px) calc(100vw - 40px), 900px"
                 quality={section.imageSrc.endsWith("/teams-context.png") ? 100 : 75}
-                unoptimized={section.imageSrc.endsWith("/teams-context.png")}
+                unoptimized={study === "other" || section.imageSrc.endsWith("/teams-context.png")}
               />
               ) : section.placeholder ? (
                 <MediaPlaceholder label={section.placeholder} />
               ) : null}
+              {section.followup && (
+                <>
+                  <p className="case-post-media-copy">{section.followup.body}</p>
+                  <Image
+                    className="teams-case-media-image"
+                    src={section.followup.imageSrc}
+                    alt={section.followup.imageAlt}
+                    width={section.followup.width ?? 1920}
+                    height={section.followup.height ?? 1080}
+                    sizes="(max-width: 840px) calc(100vw - 40px), 800px"
+                    unoptimized
+                  />
+                </>
+              )}
             </section>
           );
         })}
@@ -1064,7 +1145,7 @@ export default function FluentContent({
           </>
         ) : null}
 
-        {study === "teams" ? (
+        {study === "other" ? null : study === "teams" ? (
           <Link href="/fluent" className="case-next">
             <p className="case-next-label">Next</p>
             <h3 className="case-next-title">Microsoft Fluent</h3>

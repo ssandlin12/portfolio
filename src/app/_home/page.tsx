@@ -11,7 +11,7 @@ const TILE_MORPH_TARGET: Record<number, number> = {
   0: 1, // Microsoft Teams → Teams (SDF texture)
   1: 0, // Microsoft Fluent → MS 4-square mark
   2: 3, // Women's Voices Now → "W" letterform (SDF texture)
-  3: 2, // Athenahealth → leaf mark (SDF texture)
+  3: 2, // Other → open box (SDF texture)
   4: 5, // Medium → Medium logo (SDF texture)
 };
 
@@ -48,7 +48,7 @@ const tiles: Array<{ title: string; href?: string; inProgress?: true }> = [
   { title: "Microsoft Teams", href: "/teams" },
   { title: "Microsoft\nFluent", href: "/fluent" },
   { title: "Women's Voices Now", href: "/wvn" },
-  { title: "Athenahealth", inProgress: true },
+  { title: "Other", href: "/other" },
   {
     title: "Medium",
     href: "https://medium.com/design-bootcamp/designing-amidst-the-acceleration-towards-ai-singularity-ea35a0429470",
@@ -575,6 +575,8 @@ export default function Home() {
                 data-active={dataActive}
                 onMouseEnter={onEnter}
                 onMouseLeave={onLeave}
+                onFocus={onEnter}
+                onBlur={onLeave}
               >
                 {display}
               </Link>
