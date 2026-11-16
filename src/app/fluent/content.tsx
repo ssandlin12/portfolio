@@ -1065,16 +1065,16 @@ export default function FluentContent({
         ) : null}
 
         {study === "teams" ? (
-          <div className="case-next case-next--disabled" aria-disabled="true">
+          <Link href="/fluent" className="case-next">
             <p className="case-next-label">Next</p>
-            <h3 className="case-next-title">Athenahealth (In progress)</h3>
-            <p className="case-next-body">Continue to the Athenahealth case study</p>
-          </div>
+            <h3 className="case-next-title">Microsoft Fluent</h3>
+            <p className="case-next-body">Continue to the Microsoft Fluent case study.</p>
+          </Link>
         ) : (
-          <Link href="/teams" className="case-next">
+          <Link href="/wvn" className="case-next">
             <p className="case-next-label">Next</p>
-            <h3 className="case-next-title">Microsoft Teams</h3>
-            <p className="case-next-body">Continue to the Microsoft Teams case study.</p>
+            <h3 className="case-next-title">Women&rsquo;s Voices Now</h3>
+            <p className="case-next-body">Continue to the Women&rsquo;s Voices Now case study.</p>
           </Link>
         )}
       </article>
