@@ -5,7 +5,7 @@ export default function OtherPage() {
     <FluentContent
       study="other"
       title="Other Projects"
-      subtitle="A collection of other projects and explorations."
+      subtitle="Creative explorations and general projects related to illustration, AI, apps/games, and more."
       descriptors={[]}
       linkLabel=""
     />

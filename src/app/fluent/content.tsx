@@ -805,9 +805,22 @@ export default function FluentContent({
         .case-study--fluent .case-problem-section,
         .case-study--fluent .case-process-summary,
         .case-study--teams .case-problem-section,
-        .case-study--teams .case-process-summary,
-        .case-study--other .case-process-summary {
+        .case-study--teams .case-process-summary {
           margin-top: 72px;
+        }
+        .case-study--other .case-process-summary {
+          position: relative;
+          margin-top: 144px;
+        }
+        .case-study--other .case-process-summary::before {
+          content: "";
+          position: absolute;
+          top: -72px;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: rgba(41, 41, 41, 0.1);
+          pointer-events: none;
         }
         @media (max-width: 560px) {
           .case-title-row { align-items: flex-start; flex-direction: column; }
