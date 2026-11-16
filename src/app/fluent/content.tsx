@@ -165,7 +165,7 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     body: "I built Formora to turn video ideas into ambient videos for YouTube. The workflow handles animation, music, and description prep, while I approve the ideas and post the finished videos.",
     gallery: [
       {
-        imageSrc: "/case-studies/other/formora-youtube.png",
+        imageSrc: "/case-studies/other/formora-youtube.webp",
         imageAlt: "Formora YouTube channel displaying published ambient music videos",
         width: 3024,
         height: 1720,
@@ -174,7 +174,7 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
       },
       {
         body: "I used n8n to connect the process from idea generation to a video ready to post. Once I approve an idea through Telegram, the workflow animates the selected images, adds music, and prepares the description for me to use on YouTube.",
-        imageSrc: "/case-studies/other/formora-workflow.png",
+        imageSrc: "/case-studies/other/formora-workflow.webp",
         imageAlt: "Formora worker workflow in n8n with connected automation branches",
         width: 3024,
         height: 1648,
@@ -183,14 +183,14 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
       },
       {
         body: "A Telegram bot sends me video ideas and generated images to review. I can approve what I like or request another version before it moves into animation, keeping the creative decisions in my hands without having to open the workflow each time.",
-        imageSrc: "/case-studies/other/formora-telegram-approvals.png",
+        imageSrc: "/case-studies/other/formora-telegram-approvals.webp",
         imageAlt: "Formora Telegram bot showing idea review, generated image selection, and animation approvals",
         width: 1920,
         height: 1080,
       },
       {
         body: "The workflow records everything in Airtable, including the ideas, scenes, moods, prompts, and video records. That gives me one place to track what's been generated and keep the content organized.",
-        imageSrc: "/case-studies/other/formora-ideas.png",
+        imageSrc: "/case-studies/other/formora-ideas.webp",
         imageAlt: "Formora Airtable showing video ideas, scenes, moods, and image prompts",
         width: 3024,
         height: 1556,
@@ -203,7 +203,7 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     badgeTone: "crypto",
     title: '"Grog" NFT Collection',
     body: "During the peak of NFT trading, I designed Grog: a collection of 1,000 illustrated collectibles. The longer-term idea is to give each collectible a purpose beyond ownership by linking it to a single digital ID that could be used across websites and apps.",
-    imageSrc: "/case-studies/other/grog-introduction-v2.png",
+    imageSrc: "/case-studies/other/grog-introduction-v2.webp",
     imageAlt: "Introducing Grog digital ID alongside a collection of illustrated NFT characters",
     followup: {
       body: "I created all the assets in Figma, from different head and nose shapes to hairstyles, clothing, and colors. Building these as interchangeable parts let me mix and match them to generate 1,000 collectibles while keeping a consistent character style across the collection.",
@@ -221,7 +221,7 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     videoMockup: "laptop",
     followup: {
       body: "The character sprites include different hair colors, movement directions, and versions with and without the mustache. Organizing them in Figma helped keep track of the variations needed for the game.",
-      imageSrc: "/case-studies/other/stashed-character-sprites.png",
+      imageSrc: "/case-studies/other/stashed-character-sprites.webp",
       imageAlt: "Stashed character sprites organized in Figma, showing movement directions and versions with and without mustaches",
       width: 2768,
       height: 1602,
@@ -232,11 +232,11 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     badgeTone: "tabletop",
     title: '"Merman Romeo" Card Game',
     body: "Merman Romeo is a card-combination game built around quirky sea creatures and competing goals. Players mix and match head and body cards, while action cards let them swap, peek, and interfere with each other's plans. I designed the characters, cards, and visual identity to make the game feel playful from the start.",
-    imageSrc: "/case-studies/other/merman-romeo-cover-v2.png",
+    imageSrc: "/case-studies/other/merman-romeo-cover-v2.webp",
     imageAlt: "Merman Romeo card game cover with an illustrated blue character",
     followup: {
       body: "The deck brings together character combinations, action cards, and individual win conditions. I used a consistent layout, illustrated action icons, and distinct colors to help players tell the card types apart. The split character illustrations let different heads and bodies line up into new combinations.",
-      imageSrc: "/case-studies/other/merman-romeo-cards.png",
+      imageSrc: "/case-studies/other/merman-romeo-cards.webp",
       imageAlt: "Merman Romeo action cards, character combinations, and illustrated character cards",
       width: 2886,
       height: 1486,
