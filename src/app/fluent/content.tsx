@@ -203,11 +203,11 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     badgeTone: "crypto",
     title: '"Grog" NFT Collection',
     body: "During the peak of NFT trading, I designed Grog: a collection of 1,000 illustrated collectibles. The longer-term idea is to give each collectible a purpose beyond ownership by linking it to a single digital ID that could be used across websites and apps.",
-    imageSrc: "/case-studies/other/grog-introduction.png",
+    imageSrc: "/case-studies/other/grog-introduction-v2.png",
     imageAlt: "Introducing Grog digital ID alongside a collection of illustrated NFT characters",
     followup: {
       body: "I created all the assets in Figma, from different head and nose shapes to hairstyles, clothing, and colors. Building these as interchangeable parts let me mix and match them to generate 1,000 collectibles while keeping a consistent character style across the collection.",
-      videoSrc: "/case-studies/other/grog-collection.mp4",
+      videoSrc: "/case-studies/other/grog-collection-v2.mp4",
       videoLabel: "Grog NFT collection demonstration",
     },
   },
