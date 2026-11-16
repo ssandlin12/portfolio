@@ -43,6 +43,8 @@ type TeamsCaseStudySection = {
     imageAlt: string;
     width?: number;
     height?: number;
+    insetBackground?: string;
+    clipInset?: string;
   }[];
   videoSrc?: string;
   videoLabel?: string;
@@ -157,6 +159,46 @@ const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
 
 const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   {
+    overline: "AI & Automation",
+    badgeTone: "automation",
+    title: '"Formora" n8n Automation Workflow',
+    body: "I built Formora to turn video ideas into ambient videos for YouTube. The workflow handles animation, music, and description prep, while I approve the ideas and post the finished videos.",
+    gallery: [
+      {
+        imageSrc: "/case-studies/other/formora-youtube.png",
+        imageAlt: "Formora YouTube channel displaying published ambient music videos",
+        width: 3024,
+        height: 1720,
+        insetBackground: "#0f0f0f",
+        clipInset: "0 2px 12px 2px",
+      },
+      {
+        body: "I used n8n to connect the process from idea generation to a video ready to post. Once I approve an idea through Telegram, the workflow animates the selected images, adds music, and prepares the description for me to use on YouTube.",
+        imageSrc: "/case-studies/other/formora-workflow.png",
+        imageAlt: "Formora worker workflow in n8n with connected automation branches",
+        width: 3024,
+        height: 1648,
+        insetBackground: "#262626",
+        clipInset: "0 2px 0 2px",
+      },
+      {
+        body: "A Telegram bot sends me video ideas and generated images to review. I can approve what I like or request another version before it moves into animation, keeping the creative decisions in my hands without having to open the workflow each time.",
+        imageSrc: "/case-studies/other/formora-telegram-approvals.png",
+        imageAlt: "Formora Telegram bot showing idea review, generated image selection, and animation approvals",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        body: "The workflow records everything in Airtable, including the ideas, scenes, moods, prompts, and video records. That gives me one place to track what's been generated and keep the content organized.",
+        imageSrc: "/case-studies/other/formora-ideas.png",
+        imageAlt: "Formora Airtable showing video ideas, scenes, moods, and image prompts",
+        width: 3024,
+        height: 1556,
+        insetBackground: "#ffffff",
+      },
+    ],
+  },
+  {
     overline: "Crypto & NFT's",
     badgeTone: "crypto",
     title: '"Grog" NFT Collection',
@@ -199,41 +241,6 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
       width: 2886,
       height: 1486,
     },
-  },
-  {
-    overline: "AI & Automation",
-    badgeTone: "automation",
-    title: '"Formora" n8n Automation Workflow',
-    body: "I built Formora to turn video ideas into ambient videos for YouTube. The workflow handles animation, music, and description prep, while I approve the ideas and post the finished videos.",
-    gallery: [
-      {
-        imageSrc: "/case-studies/other/formora-youtube.png",
-        imageAlt: "Formora YouTube channel displaying published ambient music videos",
-        width: 3024,
-        height: 1720,
-      },
-      {
-        body: "I used n8n to connect the process from idea generation to a video ready to post. Once I approve an idea through Telegram, the workflow animates the selected images, adds music, and prepares the description for me to use on YouTube.",
-        imageSrc: "/case-studies/other/formora-workflow.png",
-        imageAlt: "Formora worker workflow in n8n with connected automation branches",
-        width: 3024,
-        height: 1648,
-      },
-      {
-        body: "A Telegram bot sends me video ideas and generated images to review. I can approve what I like or request another version before it moves into animation, keeping the creative decisions in my hands without having to open the workflow each time.",
-        imageSrc: "/case-studies/other/formora-telegram-approvals.png",
-        imageAlt: "Formora Telegram bot showing idea review, generated image selection, and animation approvals",
-        width: 1920,
-        height: 1080,
-      },
-      {
-        body: "The workflow records everything in Airtable, including the ideas, scenes, moods, prompts, and video records. That gives me one place to track what's been generated and keep the content organized.",
-        imageSrc: "/case-studies/other/formora-ideas.png",
-        imageAlt: "Formora Airtable showing video ideas, scenes, moods, and image prompts",
-        width: 3024,
-        height: 1556,
-      },
-    ],
   },
 ];
 
@@ -638,6 +645,19 @@ export default function FluentContent({
           border: 1px solid #e1e1e1;
           border-radius: 14px;
           background: #eceef0;
+        }
+        .gallery-image-frame {
+          margin-top: 28px;
+          padding: 24px;
+          border: 1px solid #e1e1e1;
+          border-radius: 14px;
+          box-sizing: border-box;
+          overflow: hidden;
+        }
+        .gallery-image-frame .teams-case-media-image {
+          margin: 0;
+          border: 0;
+          border-radius: 0;
         }
         .clay-laptop {
           position: relative;
@@ -1211,15 +1231,21 @@ export default function FluentContent({
                 <div key={item.imageAlt}>
                   {item.body && <p className="case-post-media-copy">{item.body}</p>}
                   {item.imageSrc ? (
+                    <div
+                      className={item.insetBackground ? "gallery-image-frame" : undefined}
+                      style={item.insetBackground ? { backgroundColor: item.insetBackground } : undefined}
+                    >
                     <Image
                       className="teams-case-media-image"
                       src={item.imageSrc}
+                      style={item.clipInset ? { clipPath: `inset(${item.clipInset})` } : undefined}
                       alt={item.imageAlt}
                       width={item.width ?? 1920}
                       height={item.height ?? 1080}
                       sizes="(max-width: 840px) calc(100vw - 40px), 800px"
                       unoptimized
                     />
+                    </div>
                   ) : (
                     <MediaPlaceholder label={item.imageAlt} />
                   )}
