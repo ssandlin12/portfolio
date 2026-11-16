@@ -33,8 +33,16 @@ type TeamsCaseStudySection = {
   imageSrc?: string;
   imageAlt?: string;
   followup?: { body: string; imageSrc: string; imageAlt: string; width?: number; height?: number };
+  gallery?: readonly {
+    body?: string;
+    imageSrc?: string;
+    imageAlt: string;
+    width?: number;
+    height?: number;
+  }[];
   videoSrc?: string;
   videoLabel?: string;
+  videoMockup?: "laptop";
 };
 
 const TEAMS_CASE_STUDY: readonly TeamsCaseStudySection[] = [
@@ -164,6 +172,7 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     body: "During the summer of 2025 I joined a tech bootcamp to learn Video Game Development using Unity. My final project was a game where you're a sentient mustache.",
     videoSrc: "/case-studies/other/stashed.mp4",
     videoLabel: "Stashed app demonstration",
+    videoMockup: "laptop",
     followup: {
       body: "The character sprites include different hair colors, movement directions, and versions with and without the mustache. Organizing them in Figma helped keep track of the variations needed for the game.",
       imageSrc: "/case-studies/other/stashed-character-sprites.png",
@@ -176,11 +185,11 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     overline: "Board & Card Games",
     badgeTone: "tabletop",
     title: '"Merman Romeo" Card Game',
-    body: "A card game concept exploring playful characters, illustration, and card combinations. More project details to come.",
-    imageSrc: "/case-studies/other/merman-romeo-cover.png",
+    body: "Merman Romeo is a card-combination game built around quirky sea creatures and competing goals. Players mix and match head and body cards, while action cards let them swap, peek, and interfere with each other's plans. I designed the characters, cards, and visual identity to make the game feel playful from the start.",
+    imageSrc: "/case-studies/other/merman-romeo-cover-v2.png",
     imageAlt: "Merman Romeo card game cover with an illustrated blue character",
     followup: {
-      body: "A look at the card designs, characters, and gameplay elements. More about the design process to come.",
+      body: "The deck brings together character combinations, action cards, and individual win conditions. I used a consistent layout, illustrated action icons, and distinct colors to help players tell the card types apart. The split character illustrations let different heads and bodies line up into new combinations.",
       imageSrc: "/case-studies/other/merman-romeo-cards.png",
       imageAlt: "Merman Romeo action cards, character combinations, and illustrated character cards",
       width: 2886,
@@ -190,9 +199,37 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
   {
     overline: "AI & Automation",
     badgeTone: "automation",
-    title: "Project overview",
-    body: "Project summary to come.",
-    placeholder: "AI & Automation",
+    title: '"Formora" n8n Automation Workflow',
+    body: "I built Formora to turn video ideas into ambient videos for YouTube. The workflow handles animation, music, and description prep, while I approve the ideas and post the finished videos.",
+    gallery: [
+      {
+        imageSrc: "/case-studies/other/formora-youtube.png",
+        imageAlt: "Formora YouTube channel displaying published ambient music videos",
+        width: 3024,
+        height: 1720,
+      },
+      {
+        body: "I used n8n to connect the process from idea generation to a video ready to post. Once I approve an idea through Telegram, the workflow animates the selected images, adds music, and prepares the description for me to use on YouTube.",
+        imageSrc: "/case-studies/other/formora-workflow.png",
+        imageAlt: "Formora worker workflow in n8n with connected automation branches",
+        width: 3024,
+        height: 1648,
+      },
+      {
+        body: "A Telegram bot sends me video ideas and generated images to review. I can approve what I like or request another version before it moves into animation, keeping the creative decisions in my hands without having to open the workflow each time.",
+        imageSrc: "/case-studies/other/formora-telegram-approvals.png",
+        imageAlt: "Formora Telegram bot showing idea review, generated image selection, and animation approvals",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        body: "The workflow records everything in Airtable, including the ideas, scenes, moods, prompts, and video records. That gives me one place to track what's been generated and keep the content organized.",
+        imageSrc: "/case-studies/other/formora-ideas.png",
+        imageAlt: "Formora Airtable showing video ideas, scenes, moods, and image prompts",
+        width: 3024,
+        height: 1556,
+      },
+    ],
   },
 ];
 
@@ -587,6 +624,83 @@ export default function FluentContent({
         .case-study--other .teams-case-media-image {
           aspect-ratio: auto;
           height: auto;
+        }
+        .clay-laptop-stage {
+          display: grid;
+          place-items: center;
+          aspect-ratio: 16 / 10;
+          margin-top: 28px;
+          overflow: hidden;
+          border: 1px solid #e1e1e1;
+          border-radius: 14px;
+          background: #eceef0;
+        }
+        .clay-laptop {
+          position: relative;
+          width: 84%;
+          isolation: isolate;
+        }
+        .clay-laptop::after {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          left: 9%;
+          right: 9%;
+          bottom: -4%;
+          height: 8%;
+          border-radius: 50%;
+          background: rgba(60, 67, 76, 0.26);
+          filter: blur(12px);
+        }
+        .clay-laptop-lid {
+          position: relative;
+          width: 80%;
+          margin: 0 auto;
+          padding: 2.2% 1.5% 2%;
+          box-sizing: border-box;
+          border: 1px solid #e3e5e7;
+          border-radius: 12px 12px 3px 3px;
+          background: linear-gradient(135deg, #fff, #f5f5f6 65%, #e8eaec);
+          box-shadow: inset 0 0 0 3px rgba(255,255,255,0.65), 0 2px 3px rgba(75,80,90,0.08);
+        }
+        .clay-laptop-lid::before {
+          content: "";
+          position: absolute;
+          top: 1.8%;
+          left: calc(50% - 1px);
+          width: 2px;
+          height: 2px;
+          border-radius: 50%;
+          background: #c1c5ca;
+        }
+        .clay-laptop-screen {
+          display: block;
+          width: 100%;
+          height: auto;
+          aspect-ratio: 1644 / 926;
+          object-fit: contain;
+          border-radius: 2px;
+          background: #13151b;
+        }
+        .clay-laptop-base {
+          position: relative;
+          height: 0;
+          padding-bottom: 2.4%;
+          margin-top: -1px;
+          border-radius: 2px 2px 50% 50% / 2px 2px 75% 75%;
+          background: linear-gradient(to bottom, #fff 0%, #f5f5f5 22%, #dedfe1 60%, #bfc3c8 85%, #e8eaec 100%);
+          box-shadow: inset 0 1px 1px #fff, 0 2px 2px rgba(80,85,95,0.1);
+        }
+        .clay-laptop-base::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 42%;
+          width: 16%;
+          height: 34%;
+          border-radius: 0 0 8px 8px;
+          background: linear-gradient(#dedfe1, #f8f8f8);
+          box-shadow: 0 1px 0 rgba(255,255,255,0.8);
         }
         .case-media-caption {
           margin: 10px 0 0;
@@ -1004,7 +1118,26 @@ export default function FluentContent({
               {section.overline && <p className={study === "other" ? `case-study-pill case-study-pill--full case-section-badge case-section-badge--${section.badgeTone}` : "case-feature-kicker"}>{section.overline}</p>}
               <h2 id={id} className="case-feature-title">{section.title}</h2>
               <p className="case-feature-intro">{section.body}</p>
-              {section.videoSrc ? (
+              {section.videoSrc && section.videoMockup === "laptop" ? (
+                <div className="clay-laptop-stage">
+                  <div className="clay-laptop">
+                    <div className="clay-laptop-lid">
+                      <video
+                        className="clay-laptop-screen"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        aria-label={section.videoLabel}
+                      >
+                        <source src={section.videoSrc} type="video/mp4" />
+                      </video>
+                    </div>
+                    <div className="clay-laptop-base" aria-hidden="true" />
+                  </div>
+                </div>
+              ) : section.videoSrc ? (
                 <video
                   className="process-media-image"
                   autoPlay
@@ -1044,6 +1177,24 @@ export default function FluentContent({
                   />
                 </>
               )}
+              {section.gallery?.map((item) => (
+                <div key={item.imageAlt}>
+                  {item.body && <p className="case-post-media-copy">{item.body}</p>}
+                  {item.imageSrc ? (
+                    <Image
+                      className="teams-case-media-image"
+                      src={item.imageSrc}
+                      alt={item.imageAlt}
+                      width={item.width ?? 1920}
+                      height={item.height ?? 1080}
+                      sizes="(max-width: 840px) calc(100vw - 40px), 800px"
+                      unoptimized
+                    />
+                  ) : (
+                    <MediaPlaceholder label={item.imageAlt} />
+                  )}
+                </div>
+              ))}
             </section>
           );
         })}

@@ -48,7 +48,7 @@ const tiles: Array<{ title: string; href?: string; inProgress?: true }> = [
   { title: "Microsoft Teams", href: "/teams" },
   { title: "Microsoft\nFluent", href: "/fluent" },
   { title: "Women's Voices Now", href: "/wvn" },
-  { title: "Other", href: "/other" },
+  { title: "Other Projects", href: "/other" },
   {
     title: "Medium",
     href: "https://medium.com/design-bootcamp/designing-amidst-the-acceleration-towards-ai-singularity-ea35a0429470",
