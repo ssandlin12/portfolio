@@ -28,6 +28,7 @@ type TeamsCaseStudySection = {
   overline: string;
   title: string;
   body: string;
+  bodyDetail?: string;
   placeholder?: string;
   badgeTone?: "automation" | "crypto" | "apps" | "tabletop";
   imageSrc?: string;
@@ -159,11 +160,11 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     overline: "Crypto & NFT's",
     badgeTone: "crypto",
     title: '"Grog" NFT Collection',
-    body: "During the peak of NFT trading, I used Figma to create an NFT collection with 1000 collectibles.",
+    body: "During the peak of NFT trading, I designed Grog: a collection of 1,000 illustrated collectibles. The longer-term idea is to give each collectible a purpose beyond ownership by linking it to a single digital ID that could be used across websites and apps.",
     imageSrc: "/case-studies/other/grog-introduction.png",
     imageAlt: "Introducing Grog digital ID alongside a collection of illustrated NFT characters",
     followup: {
-      body: "When NFT's resume their previous trading volume, my goal is to create a utility of tying these to a singular digital ID for various websites/apps.",
+      body: "I created all the assets in Figma, from different head and nose shapes to hairstyles, clothing, and colors. Building these as interchangeable parts let me mix and match them to generate 1,000 collectibles while keeping a consistent character style across the collection.",
       videoSrc: "/case-studies/other/grog-collection.mp4",
       videoLabel: "Grog NFT collection demonstration",
     },
@@ -1121,6 +1122,7 @@ export default function FluentContent({
               {section.overline && <p className={study === "other" ? `case-study-pill case-study-pill--full case-section-badge case-section-badge--${section.badgeTone}` : "case-feature-kicker"}>{section.overline}</p>}
               <h2 id={id} className="case-feature-title">{section.title}</h2>
               <p className="case-feature-intro">{section.body}</p>
+              {section.bodyDetail && <p className="case-feature-intro">{section.bodyDetail}</p>}
               {section.videoSrc && section.videoMockup === "laptop" ? (
                 <div className="clay-laptop-stage">
                   <div className="clay-laptop">
