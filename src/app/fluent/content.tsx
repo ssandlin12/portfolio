@@ -32,7 +32,10 @@ type TeamsCaseStudySection = {
   badgeTone?: "automation" | "crypto" | "apps" | "tabletop";
   imageSrc?: string;
   imageAlt?: string;
-  followup?: { body: string; imageSrc: string; imageAlt: string; width?: number; height?: number };
+  followup?: { body: string; width?: number; height?: number } & (
+    | { imageSrc: string; imageAlt: string; videoSrc?: never; videoLabel?: never }
+    | { videoSrc: string; videoLabel: string; imageSrc?: never; imageAlt?: never }
+  );
   gallery?: readonly {
     body?: string;
     imageSrc?: string;
@@ -157,12 +160,12 @@ const OTHER_CASE_STUDY: readonly TeamsCaseStudySection[] = [
     badgeTone: "crypto",
     title: '"Grog" NFT Collection',
     body: "During the peak of NFT trading, I used Figma to create an NFT collection with 1000 collectibles.",
-    videoSrc: "/case-studies/other/grog-collection.mp4",
-    videoLabel: "Grog NFT collection demonstration",
+    imageSrc: "/case-studies/other/grog-introduction.png",
+    imageAlt: "Introducing Grog digital ID alongside a collection of illustrated NFT characters",
     followup: {
       body: "When NFT's resume their previous trading volume, my goal is to create a utility of tying these to a singular digital ID for various websites/apps.",
-      imageSrc: "/case-studies/other/grog-collection-digital-id.png",
-      imageAlt: "Grog collection of 1000 NFT characters alongside a mobile digital ID concept",
+      videoSrc: "/case-studies/other/grog-collection.mp4",
+      videoLabel: "Grog NFT collection demonstration",
     },
   },
   {
@@ -1166,7 +1169,19 @@ export default function FluentContent({
               {section.followup && (
                 <>
                   <p className="case-post-media-copy">{section.followup.body}</p>
-                  <Image
+                  {section.followup.videoSrc ? (
+                    <video
+                      className="process-media-image"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      aria-label={section.followup.videoLabel}
+                    >
+                      <source src={section.followup.videoSrc} type="video/mp4" />
+                    </video>
+                  ) : section.followup.imageSrc ? <Image
                     className="teams-case-media-image"
                     src={section.followup.imageSrc}
                     alt={section.followup.imageAlt}
@@ -1174,7 +1189,7 @@ export default function FluentContent({
                     height={section.followup.height ?? 1080}
                     sizes="(max-width: 840px) calc(100vw - 40px), 800px"
                     unoptimized
-                  />
+                  /> : null}
                 </>
               )}
               {section.gallery?.map((item) => (
