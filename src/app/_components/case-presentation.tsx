@@ -238,7 +238,7 @@ export default function CasePresentation() {
         .case-header-actions { display: flex; align-items: center; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
         .presentation-toggle { cursor: pointer; font-family: inherit; }
         .presentation-toggle svg { width: 16px; height: 16px; flex: none; }
-        .presentation-toggle:focus-visible, .presentation-controls button:focus-visible, .presentation-edge:focus-visible { outline: 2px solid #555; outline-offset: 4px; }
+        .presentation-toggle:focus-visible, .presentation-controls button:focus-visible { outline: 2px solid #555; outline-offset: 4px; }
         main[data-presentation] { --presentation-edge-width: 100px; --presentation-content-top: calc(clamp(24px, 6vh, 72px) + 18px); --presentation-content-center: calc((100dvh + var(--presentation-content-top) - 24px) / 2); position: fixed !important; inset: 0; height: 100dvh; min-height: 0 !important; overflow: hidden; z-index: 50; }
         main[data-presentation] .fluent-page-header, main[data-presentation] .case-header-actions { display: contents; }
         main[data-presentation] .fluent-page-header a, main[data-presentation] .presentation-toggle { display: none; }
@@ -314,11 +314,15 @@ export default function CasePresentation() {
         }
         .presentation-controls svg { width: 16px; height: 16px; flex: none; }
         .presentation-controls button { pointer-events: auto; white-space: nowrap; cursor: pointer; font-family: inherit; }
-        .presentation-edge { position: fixed; top: 0; bottom: 0; width: var(--presentation-edge-width); z-index: 4; display: flex; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: #292929; cursor: pointer; }
+        .presentation-edge { position: fixed; top: 50%; transform: translateY(-50%); width: var(--presentation-edge-width); height: 360px; max-height: calc(100dvh - 112px); z-index: 4; display: flex; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; cursor: pointer; }
         .presentation-edge--previous { left: 0; }
         .presentation-edge--next { right: 0; }
-        .presentation-edge svg { width: 28px; height: 28px; opacity: 0; transition: opacity 120ms ease; }
-        .presentation-edge:not(:disabled):hover svg, .presentation-edge:focus-visible svg { opacity: 1; }
+        .presentation-edge-icon { display: flex; align-items: center; justify-content: center; width: 44px; max-width: calc(100% - 8px); aspect-ratio: 1; box-sizing: border-box; border: 0; outline: none; border-radius: 50%; background: #f6f6f6; color: #777; opacity: 0; transition: opacity 120ms ease, background-color 120ms ease, color 120ms ease; }
+        .presentation-edge svg { width: 20px; height: 20px; flex: none; }
+        .presentation-edge:not(:disabled):hover .presentation-edge-icon, .presentation-edge:not(:disabled):focus-visible .presentation-edge-icon { opacity: 1; }
+        .presentation-edge:not(:disabled) .presentation-edge-icon:hover, .presentation-edge:not(:disabled):focus-visible .presentation-edge-icon { background: #e3e3e3; color: #444; }
+        .presentation-edge:focus-visible { outline: none; }
+        @media (hover: none) { .presentation-edge:not(:disabled) .presentation-edge-icon { opacity: 1; } }
         .presentation-edge:disabled { cursor: default; }
         .presentation-announcement { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
         @media(max-width: 600px) {
@@ -336,8 +340,8 @@ export default function CasePresentation() {
         <h2>Any questions?</h2>
       </section>
       {presenting && <>
-        <button type="button" className="presentation-edge presentation-edge--previous" disabled={index === 0} onClick={() => setIndex(current => Math.max(0, current - 1))} aria-label="Previous slide"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m12 5-5 5 5 5" /></svg></button>
-        <button type="button" className="presentation-edge presentation-edge--next" disabled={index === views.length - 1} onClick={() => setIndex(current => Math.min(viewsRef.current.length - 1, current + 1))} aria-label="Next slide"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m8 5 5 5-5 5" /></svg></button>
+        <button type="button" className="presentation-edge presentation-edge--previous" disabled={index === 0} onClick={() => setIndex(current => Math.max(0, current - 1))} aria-label="Previous slide"><span className="presentation-edge-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m12 5-5 5 5 5" /></svg></span></button>
+        <button type="button" className="presentation-edge presentation-edge--next" disabled={index === views.length - 1} onClick={() => setIndex(current => Math.min(viewsRef.current.length - 1, current + 1))} aria-label="Next slide"><span className="presentation-edge-icon" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m8 5 5 5-5 5" /></svg></span></button>
         <nav className="presentation-controls" aria-label="Presentation controls">
           <button type="button" className="back-pill" aria-keyshortcuts="Escape" onClick={() => setPresenting(false)}><svg style={{ transform: "rotate(180deg)" }} viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M8 3H3v14h5M7 10h10m-4-4 4 4-4 4" /></svg>Exit</button>
           <button type="button" className="back-pill" onClick={restart} aria-keyshortcuts="R">Restart (R)</button>

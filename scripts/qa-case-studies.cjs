@@ -59,8 +59,8 @@ const baseURL=process.env.QA_BASE_URL || 'http://localhost:3000';
    await page.keyboard.press('End');await page.getByRole('button',{name:'Restart (R)',exact:true}).click();assert((await state()).startsWith('Slide 1 of'));
   });
   await check(route+' side zones hover focus and click',async()=>{
-   await page.mouse.move(720,450);await page.waitForTimeout(150);assert.equal(await page.locator('.presentation-edge--next svg').evaluate(e=>getComputedStyle(e).opacity),'0');
-   await page.mouse.move(1420,700);await page.waitForTimeout(180);assert.equal(await page.locator('.presentation-edge--next svg').evaluate(e=>getComputedStyle(e).opacity),'1');await page.mouse.click(1420,700);assert((await state()).startsWith('Slide 2 of'));
+   await page.mouse.move(720,450);await page.waitForTimeout(150);assert.equal(await page.locator('.presentation-edge--next .presentation-edge-icon').evaluate(e=>getComputedStyle(e).opacity),'0');
+   await page.mouse.move(1420,450);await page.waitForTimeout(180);assert.equal(await page.locator('.presentation-edge--next .presentation-edge-icon').evaluate(e=>getComputedStyle(e).opacity),'1');await page.mouse.click(1420,450);assert((await state()).startsWith('Slide 2 of'));
    await page.mouse.click(20,300);assert((await state()).startsWith('Slide 1 of'));
    await page.getByRole('button',{name:'Next slide',exact:true}).focus();await page.keyboard.press('Enter');assert((await state()).startsWith('Slide 2 of'));
   });
