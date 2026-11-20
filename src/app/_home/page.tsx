@@ -8,8 +8,8 @@ import Blob from "./blob";
 // Maps a tile index to a shader morph-target ID. Tiles not in the map don't
 // trigger a morph (the blob stays as-is on hover).
 const TILE_MORPH_TARGET: Record<number, number> = {
-  0: 1, // Microsoft Teams → Teams (SDF texture)
-  1: 0, // Microsoft Fluent → MS 4-square mark
+  0: 0, // Microsoft Fluent → MS 4-square mark
+  1: 1, // Microsoft Teams → Teams (SDF texture)
   2: 3, // Women's Voices Now → "W" letterform (SDF texture)
   3: 2, // Other → open box (SDF texture)
   4: 5, // Medium → Medium logo (SDF texture)
@@ -45,8 +45,8 @@ const navItem: CSSProperties = {
 // (internal routes use next/link, external URLs open in a new tab).
 // Tiles without an href are "disabled" — greyed out and non-interactive.
 const tiles: Array<{ title: string; href?: string; inProgress?: true }> = [
-  { title: "Microsoft Teams", href: "/teams" },
   { title: "Microsoft\nFluent", href: "/fluent" },
+  { title: "Microsoft Teams", href: "/teams" },
   { title: "Women's Voices Now", href: "/wvn" },
   { title: "Other Projects", href: "/other" },
   {

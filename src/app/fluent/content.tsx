@@ -323,11 +323,11 @@ export default function FluentContent({
         },
       };
 
-  const nextCaseLink = study === "other" ? null : study === "teams" ? (
-          <Link href="/fluent" className="case-next">
+  const nextCaseLink = study === "other" ? null : study === "fluent" ? (
+          <Link href="/teams" className="case-next">
             <p className="case-next-label">Next</p>
-            <h3 className="case-next-title">Microsoft Fluent</h3>
-            <p className="case-next-body">Continue to the Microsoft Fluent case study.</p>
+            <h3 className="case-next-title">Microsoft Teams</h3>
+            <p className="case-next-body">Continue to the Microsoft Teams case study.</p>
           </Link>
         ) : (
           <Link href="/wvn" className="case-next">
