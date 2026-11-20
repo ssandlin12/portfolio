@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
+import CasePresentation from "../_components/case-presentation";
+import Image from "../_components/case-image";
+import CaseVideo from "../_components/case-video";
 import { Figtree } from "next/font/google";
 import { useState } from "react";
 import { BackIcon, ExternalLinkIcon } from "../_components/fluent-icons";
@@ -277,6 +279,7 @@ export default function FluentContent({
   descriptors = ["Component architecture", "Documentation", "System design"],
   study = "fluent",
 }: CaseStudyProps) {
+  const managedMedia = study !== "other";
   const [videoReady, setVideoReady] = useState(false);
   const featureCopy = study === "fluent"
     ? {
@@ -320,6 +323,20 @@ export default function FluentContent({
         },
       };
 
+  const nextCaseLink = study === "other" ? null : study === "teams" ? (
+          <Link href="/fluent" className="case-next">
+            <p className="case-next-label">Next</p>
+            <h3 className="case-next-title">Microsoft Fluent</h3>
+            <p className="case-next-body">Continue to the Microsoft Fluent case study.</p>
+          </Link>
+        ) : (
+          <Link href="/wvn" className="case-next">
+            <p className="case-next-label">Next</p>
+            <h3 className="case-next-title">Women&rsquo;s Voices Now</h3>
+            <p className="case-next-body">Continue to the Women&rsquo;s Voices Now case study.</p>
+          </Link>
+        );
+
   return (
     <main
       className={`${figtree.variable} case-study--${study} min-h-screen flex flex-col relative`}
@@ -334,6 +351,15 @@ export default function FluentContent({
       }}
     >
       <style>{`
+        .case-video-frame, .case-image-frame { position: relative; aspect-ratio: var(--case-media-aspect, 16 / 9); overflow: hidden; }
+        .case-video-frame > video, .case-image-frame > img { display: block; width: 100%; height: 100%; object-fit: contain; }
+        .case-video-status, .case-image-status { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 16px; background: #f1f1f1; color: #555; font-size: 14px; line-height: 20px; text-align: center; }
+        .case-video-status button, .case-image-status button { border: 1px solid #aaa; border-radius: 20px; padding: 6px 14px; background: white; font: inherit; cursor: pointer; }
+        .fluent-video-card > .case-video-frame { position: absolute; inset: 0; border-radius: clamp(18px, 2vw, 34px); }
+        .fluent-preview-image > img { border-radius: inherit; }
+        .fluent-preview-image .case-image-status { padding: 2px; gap: 2px; font-size: 12px; line-height: 14px; }
+        .fluent-preview-image .case-image-status button { padding: 2px 8px; }
+        .case-problem-media-image > img { object-fit: cover; }
         .fluent-page-header {
           display: flex;
           align-items: center;
@@ -438,6 +464,7 @@ export default function FluentContent({
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
+        .fluent-preview-row .case-image-frame { position: relative; right: auto; bottom: auto; }
         .back-pill {
           display: inline-flex;
           align-items: center;
@@ -554,6 +581,7 @@ export default function FluentContent({
           font-size: 16px;
           line-height: 24px;
         }
+        .presentation-role-title, .presentation-role-overline { display: none; }
         .case-role-section {
           display: grid;
           gap: 12px;
@@ -868,6 +896,8 @@ export default function FluentContent({
           <BackIcon />
           Back
         </Link>
+        <div className="case-header-actions">
+        {study !== "other" && <CasePresentation />}
         {linkLabel && <a
           className="back-pill"
           href={linkHref}
@@ -878,6 +908,7 @@ export default function FluentContent({
           {linkLabel}
           <ExternalLinkIcon />
         </a>}
+        </div>
       </header>
 
       <section className="fluent-case-hero" aria-labelledby="fluent-case-title">
@@ -891,7 +922,7 @@ export default function FluentContent({
         </div>
         {study !== "other" && <div className={`fluent-video-card${videoReady ? " is-ready" : ""}`} aria-label={`${title} case study video`}>
           <div className="fluent-video-skeleton" aria-hidden="true" />
-          <video
+          <CaseVideo managed={managedMedia}
             autoPlay
             loop
             muted
@@ -899,21 +930,25 @@ export default function FluentContent({
             preload="auto"
             onLoadedMetadata={() => setVideoReady(true)}
             onCanPlay={() => setVideoReady(true)}
+            onError={() => setVideoReady(true)}
+            aria-label={`${title} case study video`}
           >
             <source src={videoSrc} type="video/mp4" />
-          </video>
+          </CaseVideo>
           {secondaryPreviewSrc ? (
             <div className="fluent-preview-row" aria-label="Case study previews">
-              <Image
+              <Image managed={managedMedia}
                 className="fluent-preview-image"
+                loading="eager"
                 src={previewSrc}
                 width={previewWidth}
                 height={previewHeight}
                 sizes="(max-width: 560px) 35vw, 16vw"
                 alt="Teams Web and Desktop cover"
               />
-              <Image
+              <Image managed={managedMedia}
                 className="fluent-preview-image"
+                loading="eager"
                 src={secondaryPreviewSrc}
                 width={secondaryPreviewWidth}
                 height={secondaryPreviewHeight}
@@ -922,8 +957,9 @@ export default function FluentContent({
               />
             </div>
           ) : (
-            <Image
+            <Image managed={managedMedia}
               className="fluent-preview-image"
+                loading="eager"
               src={previewSrc}
               width={previewWidth}
               height={previewHeight}
@@ -935,7 +971,10 @@ export default function FluentContent({
       </section>
 
       <article className="case-article">
-        {study !== "other" && <section className="case-role-section" aria-label="Project role">
+        {study !== "other" && <section className="case-role-slide" aria-label="Project role">
+          <p className="presentation-role-overline">About</p>
+          <h2 className="presentation-role-title">Role &amp; Collaboration</h2>
+          <div className="case-role-section">
           <p className="case-feature-kicker">Role</p>
           <p className="case-role-body">Project Owner</p>
           <p className="case-feature-kicker case-role-timeline">Timeline</p>
@@ -959,6 +998,7 @@ export default function FluentContent({
               </>
             )}
           </div>
+          </div>
         </section>}
 
         {study === "fluent" && (
@@ -967,9 +1007,8 @@ export default function FluentContent({
           <p className="case-feature-kicker">Overview</p>
           <h2 className="case-feature-title">{featureCopy.overview.heading}</h2>
           <p className="case-feature-intro">{featureCopy.overview.body}</p>
-        </section>
 
-        <video
+        <CaseVideo managed={managedMedia}
           className="case-media-image"
           autoPlay
           loop
@@ -979,13 +1018,14 @@ export default function FluentContent({
           aria-label="Fluent Avatar component documentation"
         >
           <source src="/case-studies/fluent/avatar-documentation.mp4" type="video/mp4" />
-        </video>
+        </CaseVideo>
+        </section>
 
         <section className="case-problem-section">
           <p className="case-feature-kicker">Context</p>
           <h2 className="case-feature-title">{featureCopy.context.heading}</h2>
           <p className="case-feature-intro">{featureCopy.context.body}</p>
-          <video
+          <CaseVideo managed={managedMedia}
             className="case-media-image"
             autoPlay
             loop
@@ -995,7 +1035,7 @@ export default function FluentContent({
             aria-label="Microsoft Fluent Avatar presence badge border demonstration"
           >
             <source src="/case-studies/fluent/avatar-context.mp4" type="video/mp4" />
-          </video>
+          </CaseVideo>
         </section>
 
         <section className="case-problem-section">
@@ -1006,7 +1046,7 @@ export default function FluentContent({
             <p className="case-post-media-copy">{featureCopy.problem.detail}</p>
           )}
           <div className="case-problem-media">
-            <Image
+            <Image managed={managedMedia}
               className="case-problem-media-image"
               src="/case-studies/fluent/avatar-problem-meeting-v2.png"
               width={1800}
@@ -1023,7 +1063,7 @@ export default function FluentContent({
             {featureCopy.scope.heading}
           </h2>
           <p className="case-feature-intro">{featureCopy.scope.body}</p>
-          <video
+          <CaseVideo managed={managedMedia}
             className="process-media-image"
             autoPlay
             loop
@@ -1033,7 +1073,7 @@ export default function FluentContent({
             aria-label="Microsoft Fluent Avatar component variants"
           >
             <source src="/case-studies/fluent/avatar-scope-variants.mp4" type="video/mp4" />
-          </video>
+          </CaseVideo>
         </section>
 
         <section className="case-process-summary" aria-labelledby="fluent-exploration-title">
@@ -1050,7 +1090,7 @@ export default function FluentContent({
             block layers when switched on, but with a requirement for transparent
             borders, blocking was not applicable.
           </p>
-          <video
+          <CaseVideo managed={managedMedia}
             className="process-media-image"
             autoPlay
             loop
@@ -1060,12 +1100,12 @@ export default function FluentContent({
             aria-label="Fluent Avatar border exploration"
           >
             <source src="/case-studies/fluent/avatar-exploration.mp4" type="video/mp4" />
-          </video>
+          </CaseVideo>
         </section>
 
-        <section className="case-process-summary" aria-labelledby="fluent-implementation-title">
+        <section className="case-process-summary" aria-labelledby="fluent-process-experiment-title">
           <p className="case-feature-kicker">Process</p>
-          <h2 id="fluent-implementation-title" className="case-feature-title">
+          <h2 id="fluent-process-experiment-title" className="case-feature-title">
             Experimented with isolating boolean operation layers
           </h2>
           <p className="case-feature-intro">
@@ -1076,7 +1116,7 @@ export default function FluentContent({
             part involved periods of stress testing along the way to ensure
             this method would scale.
           </p>
-          <video
+          <CaseVideo managed={managedMedia}
             className="process-media-image"
             autoPlay
             loop
@@ -1086,7 +1126,7 @@ export default function FluentContent({
             aria-label="Boolean subtract operations bound to Fluent Avatar component properties"
           >
             <source src="/case-studies/fluent/avatar-boolean-properties.mp4" type="video/mp4" />
-          </video>
+          </CaseVideo>
         </section>
 
         <section className="case-process-summary" aria-labelledby="fluent-solution-title">
@@ -1101,7 +1141,7 @@ export default function FluentContent({
             preserved Avatar border effects across backgrounds without asking
             designers to match a stroke to the surface.
           </p>
-          <video
+          <CaseVideo managed={managedMedia}
             className="process-media-image"
             autoPlay
             loop
@@ -1111,7 +1151,7 @@ export default function FluentContent({
             aria-label="Testing Fluent Avatar variants and properties"
           >
             <source src="/case-studies/fluent/avatar-testing.mp4" type="video/mp4" />
-          </video>
+          </CaseVideo>
         </section>
 
         <section className="case-process-summary" aria-labelledby="fluent-testing-title">
@@ -1128,7 +1168,7 @@ export default function FluentContent({
             Teams-specific scenarios, so I explored how to make those work
             seamlessly as well.
           </p>
-          <video
+          <CaseVideo managed={managedMedia}
             className="process-media-image"
             autoPlay
             loop
@@ -1138,7 +1178,7 @@ export default function FluentContent({
             aria-label="Switching Avatar variants and properties"
           >
             <source src="/case-studies/fluent/avatar-testing-feedback-v2.mp4" type="video/mp4" />
-          </video>
+          </CaseVideo>
         </section>
 
           </>
@@ -1149,7 +1189,7 @@ export default function FluentContent({
           return (
             <section
               key={section.overline || section.title}
-              className={index === 0 ? "case-feature-section" : "case-process-summary"}
+              className={`${index === 0 ? "case-feature-section" : "case-process-summary"}${section.overline === "Outcome" ? " case-outcome" : ""}`}
               aria-labelledby={id}
             >
               {section.overline && <p className={study === "other" ? `case-study-pill case-study-pill--full case-section-badge case-section-badge--${section.badgeTone}` : "case-feature-kicker"}>{section.overline}</p>}
@@ -1160,7 +1200,7 @@ export default function FluentContent({
                 <div className="clay-laptop-stage">
                   <div className="clay-laptop">
                     <div className="clay-laptop-lid">
-                      <video
+                      <CaseVideo managed={managedMedia}
                         className="clay-laptop-screen"
                         autoPlay
                         loop
@@ -1170,13 +1210,13 @@ export default function FluentContent({
                         aria-label={section.videoLabel}
                       >
                         <source src={section.videoSrc} type="video/mp4" />
-                      </video>
+                      </CaseVideo>
                     </div>
                     <div className="clay-laptop-base" aria-hidden="true" />
                   </div>
                 </div>
               ) : section.videoSrc ? (
-                <video
+                <CaseVideo managed={managedMedia}
                   className="process-media-image"
                   autoPlay
                   loop
@@ -1186,9 +1226,9 @@ export default function FluentContent({
                   aria-label={section.videoLabel}
                 >
                   <source src={section.videoSrc} type="video/mp4" />
-                </video>
+                </CaseVideo>
               ) : section.imageSrc ? (
-                <Image
+                <Image managed={managedMedia}
                   className="teams-case-media-image"
                 src={section.imageSrc}
                 alt={section.imageAlt ?? ""}
@@ -1205,7 +1245,7 @@ export default function FluentContent({
                 <>
                   <p className="case-post-media-copy">{section.followup.body}</p>
                   {section.followup.videoSrc ? (
-                    <video
+                    <CaseVideo managed={managedMedia}
                       className="process-media-image"
                       autoPlay
                       loop
@@ -1215,8 +1255,8 @@ export default function FluentContent({
                       aria-label={section.followup.videoLabel}
                     >
                       <source src={section.followup.videoSrc} type="video/mp4" />
-                    </video>
-                  ) : section.followup.imageSrc ? <Image
+                    </CaseVideo>
+                  ) : section.followup.imageSrc ? <Image managed={managedMedia}
                     className="teams-case-media-image"
                     src={section.followup.imageSrc}
                     alt={section.followup.imageAlt}
@@ -1235,7 +1275,7 @@ export default function FluentContent({
                       className={item.insetBackground ? "gallery-image-frame" : undefined}
                       style={item.insetBackground ? { backgroundColor: item.insetBackground } : undefined}
                     >
-                    <Image
+                    <Image managed={managedMedia}
                       className="teams-case-media-image"
                       src={item.imageSrc}
                       style={item.clipInset ? { clipPath: `inset(${item.clipInset})` } : undefined}
@@ -1251,6 +1291,7 @@ export default function FluentContent({
                   )}
                 </div>
               ))}
+              {study === "teams" && section.overline === "Outcome" && nextCaseLink}
             </section>
           );
         })}
@@ -1269,7 +1310,7 @@ export default function FluentContent({
                 main library admin to merge the branch, deprecate the previous
                 Avatar, and publish the Fluent 2 Web update.
               </p>
-              <video
+              <CaseVideo managed={managedMedia}
                 className="process-media-image"
                 autoPlay
                 loop
@@ -1279,7 +1320,7 @@ export default function FluentContent({
                 aria-label="Fluent Avatar delivery"
               >
                 <source src="/case-studies/fluent/avatar-delivery.mp4" type="video/mp4" />
-              </video>
+              </CaseVideo>
             </section>
 
             <section className="case-process-summary" aria-labelledby="fluent-implementation-title">
@@ -1295,7 +1336,7 @@ export default function FluentContent({
                 agents or bots, and updated every Teams component that used
                 Avatar as a subcomponent.
               </p>
-              <video
+              <CaseVideo managed={managedMedia}
                 className="process-media-image"
                 autoPlay
                 loop
@@ -1305,7 +1346,7 @@ export default function FluentContent({
                 aria-label="Avatar implementation in Teams 2 Web"
               >
                 <source src="/case-studies/fluent/avatar-teams-implementation.mp4" type="video/mp4" />
-              </video>
+              </CaseVideo>
             </section>
 
             <section className="case-process-summary" aria-labelledby="fluent-documentation-title">
@@ -1321,7 +1362,7 @@ export default function FluentContent({
                 and Teams 2 Web so the implementation and its documentation
                 stayed aligned.
               </p>
-              <video
+              <CaseVideo managed={managedMedia}
                 className="process-media-image"
                 autoPlay
                 loop
@@ -1331,10 +1372,10 @@ export default function FluentContent({
                 aria-label="Fluent documentation updates"
               >
                 <source src="/case-studies/fluent/avatar-documentation-updates.mp4" type="video/mp4" />
-              </video>
+              </CaseVideo>
             </section>
 
-            <section className="case-process-summary" aria-labelledby="fluent-outcome-title">
+            <section className="case-process-summary case-outcome" aria-labelledby="fluent-outcome-title">
               <p className="case-feature-kicker">Outcome</p>
               <h2 id="fluent-outcome-title" className="case-feature-title">
                 Gave time back to designers across Microsoft org
@@ -1348,23 +1389,12 @@ export default function FluentContent({
                 documentation extended the improvement beyond individual Avatars
                 to the shared components and templates built on them.
               </p>
+              {nextCaseLink}
             </section>
           </>
         ) : null}
 
-        {study === "other" ? null : study === "teams" ? (
-          <Link href="/fluent" className="case-next">
-            <p className="case-next-label">Next</p>
-            <h3 className="case-next-title">Microsoft Fluent</h3>
-            <p className="case-next-body">Continue to the Microsoft Fluent case study.</p>
-          </Link>
-        ) : (
-          <Link href="/wvn" className="case-next">
-            <p className="case-next-label">Next</p>
-            <h3 className="case-next-title">Women&rsquo;s Voices Now</h3>
-            <p className="case-next-body">Continue to the Women&rsquo;s Voices Now case study.</p>
-          </Link>
-        )}
+
       </article>
     </main>
   );
