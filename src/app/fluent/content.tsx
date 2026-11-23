@@ -660,6 +660,7 @@ export default function FluentContent({
           box-sizing: border-box;
           object-fit: cover;
         }
+        .case-study--teams .case-image-frame.teams-problem-screens-image > img { object-fit: cover; }
         .case-study--other .teams-case-media-image {
           aspect-ratio: auto;
           height: auto;
@@ -1229,7 +1230,7 @@ export default function FluentContent({
                 </CaseVideo>
               ) : section.imageSrc ? (
                 <Image managed={managedMedia}
-                  className="teams-case-media-image"
+                  className={`teams-case-media-image${section.imageSrc === "/case-studies/teams/teams-problem-screens.png" ? " teams-problem-screens-image" : ""}`}
                 src={section.imageSrc}
                 alt={section.imageAlt ?? ""}
                 width={1920}
